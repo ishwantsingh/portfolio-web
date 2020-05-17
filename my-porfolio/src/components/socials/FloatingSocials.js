@@ -8,17 +8,16 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-self: flex-end;
-  margin-bottom: 2em;
+  margin-bottom: 1.5rem;
 `;
 const SubContainer = styled.div`
   width: 50%;
   height: 30%;
   flex-direction: column;
-  wrap-content: wrap;
   justify-content: center;
   align-items: space-between;
   .icons {
-    margin: 0.5rem auto;
+    margin: 0.75rem auto;
   }
 `;
 const FloatingSocials = () => {
