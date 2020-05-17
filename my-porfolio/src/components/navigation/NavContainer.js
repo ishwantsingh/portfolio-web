@@ -27,8 +27,6 @@ const FloatingLink = styled.div`
   font-weight: bold;
   margin: 1.85rem 0;
   justify-self: center;
-  //   align-self: center;
-  // border-left: 2.5px solid black;
   text-align: center;
 `;
 const NavContainer = () => {
