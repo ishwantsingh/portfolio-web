@@ -21,10 +21,6 @@ const SubContainer = styled.div`
     margin: 0.5rem auto;
   }
 `;
-// const FloatingLink = styled.div`
-//   width: 50%;
-//   margin: 0 auto;
-// `;
 const FloatingSocials = () => {
   return (
     <Container>
@@ -55,7 +51,11 @@ const FloatingSocials = () => {
             className="icons"
           />
         </Menu.Item>
-        <Menu.Item href="ishwant2001@gmail.com" position="left" target="_blank">
+        <Menu.Item
+          href="mailto:ishwant2001@gmail.com"
+          position="left"
+          target="_blank"
+        >
           <Icon link name="mail" color="black" size="huge" className="icons" />
         </Menu.Item>
         <Menu.Item
