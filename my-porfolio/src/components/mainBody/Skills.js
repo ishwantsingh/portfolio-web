@@ -13,8 +13,8 @@ const Container = styled.div`
   background-color: #f9f9f9;
 `;
 
-const MainBody = () => {
-  return <Container>Main Body</Container>;
+const Skills = () => {
+  return <Container>Skills</Container>;
 };
 
-export default MainBody;
+export default Skills;
