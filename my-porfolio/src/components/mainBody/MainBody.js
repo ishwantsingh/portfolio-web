@@ -8,10 +8,13 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-right: 1.5px solid #e1e0e0;
+  border-left: 1.5px solid #e1e0e0;
+  background-color: #f9f9f9;
 `;
 
 const MainBody = () => {
-  return <Container>hello</Container>;
+  return <Container>Main Body</Container>;
 };
 
 export default MainBody;
