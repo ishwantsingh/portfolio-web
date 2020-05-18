@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  // BrowserRouter as Router,
-  Switch,
-  Route
-  // Redirect
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import history from "./history";
 
@@ -23,204 +18,55 @@ const Container = styled.div`
 `;
 
 class App extends React.Component {
-  // state = {
-  //   loading: false
-  // };
   componentDidMount() {
-    window.addEventListener(
-      "wheel",
-      this.throttle(function(e) {
-        const isScrollingDown = Math.sign(e.deltaY);
-        if (
-          isScrollingDown === -1 &&
-          history.location.pathname == "/projects"
-        ) {
-          console.log("scrolling up", history);
-          history.replace("/");
-        } else if (isScrollingDown === 1 && history.location.pathname == "/") {
-          console.log("scrolling down");
-          history.replace("/projects");
-        } else if (
-          isScrollingDown === 1 &&
-          history.location.pathname == "/projects"
-        ) {
-          console.log("scrolling down");
-          history.replace("/skills");
-        } else if (
-          isScrollingDown === 1 &&
-          history.location.pathname == "/skills"
-        ) {
-          console.log("scrolling down");
-          history.replace("/hobbies");
-        } else if (
-          isScrollingDown === -1 &&
-          history.location.pathname == "/skills"
-        ) {
-          console.log("scrolling up");
-          history.replace("/projects");
-        } else if (
-          isScrollingDown === -1 &&
-          history.location.pathname == "/hobbies"
-        ) {
-          console.log("scrolling up");
-          history.replace("/skills");
-        }
-      }, 700)
-    );
+    window.addEventListener("wheel", this.throttle(this.changePage, 900));
   }
+
+  changePage = function(e) {
+    const isScrollingDown = Math.sign(e.deltaY);
+    if (isScrollingDown === -1 && history.location.pathname == "/projects") {
+      history.replace("/");
+    } else if (isScrollingDown === 1 && history.location.pathname == "/") {
+      history.replace("/projects");
+    } else if (
+      isScrollingDown === 1 &&
+      history.location.pathname == "/projects"
+    ) {
+      history.replace("/skills");
+    } else if (
+      isScrollingDown === 1 &&
+      history.location.pathname == "/skills"
+    ) {
+      history.replace("/hobbies");
+    } else if (
+      isScrollingDown === -1 &&
+      history.location.pathname == "/skills"
+    ) {
+      history.replace("/projects");
+    } else if (
+      isScrollingDown === -1 &&
+      history.location.pathname == "/hobbies"
+    ) {
+      history.replace("/skills");
+    }
+  };
 
   throttle = (func, limit) => {
     let inThrottle;
     return function() {
-      const args = arguments;
-      const context = this;
+      const args = arguments; //arguments recieved by the function which probably include the event itself
+      const context = this; //binds this
       if (!inThrottle) {
-        func.apply(context, args);
+        func.apply(context, args); //takes this and the arguments and applies it onto the function, therefore the function now has access to the arguments of the parent function that is EVENT is accessible to func now.
+        // in other implementations the event wasn't passed from throttle to the function, but in this using apply we have passed the event argument from throttle to the function without mentioning it explicitly.
         inThrottle = true;
         setTimeout(() => (inThrottle = false), limit);
       }
     };
   };
 
-  // throttleFunction = function(e) {
-  //   // If setTimeout is already scheduled, no need to do anything
-  //   let timerId;
-  //   if (timerId) {
-  //     return;
-  //   }
-  //   const isScrollingDown = Math.sign(e.deltaY);
-  //   // Schedule a setTimeout after delay seconds
-  //   timerId = setTimeout(function() {
-  //     //    function() {
-  //     if (isScrollingDown === -1 && history.location.pathname == "/projects") {
-  //       console.log("scrolling up", history);
-  //       history.replace("/");
-  //     } else if (isScrollingDown === 1 && history.location.pathname == "/") {
-  //       console.log("scrolling down");
-  //       history.replace("/projects");
-  //     } else if (
-  //       isScrollingDown === 1 &&
-  //       history.location.pathname == "/projects"
-  //     ) {
-  //       console.log("scrolling down");
-  //       history.replace("/skills");
-  //     } else if (
-  //       isScrollingDown === 1 &&
-  //       history.location.pathname == "/skills"
-  //     ) {
-  //       console.log("scrolling down");
-  //       history.replace("/hobbies");
-  //     } else if (
-  //       isScrollingDown === -1 &&
-  //       history.location.pathname == "/skills"
-  //     ) {
-  //       console.log("scrolling up");
-  //       history.replace("/projects");
-  //     } else if (
-  //       isScrollingDown === -1 &&
-  //       history.location.pathname == "/hobbies"
-  //     ) {
-  //       console.log("scrolling up");
-  //       history.replace("/skills");
-  //     }
-  //     //     }
-
-  //     // Once setTimeout function execution is finished, timerId = undefined so that in <br>
-  //     // the next scroll event function execution can be scheduled by the setTimeout
-  //     timerId = undefined;
-  //   }, 1500);
-  // };
-
-  // debounceFunction = function(e) {
-  //   let timerId;
-  //   // Cancels the setTimeout method execution
-  //   clearTimeout(timerId);
-
-  //   // Executes the func after delay time.
-  //   const isScrollingDown = Math.sign(e.deltaY);
-  //   timerId = setTimeout(function() {
-  //     if (isScrollingDown === -1 && history.location.pathname == "/projects") {
-  //       console.log("scrolling up", history);
-  //       history.replace("/");
-  //     } else if (isScrollingDown === 1 && history.location.pathname == "/") {
-  //       console.log("scrolling down");
-  //       history.replace("/projects");
-  //     } else if (
-  //       isScrollingDown === 1 &&
-  //       history.location.pathname == "/projects"
-  //     ) {
-  //       console.log("scrolling down");
-  //       history.replace("/skills");
-  //     } else if (
-  //       isScrollingDown === 1 &&
-  //       history.location.pathname == "/skills"
-  //     ) {
-  //       console.log("scrolling down");
-  //       history.replace("/hobbies");
-  //     } else if (
-  //       isScrollingDown === -1 &&
-  //       history.location.pathname == "/skills"
-  //     ) {
-  //       console.log("scrolling up");
-  //       history.replace("/projects");
-  //     } else if (
-  //       isScrollingDown === -1 &&
-  //       history.location.pathname == "/hobbies"
-  //     ) {
-  //       console.log("scrolling up");
-  //       history.replace("/skills");
-  //     }
-  //   }, 3000);
-  // };
-
-  // handleScroll(event) {
-  //   let loading = false;
-  //   const isScrollingDown = Math.sign(event.deltaY);
-  //   console.log(isScrollingDown, "isScrollingDOwn");
-  //   if (!loading) {
-  //     loading = true;
-  //     if (isScrollingDown === -1 && history.location.pathname == "/projects") {
-  //       console.log("scrolling up", history);
-  //       history.replace("/");
-  //       loading = false;
-  //     } else if (isScrollingDown === 1 && history.location.pathname == "/") {
-  //       console.log("scrolling down");
-  //       history.replace("/projects");
-  //       loading = false;
-  //     } else if (
-  //       isScrollingDown === 1 &&
-  //       history.location.pathname == "/projects"
-  //     ) {
-  //       console.log("scrolling down");
-  //       history.replace("/skills");
-  //       loading = false;
-  //     } else if (
-  //       isScrollingDown === 1 &&
-  //       history.location.pathname == "/skills"
-  //     ) {
-  //       console.log("scrolling down");
-  //       history.replace("/hobbies");
-  //       loading = false;
-  //     } else if (
-  //       isScrollingDown === -1 &&
-  //       history.location.pathname == "/skills"
-  //     ) {
-  //       console.log("scrolling up");
-  //       history.replace("/projects");
-  //       loading = false;
-  //     } else if (
-  //       isScrollingDown === -1 &&
-  //       history.location.pathname == "/hobbies"
-  //     ) {
-  //       console.log("scrolling up");
-  //       history.replace("/skills");
-  //       loading = false;
-  //     }
-  //   }
-  // }
   render() {
     return (
-      //   <Router>
       <Container>
         <FloatingSocials />
         <Switch>
@@ -239,7 +85,6 @@ class App extends React.Component {
         </Switch>
         <NavContainer />
       </Container>
-      // </Router>
     );
   }
 }
