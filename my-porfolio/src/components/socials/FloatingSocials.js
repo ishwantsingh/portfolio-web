@@ -29,46 +29,28 @@ const FloatingSocials = () => {
           position="left"
           target="_blank"
         >
-          <Icon
-            link
-            name="linkedin"
-            color="black"
-            size="huge"
-            className="icons"
-          />
+          <Icon name="linkedin" color="black" size="huge" className="icons" />
         </Menu.Item>
         <Menu.Item
           href="https://twitter.com/ishwant_singh"
           position="left"
           target="_blank"
         >
-          <Icon
-            link
-            name="twitter"
-            color="black"
-            size="huge"
-            className="icons"
-          />
+          <Icon name="twitter" color="black" size="huge" className="icons" />
         </Menu.Item>
         <Menu.Item
           href="mailto:ishwant2001@gmail.com"
           position="left"
           target="_blank"
         >
-          <Icon link name="mail" color="black" size="huge" className="icons" />
+          <Icon name="mail" color="black" size="huge" className="icons" />
         </Menu.Item>
         <Menu.Item
           href="https://github.com/ishwantsingh"
           position="left"
           target="_blank"
         >
-          <Icon
-            link
-            name="github"
-            color="black"
-            size="huge"
-            className="icons"
-          />
+          <Icon name="github" color="black" size="huge" className="icons" />
         </Menu.Item>
       </SubContainer>
     </Container>

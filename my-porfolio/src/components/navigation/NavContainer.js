@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   width: 25%;
@@ -12,39 +12,71 @@ const Container = styled.div`
     text-decoration: none;
     color: black;
   }
+  a:hover {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
 `;
 const SubContainer = styled.div`
-  width: 80%;
-  height: 50%;
+  width: 75%;
+  height: 100%;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+  align-items: space-between;
+  .floating-link {
+    display: flex;
+    width: 100%;
+    height: 2rem;
+    font-size: 1.2rem;
+    margin: 2.5rem 0;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+  }
+  .selected-menu {
+    border-left: 4px solid black;
+    border-radius: 3.2px;
+    font-weight: bold;
+    margin: 1.7rem 0;
+    height: 2.8rem;
+    font-size: 1.4rem; //becuase it is below floating-link class, this font size applies
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  }
 `;
-const FloatingLink = styled.div`
-  width: 100%;
-  height: 2.2rem;
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 1.85rem 0;
-  justify-self: center;
-  text-align: center;
-`;
+
 const NavContainer = () => {
   return (
     <Container>
       <SubContainer>
-        <Link to="/">
-          <FloatingLink>About</FloatingLink>
-        </Link>
-        <Link to="/projects">
-          <FloatingLink>Projects</FloatingLink>
-        </Link>
-        <Link to="/skills">
-          <FloatingLink>Skills</FloatingLink>
-        </Link>
-        <Link to="/hobbies">
-          <FloatingLink>Hobbies</FloatingLink>
-        </Link>
+        <NavLink
+          exact
+          to="/"
+          activeClassName="selected-menu"
+          className="floating-link"
+        >
+          About
+        </NavLink>
+        <NavLink
+          to="/projects"
+          activeClassName="selected-menu"
+          className="floating-link"
+        >
+          Projects
+        </NavLink>
+        <NavLink
+          to="/skills"
+          activeClassName="selected-menu"
+          className="floating-link"
+        >
+          Skills
+        </NavLink>
+        <NavLink
+          to="/hobbies"
+          activeClassName="selected-menu"
+          className="floating-link"
+        >
+          Hobbies
+        </NavLink>
       </SubContainer>
     </Container>
   );
