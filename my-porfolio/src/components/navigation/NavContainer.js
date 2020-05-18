@@ -24,16 +24,18 @@ const SubContainer = styled.div`
     width: 100%;
     height: 2rem;
     font-size: 1.2rem;
-    margin: 2.1rem 0;
+    margin: 2.5rem 0;
     justify-content: center;
     align-items: center;
     text-align: right;
   }
   .selected-menu {
     border-left: 4px solid black;
-    border-radius: 3.5px;
+    border-radius: 3.2px;
     font-weight: bold;
+    height: 3rem;
     font-size: 1.45rem; //becuase it is below floating-link class, this font size applies
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   }
 `;
 
