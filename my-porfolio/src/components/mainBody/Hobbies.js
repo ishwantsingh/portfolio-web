@@ -10,6 +10,7 @@ const Container = styled.div`
   border-right: 1.5px solid #e1e0e0;
   border-left: 1.5px solid #e1e0e0;
   background-color: #f9f9f9;
+  font-size: 7rem;
 `;
 
 const Hobbies = () => {
