@@ -12,13 +12,17 @@ const Container = styled.div`
     text-decoration: none;
     color: black;
   }
+  a:hover {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
 `;
 const SubContainer = styled.div`
   width: 75%;
-  height: 50%;
+  height: 100%;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+  align-items: space-between;
   .floating-link {
     display: flex;
     width: 100%;
@@ -33,8 +37,9 @@ const SubContainer = styled.div`
     border-left: 4px solid black;
     border-radius: 3.2px;
     font-weight: bold;
-    height: 3rem;
-    font-size: 1.45rem; //becuase it is below floating-link class, this font size applies
+    margin: 1.7rem 0;
+    height: 2.8rem;
+    font-size: 1.4rem; //becuase it is below floating-link class, this font size applies
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   }
 `;
