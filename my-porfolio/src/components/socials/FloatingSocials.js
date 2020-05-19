@@ -13,7 +13,7 @@ const Container = styled.div`
 const SubContainer = styled.div`
   width: 50%;
   height: 30%;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: space-between;
   .icons {
