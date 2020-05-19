@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import FloatingSocials from "../socials/FloatingSocials";
 
 const Container = styled.div`
-  width: 18%;
+  width: 17.5vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
