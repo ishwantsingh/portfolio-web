@@ -2,12 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+import FloatingSocials from "../socials/FloatingSocials";
+
 const Container = styled.div`
-  width: 25%;
-  height: 100%;
+  width: 17.5vw;
+  height: 100vh;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
+const SubContainer = styled.div`
+  width: 90%;
+  flex-direction: column;
+  align-items: space-between;
+  align-self: flex-end;
+  margin: auto 0;
   a {
     text-decoration: none;
     color: black;
@@ -16,13 +25,6 @@ const Container = styled.div`
     font-weight: bold;
     font-size: 1.4rem;
   }
-`;
-const SubContainer = styled.div`
-  width: 75%;
-  height: 100%;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: space-between;
   .floating-link {
     display: flex;
     width: 100%;
@@ -31,7 +33,6 @@ const SubContainer = styled.div`
     margin: 2.5rem 0;
     justify-content: center;
     align-items: center;
-    text-align: right;
   }
   .selected-menu {
     border-left: 4px solid black;
@@ -78,6 +79,7 @@ const NavContainer = () => {
           Hobbies
         </NavLink>
       </SubContainer>
+      <FloatingSocials />
     </Container>
   );
 };
