@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Icon, Menu } from "semantic-ui-react";
 
-const SubContainer3 = styled.div`
+const SubContainer = styled.div`
   width: 100%;
   height: 6%;
   display: flex;
@@ -19,7 +19,7 @@ const SubContainer3 = styled.div`
 
 const FloatingSocials = () => {
   return (
-    <SubContainer3>
+    <SubContainer>
       <Menu.Item
         href="https://www.linkedin.com/in/ishwant-singh/"
         position="left"
@@ -48,7 +48,7 @@ const FloatingSocials = () => {
       >
         <Icon name="github" color="black" size="huge" className="icons" />
       </Menu.Item>
-    </SubContainer3>
+    </SubContainer>
   );
 };
 

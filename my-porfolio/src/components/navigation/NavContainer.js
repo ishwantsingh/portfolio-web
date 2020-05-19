@@ -5,14 +5,14 @@ import { NavLink } from "react-router-dom";
 import FloatingSocials from "../socials/FloatingSocials";
 
 const Container = styled.div`
-  width: 25%;
+  width: 18%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 const SubContainer = styled.div`
-  width: 75%;
+  width: 90%;
   flex-direction: column;
   align-items: space-between;
   align-self: flex-end;
