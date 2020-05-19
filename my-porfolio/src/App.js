@@ -68,7 +68,6 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        <FloatingSocials />
         <Switch>
           <Route exact path="/">
             <About />
