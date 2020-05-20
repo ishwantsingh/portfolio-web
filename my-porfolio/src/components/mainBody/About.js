@@ -36,11 +36,8 @@ const About = () => {
   return (
     <Container>
       <div className="imageDiv">
-        {/* <DevImg src={SvgDevProd} alt="designer image" /> */}
         <SvgDevProd className="image" />
       </div>
-
-      {/* <div>About</div> */}
     </Container>
   );
 };
