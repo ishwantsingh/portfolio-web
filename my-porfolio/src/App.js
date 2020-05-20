@@ -69,16 +69,16 @@ class App extends React.Component {
       <Container>
         <Switch>
           <Route exact path="/">
-            <About />
+            {({ match }) => <About show={match !== null} />}
           </Route>
           <Route path="/projects">
-            <Projects />
+            {({ match }) => <Projects show={match !== null} />}
           </Route>
           <Route path="/skills">
-            <Skills />
+            {({ match }) => <Skills show={match !== null} />}
           </Route>
           <Route path="/hobbies">
-            <Hobbies />
+            {({ match }) => <Hobbies show={match !== null} />}
           </Route>
         </Switch>
         <NavContainer />
