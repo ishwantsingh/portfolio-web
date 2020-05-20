@@ -24,28 +24,28 @@ class App extends React.Component {
 
   changePage = function(e) {
     const isScrollingDown = Math.sign(e.deltaY);
-    if (isScrollingDown === -1 && history.location.pathname == "/projects") {
+    if (isScrollingDown === -1 && history.location.pathname === "/projects") {
       history.replace("/");
-    } else if (isScrollingDown === 1 && history.location.pathname == "/") {
+    } else if (isScrollingDown === 1 && history.location.pathname === "/") {
       history.replace("/projects");
     } else if (
       isScrollingDown === 1 &&
-      history.location.pathname == "/projects"
+      history.location.pathname === "/projects"
     ) {
       history.replace("/skills");
     } else if (
       isScrollingDown === 1 &&
-      history.location.pathname == "/skills"
+      history.location.pathname === "/skills"
     ) {
       history.replace("/hobbies");
     } else if (
       isScrollingDown === -1 &&
-      history.location.pathname == "/skills"
+      history.location.pathname === "/skills"
     ) {
       history.replace("/projects");
     } else if (
       isScrollingDown === -1 &&
-      history.location.pathname == "/hobbies"
+      history.location.pathname === "/hobbies"
     ) {
       history.replace("/skills");
     }
