@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import bgImage from "../../assets/bgImage.svg";
-import designer from "../../assets/devProd.svg";
+import SvgDevProd from "../../assets/devProd.js";
 
 const Container = styled.div`
   width: 100%;
@@ -22,21 +22,22 @@ const Container = styled.div`
     align-self: flex-start;
     margin: 3rem 0 0 3rem;
   }
+  .image {
+    width: 25vw;
+    display: flex;
+    justify-self: flex-start;
+    align-self: flex-start;
+  }
 `;
 
 // DAF8FF f9f9f9
-const DevImg = styled.img`
-  width: 25vw;
-  display: flex;
-  justify-self: flex-start;
-  align-self: flex-start;
-`;
 
 const About = () => {
   return (
     <Container>
       <div className="imageDiv">
-        <DevImg src={designer} alt="designer image" />
+        {/* <DevImg src={SvgDevProd} alt="designer image" /> */}
+        <SvgDevProd className="image" />
       </div>
 
       {/* <div>About</div> */}

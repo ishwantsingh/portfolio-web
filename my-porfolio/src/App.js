@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import history from "./history";
 
-import FloatingSocials from "./components/socials/FloatingSocials";
 import About from "./components/mainBody/About";
 import Projects from "./components/mainBody/Projects";
 import Skills from "./components/mainBody/Skills";
