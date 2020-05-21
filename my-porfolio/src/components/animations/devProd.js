@@ -23,9 +23,10 @@ function SvgDevProd2(props) {
         ease: "bounce.easeOut",
         delay: 0,
       })
-      .from("#person", 0.3, {
-        scaleY: 0,
-        transformOrigin: "top",
+      .from("#person", 0.4, {
+        // scaleY: 0,
+        // transformOrigin: "top",
+        y: -800,
         ease: "slow.easeIn",
       })
       .from("#clock", 0.3, {
