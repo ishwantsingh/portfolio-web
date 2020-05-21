@@ -9,8 +9,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1.5px solid #e1e0e0;
-  border-left: 1.5px solid #e1e0e0;
+  // border-right: 1.5px solid #e1e0e0;
   background-color: white;
   font-size: 7rem;
 `;
@@ -22,7 +21,7 @@ class Hobbies extends React.Component {
   }
 
   componentDidMount() {
-    this.timeline.from("#content", 1.5, {
+    this.timeline.from("#content-4", 1.5, {
       autoAlpha: 0,
       delay: 0,
       ease: Power1.easeIn,
@@ -40,7 +39,7 @@ class Hobbies extends React.Component {
   // };
 
   render() {
-    return <Container id="content">Hobbies</Container>;
+    return <Container id="content-4">Hobbies</Container>;
   }
 }
 export default Hobbies;

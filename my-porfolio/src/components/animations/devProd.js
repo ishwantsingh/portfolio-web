@@ -10,7 +10,7 @@ function SvgDevProd2(props) {
         scaleX: 0,
         transformOrigin: "left",
         ease: "slow.easeIn",
-        delay: 1.3,
+        delay: 1.8,
       })
       .from("#laptop", 0.5, {
         scaleY: 0,

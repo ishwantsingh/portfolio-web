@@ -9,8 +9,7 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  border-right: 1px solid #e1e0e0;
-  border-left: 1px solid #e1e0e0;
+  // border-right: 1px solid #e1e0e0;
   background-color: #ffffff;
   font-size: 7rem;
   background-image: url(${bgImage});
@@ -41,16 +40,16 @@ class About extends React.Component {
   }
 
   componentDidMount() {
-    this.timeline.from("#content", 1, {
+    this.timeline.from("#content-1", 1, {
       autoAlpha: 0,
-      delay: 0,
+      delay: 0.95,
       ease: Power1.easeIn,
     });
     this.timeline.play();
   }
   render() {
     return (
-      <Container id="content">
+      <Container id="content-1">
         <div className="imageDiv">
           <SvgDevProd className="image" />
         </div>
