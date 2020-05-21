@@ -2,9 +2,16 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import history from "./history";
-import { Transition, TransitionGroup } from "react-transition-group";
+// import { Transition, TransitionGroup } from "react-transition-group";
 
-import { play, exit } from "./components/animations/Timelines";
+import {
+  AboutTimeline,
+  ProjectsTimeline,
+  SkillsTimeline,
+  HobbiesTimeline,
+  ChangePage,
+} from "./components/animations/Timelines";
+// import { play, exit } from "./components/animations/Timelines";
 import About from "./components/mainBody/About";
 import Projects from "./components/mainBody/Projects";
 import Skills from "./components/mainBody/Skills";
@@ -23,38 +30,77 @@ class App extends React.Component {
     window.addEventListener("wheel", this.throttle(this.changePage, 900));
   }
 
-  changePage = function(e) {
+  AboutCompletePromise = new Promise(function (resolve, reject) {
+    AboutTimeline();
+    resolve("animation done");
+    reject("oops!");
+  });
+  ProjectsCompletePromise = new Promise(function (resolve) {
+    ProjectsTimeline();
+    resolve("animation done");
+  });
+  SkillsCompletePromise = new Promise(function (resolve) {
+    SkillsTimeline();
+    resolve("animation done");
+  });
+  HobbiesCompletePromise = new Promise(function (resolve) {
+    HobbiesTimeline();
+    resolve("animation done");
+  });
+
+  changePage = function (e) {
     const isScrollingDown = Math.sign(e.deltaY);
     if (isScrollingDown === -1 && history.location.pathname === "/projects") {
+      // this.AboutCompletePromise.then(() =>
       history.replace("/");
+      // );
+
+      // ChangePage(e, "/");
     } else if (isScrollingDown === 1 && history.location.pathname === "/") {
+      // this.ProjectsCompletePromise.then(
       history.replace("/projects");
+      // );
+
+      // ChangePage(e, "/projects");
     } else if (
       isScrollingDown === 1 &&
       history.location.pathname === "/projects"
     ) {
+      // this.SkillsCompletePromise.then(
       history.replace("/skills");
+      // );
+      // ChangePage(e, "/skills");
     } else if (
       isScrollingDown === 1 &&
       history.location.pathname === "/skills"
     ) {
+      // this.HobbiesCompletePromise.then(
       history.replace("/hobbies");
+      // );
+
+      // ChangePage(e, "/hobbies");
     } else if (
       isScrollingDown === -1 &&
       history.location.pathname === "/skills"
     ) {
+      // this.ProjectsCompletePromise.then(
       history.replace("/projects");
+      // );
+      // ChangePage(e, "/projects");
     } else if (
       isScrollingDown === -1 &&
       history.location.pathname === "/hobbies"
     ) {
+      // this.SkillsCompletePromise.then(
       history.replace("/skills");
+      // );
+      // ChangePage(e, "/skills");
     }
   };
 
   throttle = (func, limit) => {
     let inThrottle;
-    return function() {
+    return function () {
       const args = arguments; //arguments recieved by the function which probably include the event itself
       const context = this; //binds this
       if (!inThrottle) {
@@ -69,34 +115,20 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        {/* <TransitionGroup component={null}>
-          <Transition
-            // key={key}
-            appear={true}
-            onEnter={(node, appears) => play(node, appears)}
-            onExit={(node, appears) => exit(node, appears)}
-            timeout={{ enter: 750, exit: 150 }}
-          > */}
         <Switch>
           <Route exact path="/">
-            {/* <About /> */}
-            {({ match }) => <About show={match !== null} />}
+            <About AboutTimeline={AboutTimeline} />
           </Route>
           <Route path="/projects">
-            {/* <Projects /> */}
-            {({ match }) => <Projects show={match !== null} />}
+            <Projects ProjectsTimeline={ProjectsTimeline} />
           </Route>
           <Route path="/skills">
-            {/* <Skills /> */}
-            {({ match }) => <Skills show={match !== null} />}
+            <Skills SkillsTimeline={SkillsTimeline} />
           </Route>
           <Route path="/hobbies">
-            {/* <Hobbies /> */}
-            {({ match }) => <Hobbies show={match !== null} />}
+            <Hobbies HobbiesTimeline={HobbiesTimeline} />
           </Route>
         </Switch>
-        {/* </Transition>
-        </TransitionGroup> */}
         <NavContainer />
       </Container>
     );

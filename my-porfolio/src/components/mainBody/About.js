@@ -5,6 +5,7 @@ import stroke from "../../assets/stroke.svg";
 import SvgDevProd from "../animations/devProd.js";
 // import { Transition } from "react-transition-group";
 import { TimelineMax, Power1 } from "gsap/all";
+import history from "../../history";
 
 const Container = styled.div`
   width: 100%;
@@ -66,7 +67,7 @@ const Container = styled.div`
     justify-self: flex-start;
     font-size: 1.6rem;
     color: #6e6e6e;
-    margin-top: 0rem;
+    margin-top: 0.6rem;
     letter-spacing: 0;
     font-weight: 200;
     line-height: 1.6;
@@ -89,6 +90,8 @@ const Container = styled.div`
     text-align: center;
     transition: all linear 0.3s;
     text-decoration: none;
+    font-weight: 300;
+    cursor: pointer;
   }
   #texts span:after {
     content: "";
@@ -120,12 +123,22 @@ class About extends React.Component {
       .staggerFrom(
         "#texts",
         0.475,
-        { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 2.65 },
+        { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.9 },
         0.155
       );
 
     this.timeline.play();
   }
+
+  changePage = (e, destination) => {
+    e.preventDefault();
+    this.timeline.reverse();
+    const timelineDuration = this.timeline.duration() * 1000;
+    setTimeout(() => {
+      history.push(destination);
+    }, timelineDuration);
+  };
+
   render() {
     return (
       <Container id="content-1">
@@ -137,16 +150,19 @@ class About extends React.Component {
             <div className="name-div">
               <div id="texts">Hello,</div>
               <div id="texts">
-                My name is <span>Ish</span>
+                My name is <span>Ish.</span>
               </div>
-              {/* <div id="texts">.</div> */}
             </div>
             <div id="texts" className="about-div">
               I’m a Fullstack Develop from India. I create beautiful, intuitive
               online experiences through solid research, thoughtful design and
               accessible code. I bleed Design, Code and Paint!
             </div>
-            <a className="scroll-down-but" id="texts">
+            <a
+              className="scroll-down-but"
+              id="texts"
+              onClick={(e) => this.changePage(e, "/projects")}
+            >
               Scroll down for more
             </a>
           </h1>
