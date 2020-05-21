@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import bgImage from "../../assets/bgImage.svg";
+import stroke from "../../assets/stroke.svg";
 import SvgDevProd from "../animations/devProd.js";
 // import { Transition } from "react-transition-group";
 import { TimelineMax, Power1 } from "gsap/all";
@@ -37,44 +38,67 @@ const Container = styled.div`
     justify-self: center;
     justify-content: center;
     align-self: center;
-    margin-right: 1.5%;
   }
   h1 {
     width: 100%;
     display: flex;
     flex-direction: column;
     font-size: 3.5rem;
-    letter-spacing: 0.015em;
+    letter-spacing: 0.01em;
+    font-family: "Nunito", sans-serif;
+    margin-left: 2.3%;
   }
   .name-div {
     width: 100%;
+    height: 13rem;
     display: flex;
-    //  align-self: center;
     flex-direction: column;
     justify-self: center;
-    // border: 1px solid #e1e0e0;
-    // border-radius: 10px;
-    // padding: 2rem;
-    // margin-left: 10rem;
-    margin-top: 10rem;
+    margin-top: 6.5rem;
+    font-weight: 700;
+    font-size: 4rem;
   }
   .about-div {
-    width: 80%;
+    width: 92%;
     display: flex;
     flex-direction: row;
     align-self: flex-start;
     justify-self: flex-start;
-    // margin: auto;
-    // padding: 2rem;
-    // border: 1px solid #e1e0e0;
-    // border-radius: 10px;
-    // margin-left: 10rem;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     color: #6e6e6e;
-    margin-top: 2rem;
+    margin-top: 0rem;
     letter-spacing: 0;
-    font-weight: 300;
-    line-height: 1.7;
+    font-weight: 200;
+    line-height: 1.6;
+  }
+  .scroll-down-but {
+    width: 27%;
+    background: linear-gradient(259.07deg, #daf8ff 4.07%, #b2eaf8 100%);
+    background-color: #daf8ff;
+    border-radius: 10px;
+    font-family: "Nunito", sans-serif;
+    box-shadow: 0px 8px 20px #e5f4f5;
+    font-size: 1.4rem;
+    line-height: 35px;
+    background-color: #daf8ff;
+    color: #00b1da;
+    font-size: 14px;
+    gap: normal;
+    margin-top: 3rem;
+    padding: 0.25% 1.5%;
+    text-align: center;
+    transition: all linear 0.3s;
+    text-decoration: none;
+  }
+  #texts span:after {
+    content: "";
+    height: 22px;
+    overflow: hidden;
+    background-image: url(${stroke});
+    background-repeat: no-repeat;
+    background-size: initial;
+    display: block;
+    z-index: -1;
   }
 `;
 
@@ -112,7 +136,9 @@ class About extends React.Component {
           <h1>
             <div className="name-div">
               <div id="texts">Hello,</div>
-              <div id="texts">My name is Ishwant</div>
+              <div id="texts">
+                My name is <span>Ish</span>
+              </div>
               {/* <div id="texts">.</div> */}
             </div>
             <div id="texts" className="about-div">
@@ -120,6 +146,9 @@ class About extends React.Component {
               online experiences through solid research, thoughtful design and
               accessible code. I bleed Design, Code and Paint!
             </div>
+            <a className="scroll-down-but" id="texts">
+              Scroll down for more
+            </a>
           </h1>
         </div>
       </Container>
