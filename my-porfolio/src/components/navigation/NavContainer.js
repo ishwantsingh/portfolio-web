@@ -12,7 +12,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-self: flex-end;
   justify-content: center;
-  border-left: 1.5px solid #e1e0e0;
+  border-left: 1.2px solid #e1e0e0;
 `;
 const SubContainer = styled.div`
   width: 90%;
@@ -55,12 +55,12 @@ class NavContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.timeline.from("#content", 1.3, {
+    this.timeline.from("#content", 1, {
       autoAlpha: 0,
       // transformOrigin: "right",
       // scaleX: 0,
       x: 500,
-      delay: 0,
+      delay: 3.75,
       ease: Power1.easeIn,
     });
     this.timeline.play();

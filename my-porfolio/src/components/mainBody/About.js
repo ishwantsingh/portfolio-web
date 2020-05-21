@@ -15,19 +15,36 @@ const Container = styled.div`
   background-image: url(${bgImage});
   background-repeat: no-repeat;
   background-size: cover;
+  justify-content: space-between;
   .imageDiv {
     width: 35%;
     height: 40vh;
     display: flex;
     justify-content: flex-start;
-    align-self: flex-start;
-    margin: 3rem 0 0 3rem;
+    align-self: flex-end;
+    margin: 0 0 9rem 3rem;
   }
   .image {
     width: 25vw;
     display: flex;
     justify-self: flex-start;
     align-self: flex-start;
+  }
+  .text {
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    margin-right: 1.5%;
+  }
+  .with--accent {
+    color: #ff5252;
+    font-weight: 400;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.03em;
   }
 `;
 
@@ -40,11 +57,19 @@ class About extends React.Component {
   }
 
   componentDidMount() {
-    this.timeline.from("#content-1", 1, {
-      autoAlpha: 0,
-      delay: 0.95,
-      ease: Power1.easeIn,
-    });
+    this.timeline
+      .from("#content-1", 1, {
+        autoAlpha: 0,
+        delay: 0,
+        ease: Power1.easeIn,
+      })
+      .staggerFrom(
+        "#texts",
+        0.475,
+        { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 2.65 },
+        0.155
+      );
+
     this.timeline.play();
   }
   render() {
@@ -52,6 +77,18 @@ class About extends React.Component {
       <Container id="content-1">
         <div className="imageDiv">
           <SvgDevProd className="image" />
+        </div>
+        <div className="text">
+          <h1>
+            <div id="texts">Hey!</div>
+            <div id="texts" className="with--accent">
+              I'm Ishwant Singh.
+            </div>
+            <div id="texts">I Design, Code and Paint!</div>
+            <div id="texts">
+              <span className="with--accent">Scroll down</span> for more.
+            </div>
+          </h1>
         </div>
       </Container>
     );
