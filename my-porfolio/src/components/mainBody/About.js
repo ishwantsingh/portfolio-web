@@ -9,12 +9,11 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  // border-right: 1px solid #e1e0e0;
   background-color: #ffffff;
   font-size: 7rem;
   background-image: url(${bgImage});
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   justify-content: space-between;
   .imageDiv {
     width: 35%;
@@ -22,29 +21,60 @@ const Container = styled.div`
     display: flex;
     justify-content: flex-start;
     align-self: flex-end;
-    margin: 0 0 9rem 3rem;
+    margin: 0 0 1.5rem 1.5rem;
   }
   .image {
     width: 25vw;
+    height: 35vh;
     display: flex;
     justify-self: flex-start;
     align-self: flex-start;
   }
   .text {
+    width: 50%;
+    height: 50rem;
     display: flex;
     justify-self: center;
+    justify-content: center;
     align-self: center;
     margin-right: 1.5%;
   }
-  .with--accent {
-    color: #ff5252;
-    font-weight: 400;
-  }
   h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    font-style: italic;
-    letter-spacing: 0.03em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 3.5rem;
+    letter-spacing: 0.015em;
+  }
+  .name-div {
+    width: 100%;
+    display: flex;
+    //  align-self: center;
+    flex-direction: column;
+    justify-self: center;
+    // border: 1px solid #e1e0e0;
+    // border-radius: 10px;
+    // padding: 2rem;
+    // margin-left: 10rem;
+    margin-top: 10rem;
+  }
+  .about-div {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    justify-self: flex-start;
+    // margin: auto;
+    // padding: 2rem;
+    // border: 1px solid #e1e0e0;
+    // border-radius: 10px;
+    // margin-left: 10rem;
+    font-size: 1.7rem;
+    color: #6e6e6e;
+    margin-top: 2rem;
+    letter-spacing: 0;
+    font-weight: 300;
+    line-height: 1.7;
   }
 `;
 
@@ -80,13 +110,15 @@ class About extends React.Component {
         </div>
         <div className="text">
           <h1>
-            <div id="texts">Hey!</div>
-            <div id="texts" className="with--accent">
-              I'm Ishwant Singh.
+            <div className="name-div">
+              <div id="texts">Hello,</div>
+              <div id="texts">My name is Ishwant</div>
+              {/* <div id="texts">.</div> */}
             </div>
-            <div id="texts">I Design, Code and Paint!</div>
-            <div id="texts">
-              <span className="with--accent">Scroll down</span> for more.
+            <div id="texts" className="about-div">
+              I’m a Fullstack Develop from India. I create beautiful, intuitive
+              online experiences through solid research, thoughtful design and
+              accessible code. I bleed Design, Code and Paint!
             </div>
           </h1>
         </div>
