@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { TimelineMax, Power1 } from "gsap/all";
 
 import FloatingSocials from "../socials/FloatingSocials";
 
@@ -9,7 +10,9 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-self: flex-end;
   justify-content: center;
+  border-left: 1.5px solid #e1e0e0;
 `;
 const SubContainer = styled.div`
   width: 90%;
@@ -45,43 +48,62 @@ const SubContainer = styled.div`
   }
 `;
 
-const NavContainer = () => {
-  return (
-    <Container>
-      <SubContainer>
-        <NavLink
-          exact
-          to="/"
-          activeClassName="selected-menu"
-          className="floating-link"
-        >
-          About
-        </NavLink>
-        <NavLink
-          to="/projects"
-          activeClassName="selected-menu"
-          className="floating-link"
-        >
-          Projects
-        </NavLink>
-        <NavLink
-          to="/skills"
-          activeClassName="selected-menu"
-          className="floating-link"
-        >
-          Skills
-        </NavLink>
-        <NavLink
-          to="/hobbies"
-          activeClassName="selected-menu"
-          className="floating-link"
-        >
-          Hobbies
-        </NavLink>
-      </SubContainer>
-      <FloatingSocials />
-    </Container>
-  );
-};
+class NavContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.timeline = new TimelineMax({ paused: true });
+  }
+
+  componentDidMount() {
+    this.timeline.from("#content", 1.3, {
+      autoAlpha: 0,
+      // transformOrigin: "right",
+      // scaleX: 0,
+      x: 500,
+      delay: 0,
+      ease: Power1.easeIn,
+    });
+    this.timeline.play();
+  }
+
+  render() {
+    return (
+      <Container id="content">
+        <SubContainer>
+          <NavLink
+            exact
+            to="/"
+            activeClassName="selected-menu"
+            className="floating-link"
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/projects"
+            activeClassName="selected-menu"
+            className="floating-link"
+          >
+            Projects
+          </NavLink>
+          <NavLink
+            to="/skills"
+            activeClassName="selected-menu"
+            className="floating-link"
+          >
+            Skills
+          </NavLink>
+          <NavLink
+            to="/hobbies"
+            activeClassName="selected-menu"
+            className="floating-link"
+          >
+            Hobbies
+          </NavLink>
+        </SubContainer>
+        <FloatingSocials />
+      </Container>
+    );
+  }
+}
 
 export default NavContainer;

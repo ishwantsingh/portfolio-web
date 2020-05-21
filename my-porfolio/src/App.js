@@ -2,8 +2,9 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import history from "./history";
+import { Transition, TransitionGroup } from "react-transition-group";
 
-import FloatingSocials from "./components/socials/FloatingSocials";
+import { play, exit } from "./components/animations/Timelines";
 import About from "./components/mainBody/About";
 import Projects from "./components/mainBody/Projects";
 import Skills from "./components/mainBody/Skills";
@@ -68,20 +69,34 @@ class App extends React.Component {
   render() {
     return (
       <Container>
+        {/* <TransitionGroup component={null}>
+          <Transition
+            // key={key}
+            appear={true}
+            onEnter={(node, appears) => play(node, appears)}
+            onExit={(node, appears) => exit(node, appears)}
+            timeout={{ enter: 750, exit: 150 }}
+          > */}
         <Switch>
           <Route exact path="/">
-            <About />
+            {/* <About /> */}
+            {({ match }) => <About show={match !== null} />}
           </Route>
           <Route path="/projects">
-            <Projects />
+            {/* <Projects /> */}
+            {({ match }) => <Projects show={match !== null} />}
           </Route>
           <Route path="/skills">
-            <Skills />
+            {/* <Skills /> */}
+            {({ match }) => <Skills show={match !== null} />}
           </Route>
           <Route path="/hobbies">
-            <Hobbies />
+            {/* <Hobbies /> */}
+            {({ match }) => <Hobbies show={match !== null} />}
           </Route>
         </Switch>
+        {/* </Transition>
+        </TransitionGroup> */}
         <NavContainer />
       </Container>
     );
