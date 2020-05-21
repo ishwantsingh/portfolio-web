@@ -10,28 +10,28 @@ function SvgDevProd2(props) {
         scaleX: 0,
         transformOrigin: "left",
         ease: "slow.easeIn",
-        delay: 0.3
+        delay: 1.3,
       })
       .from("#laptop", 0.5, {
         scaleY: 0,
         transformOrigin: "bottom",
-        ease: "power2.easeOut"
+        ease: "power2.easeOut",
       })
       .from("#leaf", 0.5, {
         scaleY: 0,
         transformOrigin: "top",
         ease: "bounce.easeOut",
-        delay: 0
+        delay: 0,
       })
       .from("#person", 0.3, {
         scaleY: 0,
         transformOrigin: "top",
-        ease: "slow.easeIn"
+        ease: "slow.easeIn",
       })
       .from("#clock", 0.3, {
         scale: 0,
         transformOrigin: "center",
-        ease: "bounce.easeOut"
+        ease: "bounce.easeOut",
       });
   });
 

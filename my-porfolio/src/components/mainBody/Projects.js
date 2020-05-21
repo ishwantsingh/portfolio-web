@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Transition } from "react-transition-group";
-import { TweenLite } from "gsap/all";
+// import { Transition } from "react-transition-group";
+import { TimelineMax, Power1 } from "gsap/all";
 
 const Container = styled.div`
   width: 100%;
@@ -15,24 +15,33 @@ const Container = styled.div`
   font-size: 7rem;
 `;
 
-const startState = { autoAlpha: 0, y: -50 };
+class Projects extends React.Component {
+  constructor(props) {
+    super(props);
+    this.timeline = new TimelineMax({ paused: true });
+  }
 
-const Projects = props => (
-  <Transition
-    unmountOnExit
-    in={props.show}
-    timeout={{ enter: 750, exit: 150 }}
-    onEnter={node => TweenLite.set(node, startState)}
-    addEndListener={(node, done) => {
-      TweenLite.to(node, 2, {
-        autoAlpha: props.show ? 1 : 0,
-        y: props.show ? 0 : 50,
-        onComplete: done
-      });
-    }}
-  >
-    <Container>Projects</Container>
-  </Transition>
-);
+  componentDidMount() {
+    this.timeline.from("#content", 1, {
+      autoAlpha: 0,
+      delay: 0,
+      ease: Power1.easeIn,
+    });
+    this.timeline.play();
+  }
+
+  // changePage = (e, destination) => {
+  //   e.preventDefault();
+  //   this.timeline.reverse();
+  //   const timelineDuration = this.timeline.duration() * 1000;
+  //   setTimeout(() => {
+  //     this.props.history.push(destination);
+  //   }, timelineDuration);
+  // };
+
+  render() {
+    return <Container id="content">Projects</Container>;
+  }
+}
 
 export default Projects;

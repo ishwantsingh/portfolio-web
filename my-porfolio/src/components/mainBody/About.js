@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import bgImage from "../../assets/bgImage.svg";
 import SvgDevProd from "../animations/devProd.js";
-import { Transition } from "react-transition-group";
-import { TweenMax } from "gsap/all";
+// import { Transition } from "react-transition-group";
+import { TimelineMax, Power1 } from "gsap/all";
 
 const Container = styled.div`
   width: 100%;
@@ -34,28 +34,29 @@ const Container = styled.div`
 
 // DAF8FF f9f9f9
 
-const startState = { autoAlpha: 0, y: -50 };
+class About extends React.Component {
+  constructor(props) {
+    super(props);
+    this.timeline = new TimelineMax({ paused: true });
+  }
 
-const About = props => (
-  <Transition
-    unmountOnExit
-    in={props.show}
-    timeout={1000}
-    onEnter={node => TweenMax.set(node, startState)}
-    addEndListener={(node, done) => {
-      TweenMax.to(node, 0.5, {
-        autoAlpha: props.show ? 1 : 0,
-        y: props.show ? 0 : 50,
-        onComplete: done
-      });
-    }}
-  >
-    <Container>
-      <div className="imageDiv">
-        <SvgDevProd className="image" />
-      </div>
-    </Container>
-  </Transition>
-);
+  componentDidMount() {
+    this.timeline.from("#content", 1, {
+      autoAlpha: 0,
+      delay: 0,
+      ease: Power1.easeIn,
+    });
+    this.timeline.play();
+  }
+  render() {
+    return (
+      <Container id="content">
+        <div className="imageDiv">
+          <SvgDevProd className="image" />
+        </div>
+      </Container>
+    );
+  }
+}
 
 export default About;

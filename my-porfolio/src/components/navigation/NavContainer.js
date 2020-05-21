@@ -9,6 +9,7 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-self: flex-end;
   justify-content: center;
 `;
 const SubContainer = styled.div`
