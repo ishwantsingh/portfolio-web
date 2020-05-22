@@ -9,7 +9,6 @@ import {
   ProjectsTimeline,
   SkillsTimeline,
   HobbiesTimeline,
-  ChangePage,
 } from "./components/animations/Timelines";
 // import { play, exit } from "./components/animations/Timelines";
 import About from "./components/mainBody/About";
@@ -26,39 +25,60 @@ const Container = styled.div`
 `;
 
 class App extends React.Component {
-  componentDidMount() {
-    window.addEventListener("wheel", this.throttle(this.changePage, 900));
+  constructor(props) {
+    super(props);
+    this.aboutChild = React.createRef();
+    this.projectsChild = React.createRef();
+    this.skillsChild = React.createRef();
+    this.hobbiesChild = React.createRef();
   }
+  componentDidMount() {
+    window.addEventListener("wheel", this.throttle(this.scrollChangePage, 900));
+  }
+  getAboutPageChange = function (e, destination) {
+    this.aboutChild.current.changePage(e, destination);
+  };
+  getProjectsChange = function (e, destination) {
+    this.projectsChild.current.changePage(e, destination);
+  };
+  getSkillsChange = function (e, destination) {
+    this.skillsChild.current.changePage(e, destination);
+  };
+  getHobbiesChange = function (e, destination) {
+    this.hobbiesChild.current.changePage(e, destination);
+  };
+  // AboutCompletePromise = new Promise(function (resolve, reject) {
+  //   this.getPageChangeData();
+  //   resolve("animation done");
+  //   reject("oops!");
+  // });
+  // ProjectsCompletePromise = new Promise(function (resolve) {
+  //   ProjectsTimeline();
+  //   resolve("animation done");
+  // });
+  // SkillsCompletePromise = new Promise(function (resolve) {
+  //   SkillsTimeline();
+  //   resolve("animation done");
+  // });
+  // HobbiesCompletePromise = new Promise(function (resolve) {
+  //   HobbiesTimeline();
+  //   resolve("animation done");
+  // });
 
-  AboutCompletePromise = new Promise(function (resolve, reject) {
-    AboutTimeline();
-    resolve("animation done");
-    reject("oops!");
-  });
-  ProjectsCompletePromise = new Promise(function (resolve) {
-    ProjectsTimeline();
-    resolve("animation done");
-  });
-  SkillsCompletePromise = new Promise(function (resolve) {
-    SkillsTimeline();
-    resolve("animation done");
-  });
-  HobbiesCompletePromise = new Promise(function (resolve) {
-    HobbiesTimeline();
-    resolve("animation done");
-  });
-
-  changePage = function (e) {
+  scrollChangePage = function (e) {
     const isScrollingDown = Math.sign(e.deltaY);
     if (isScrollingDown === -1 && history.location.pathname === "/projects") {
       // this.AboutCompletePromise.then(() =>
-      history.replace("/");
+      // history.replace("/");
       // );
-
+      document.getElementById("to-about-but").click();
       // ChangePage(e, "/");
     } else if (isScrollingDown === 1 && history.location.pathname === "/") {
       // this.ProjectsCompletePromise.then(
-      history.replace("/projects");
+      document.getElementById("to-projects-but").click();
+      //  return this.getPageChangeData(e, "/projects");
+
+      //  history.replace("/projects");
       // );
 
       // ChangePage(e, "/projects");
@@ -67,33 +87,36 @@ class App extends React.Component {
       history.location.pathname === "/projects"
     ) {
       // this.SkillsCompletePromise.then(
-      history.replace("/skills");
+      // history.replace("/skills");
       // );
       // ChangePage(e, "/skills");
+      document.getElementById("to-skills-but").click();
     } else if (
       isScrollingDown === 1 &&
       history.location.pathname === "/skills"
     ) {
       // this.HobbiesCompletePromise.then(
-      history.replace("/hobbies");
+      // history.replace("/hobbies");
       // );
-
+      document.getElementById("to-hobbies-but").click();
       // ChangePage(e, "/hobbies");
     } else if (
       isScrollingDown === -1 &&
       history.location.pathname === "/skills"
     ) {
       // this.ProjectsCompletePromise.then(
-      history.replace("/projects");
+      // history.replace("/projects");
       // );
+      document.getElementById("to-projects-but").click();
       // ChangePage(e, "/projects");
     } else if (
       isScrollingDown === -1 &&
       history.location.pathname === "/hobbies"
     ) {
       // this.SkillsCompletePromise.then(
-      history.replace("/skills");
+      // history.replace("/skills");
       // );
+      document.getElementById("to-skills-but").click();
       // ChangePage(e, "/skills");
     }
   };
@@ -115,18 +138,52 @@ class App extends React.Component {
   render() {
     return (
       <Container>
+        <button
+          id="to-about-but"
+          onClick={(e) => this.getProjectsChange(e, "/")}
+          style={{ display: "none" }}
+        >
+          Click
+        </button>{" "}
+        <button
+          id="to-projects-but"
+          onClick={(e) => this.getAboutPageChange(e, "/projects")}
+          style={{ display: "none" }}
+        >
+          Click
+        </button>
+        <button
+          id="to-skills-but"
+          onClick={(e) => this.getAboutPageChange(e, "/skills")}
+          style={{ display: "none" }}
+        >
+          Click
+        </button>{" "}
+        <button
+          id="to-hobbies-but"
+          onClick={(e) => this.getAboutPageChange(e, "/hobbies")}
+          style={{ display: "none" }}
+        >
+          Click
+        </button>
         <Switch>
           <Route exact path="/">
-            <About AboutTimeline={AboutTimeline} />
+            <About AboutTimeline={AboutTimeline} ref={this.aboutChild} />
           </Route>
           <Route path="/projects">
-            <Projects ProjectsTimeline={ProjectsTimeline} />
+            <Projects
+              ProjectsTimeline={ProjectsTimeline}
+              ref={this.projectsChild}
+            />
           </Route>
           <Route path="/skills">
-            <Skills SkillsTimeline={SkillsTimeline} />
+            <Skills SkillsTimeline={SkillsTimeline} ref={this.skillsChild} />
           </Route>
           <Route path="/hobbies">
-            <Hobbies HobbiesTimeline={HobbiesTimeline} />
+            <Hobbies
+              HobbiesTimeline={HobbiesTimeline}
+              ref={this.hobbiesChild}
+            />
           </Route>
         </Switch>
         <NavContainer />

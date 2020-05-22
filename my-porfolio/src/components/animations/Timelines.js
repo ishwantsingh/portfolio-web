@@ -1,8 +1,8 @@
 import { TimelineMax, Power1 } from "gsap";
 
-export const AboutTimeline = () => {
+export const AboutTimeline = (elementRef) => {
   const Timeline1 = new TimelineMax();
-  Timeline1.from("#content-1", 1, {
+  Timeline1.from(elementRef, 1, {
     autoAlpha: 0,
     delay: 0,
     ease: Power1.easeIn,

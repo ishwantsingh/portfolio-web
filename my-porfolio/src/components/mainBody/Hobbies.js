@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // import { Transition } from "react-transition-group";
+import history from "../../history";
 import { TimelineMax, Power1 } from "gsap/all";
 
 const Container = styled.div`
@@ -29,14 +30,14 @@ class Hobbies extends React.Component {
     this.timeline.play();
   }
 
-  // changePage = (e, destination) => {
-  //   e.preventDefault();
-  //   this.timeline.reverse();
-  //   const timelineDuration = this.timeline.duration() * 1000;
-  //   setTimeout(() => {
-  //     this.props.history.push(destination);
-  //   }, timelineDuration);
-  // };
+  changePage = (e, destination) => {
+    e.preventDefault();
+    this.timeline.reverse();
+    const timelineDuration = this.timeline.duration() * 1000;
+    setTimeout(() => {
+      history.push(destination);
+    }, timelineDuration);
+  };
 
   render() {
     return <Container id="content-4">Hobbies</Container>;

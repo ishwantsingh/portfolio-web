@@ -126,7 +126,6 @@ class About extends React.Component {
         { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.9 },
         0.155
       );
-
     this.timeline.play();
   }
 
