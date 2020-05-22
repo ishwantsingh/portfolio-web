@@ -1,44 +1,44 @@
-import { TimelineMax, Power1 } from "gsap";
+// import { TimelineMax, Power1 } from "gsap";
 
-export const AboutTimeline = (elementRef) => {
-  const Timeline1 = new TimelineMax();
-  Timeline1.from(elementRef, 1, {
-    autoAlpha: 0,
-    delay: 0,
-    ease: Power1.easeIn,
-  })
-    .staggerFrom(
-      "#texts",
-      0.475,
-      { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.5 },
-      0.155
-    )
-    .reverse();
-};
-export const ProjectsTimeline = () => {
-  const Timeline2 = new TimelineMax();
-  Timeline2.from("#content-2", 1.5, {
-    autoAlpha: 0,
-    delay: 0,
-    ease: Power1.easeIn,
-  }).reverse();
-};
-export const SkillsTimeline = () => {
-  const Timeline3 = new TimelineMax();
-  Timeline3.from("#content-3", 1.5, {
-    autoAlpha: 0,
-    delay: 0,
-    ease: Power1.easeIn,
-  }).reverse();
-};
-export const HobbiesTimeline = () => {
-  const Timeline4 = new TimelineMax();
-  Timeline4.from("#content-4", 1.5, {
-    autoAlpha: 0,
-    delay: 0,
-    ease: Power1.easeIn,
-  }).reverse();
-};
+// export const AboutTimeline = (elementRef) => {
+//   const Timeline1 = new TimelineMax();
+//   Timeline1.from(elementRef, 1, {
+//     autoAlpha: 0,
+//     delay: 0,
+//     ease: Power1.easeIn,
+//   })
+//     .staggerFrom(
+//       "#texts",
+//       0.475,
+//       { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.5 },
+//       0.155
+//     )
+//     .reverse();
+// };
+// export const ProjectsTimeline = () => {
+//   const Timeline2 = new TimelineMax();
+//   Timeline2.from("#content-2", 1.5, {
+//     autoAlpha: 0,
+//     delay: 0,
+//     ease: Power1.easeIn,
+//   }).reverse();
+// };
+// export const SkillsTimeline = () => {
+//   const Timeline3 = new TimelineMax();
+//   Timeline3.from("#content-3", 1.5, {
+//     autoAlpha: 0,
+//     delay: 0,
+//     ease: Power1.easeIn,
+//   }).reverse();
+// };
+// export const HobbiesTimeline = () => {
+//   const Timeline4 = new TimelineMax();
+//   Timeline4.from("#content-4", 1.5, {
+//     autoAlpha: 0,
+//     delay: 0,
+//     ease: Power1.easeIn,
+//   }).reverse();
+// };
 
 // export const ChangePage = (e, destination) => {
 //   e.preventDefault();
