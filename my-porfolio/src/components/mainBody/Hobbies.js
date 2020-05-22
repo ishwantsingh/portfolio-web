@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-// import { Transition } from "react-transition-group";
-import history from "../../history";
 import { TimelineMax, Power1 } from "gsap/all";
+import history from "../../history";
 
 const Container = styled.div`
   width: 100%;

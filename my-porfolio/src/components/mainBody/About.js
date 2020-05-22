@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { TimelineMax, Power1 } from "gsap/all";
+import history from "../../history";
+
 import bgImage from "../../assets/bgImage.svg";
 import stroke from "../../assets/stroke.svg";
 import SvgDevProd from "../animations/devProd.js";
-// import { Transition } from "react-transition-group";
-import { TimelineMax, Power1 } from "gsap/all";
-import history from "../../history";
 
 const Container = styled.div`
   width: 100%;
