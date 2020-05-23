@@ -4,16 +4,18 @@ import { NavLink } from "react-router-dom";
 import { TimelineMax, Power1 } from "gsap/all";
 
 import FloatingSocials from "../socials/FloatingSocials";
+import FloatingImp from "../socials/FloatingImp";
 
 const Container = styled.div`
-  width: 17.5vw;
+  width: 16vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-self: flex-end;
   justify-content: center;
-  border-left: 1.2px solid #e1e0e0;
+  border-left: 1.3px dashed #e1e0e0;
 `;
+// #e1e0e0
 const SubContainer = styled.div`
   width: 90%;
   flex-direction: column;
@@ -27,6 +29,7 @@ const SubContainer = styled.div`
   a:hover {
     font-weight: bold;
     font-size: 1.4rem;
+    border-left: 1.5px solid black;
   }
   .floating-link {
     display: flex;
@@ -38,13 +41,13 @@ const SubContainer = styled.div`
     align-items: center;
   }
   .selected-menu {
-    border-left: 4px solid black;
-    border-radius: 3.2px;
+    border-left: 4px solid black !important;
+    border-radius: 2.8px !important;
     font-weight: bold;
     margin: 1.7rem 0;
     height: 2.8rem;
     font-size: 1.4rem; //becuase it is below floating-link class, this font size applies
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -69,6 +72,7 @@ class NavContainer extends React.Component {
   render() {
     return (
       <Container id="content">
+        <FloatingSocials />
         <SubContainer>
           <NavLink
             exact
@@ -100,7 +104,7 @@ class NavContainer extends React.Component {
             Hobbies
           </NavLink>
         </SubContainer>
-        <FloatingSocials />
+        <FloatingImp />
       </Container>
     );
   }

@@ -68,9 +68,9 @@ const Container = styled.div`
     font-size: 1.6rem;
     color: #6e6e6e;
     margin-top: 0.6rem;
-    letter-spacing: 0;
+    letter-spacing: 0 !important;
     font-weight: 200;
-    line-height: 1.6;
+    line-height: 1.5;
   }
   .scroll-down-but {
     width: 27%;

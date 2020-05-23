@@ -11,34 +11,34 @@ const SubContainer = styled.div`
   align-items: flex-end;
   align-self: flex-end;
   margin-right: 0.5rem;
-  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
   i.huge.icons {
-    font-size: 3.6em;
+    font-size: 3.5em;
   }
   i.huge.icons:hover {
     font-size: 3.8em;
   }
 `;
 
-const FloatingSocials = () => {
+const FloatingImp = () => {
   return (
     <SubContainer>
       <Menu.Item
-        href="https://www.linkedin.com/in/ishwant-singh/"
+        href="mailto:ishwant2001@gmail.com"
         position="left"
         target="_blank"
       >
-        <Icon name="linkedin" color="black" size="huge" className="icons" />
+        <Icon name="mail" color="black" size="huge" className="icons" />
       </Menu.Item>
       <Menu.Item
-        href="https://twitter.com/ishwant_singh"
+        href="https://github.com/ishwantsingh"
         position="left"
         target="_blank"
       >
-        <Icon name="twitter" color="black" size="huge" className="icons" />
+        <Icon name="github" color="black" size="huge" className="icons" />
       </Menu.Item>
     </SubContainer>
   );
 };
 
-export default FloatingSocials;
+export default FloatingImp;
