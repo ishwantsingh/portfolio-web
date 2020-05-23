@@ -68,9 +68,9 @@ const Container = styled.div`
     font-size: 1.6rem;
     color: #6e6e6e;
     margin-top: 0.6rem;
-    letter-spacing: 0 !important;
+    letter-spacing: 0;
     font-weight: 200;
-    line-height: 1.5;
+    line-height: 1.6;
   }
   .scroll-down-but {
     width: 27%;
@@ -78,7 +78,7 @@ const Container = styled.div`
     background-color: #daf8ff;
     border-radius: 8px;
     font-family: "Nunito", sans-serif;
-    box-shadow: 0px 8px 20px #e5f4f5;
+    box-shadow: 0px 10px 24px #e5f4f5;
     font-size: 1.4rem;
     line-height: 35px;
     background-color: #daf8ff;
@@ -94,8 +94,7 @@ const Container = styled.div`
     cursor: pointer;
   }
   .scroll-down-but:hover {
-    margin-top: 2.88rem;
-    // margin-left: -1.35px;
+    margin-top: 2.75rem;
     box-shadow: 3px 11px 24px #e5f4f5;
     border: 2px solid #daf8ff;
   }

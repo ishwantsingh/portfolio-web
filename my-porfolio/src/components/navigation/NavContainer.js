@@ -17,10 +17,10 @@ const Container = styled.div`
 `;
 // #e1e0e0
 const SubContainer = styled.div`
-  width: 90%;
+  width: 80%;
   flex-direction: column;
   align-items: space-between;
-  align-self: flex-end;
+  align-self: center;
   margin: auto 0;
   a {
     text-decoration: none;
@@ -41,13 +41,20 @@ const SubContainer = styled.div`
     align-items: center;
   }
   .selected-menu {
-    border-left: 4px solid black !important;
-    border-radius: 2.8px !important;
-    font-weight: bold;
+    border-left: 0 !important;
+    background: linear-gradient(259.07deg, #333 1.07%, #000000 100%);
+    border-radius: 6px !important;
+    line-height: 28px;
+    color: #ffffff;
+    font-weight: 600;
     margin: 1.7rem 0;
-    height: 2.8rem;
+    height: 40px;
     font-size: 1.4rem; //becuase it is below floating-link class, this font size applies
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 10px 24px #e1e0e0;
+  }
+  .selected-menu:hover {
+    font-size: 1.45rem;
   }
 `;
 
