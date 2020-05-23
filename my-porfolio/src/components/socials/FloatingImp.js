@@ -6,7 +6,7 @@ const SubContainer = styled.div`
   width: 100%;
   height: 12%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-around;
   align-items: flex-end;
   align-self: flex-end;
