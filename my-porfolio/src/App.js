@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import history from "./history";
 
-import FloatingSocials from "./components/socials/FloatingSocials";
 import About from "./components/mainBody/About";
 import Projects from "./components/mainBody/Projects";
 import Skills from "./components/mainBody/Skills";
@@ -18,42 +17,52 @@ const Container = styled.div`
 `;
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.aboutChild = React.createRef();
+    this.projectsChild = React.createRef();
+    this.skillsChild = React.createRef();
+    this.hobbiesChild = React.createRef();
+  }
   componentDidMount() {
-    window.addEventListener("wheel", this.throttle(this.changePage, 900));
+    window.addEventListener(
+      "wheel",
+      this.throttle(this.scrollChangePage, 1500)
+    );
   }
 
-  changePage = function(e) {
+  scrollChangePage = (e) => {
     const isScrollingDown = Math.sign(e.deltaY);
-    if (isScrollingDown === -1 && history.location.pathname == "/projects") {
-      history.replace("/");
-    } else if (isScrollingDown === 1 && history.location.pathname == "/") {
-      history.replace("/projects");
+    if (isScrollingDown === -1 && history.location.pathname === "/projects") {
+      this.projectsChild.current.changePage(e, "/");
+    } else if (isScrollingDown === 1 && history.location.pathname === "/") {
+      this.aboutChild.current.changePage(e, "/projects");
     } else if (
       isScrollingDown === 1 &&
-      history.location.pathname == "/projects"
+      history.location.pathname === "/projects"
     ) {
-      history.replace("/skills");
+      this.projectsChild.current.changePage(e, "/skills");
     } else if (
       isScrollingDown === 1 &&
-      history.location.pathname == "/skills"
+      history.location.pathname === "/skills"
     ) {
-      history.replace("/hobbies");
+      this.skillsChild.current.changePage(e, "/hobbies");
     } else if (
       isScrollingDown === -1 &&
-      history.location.pathname == "/skills"
+      history.location.pathname === "/skills"
     ) {
-      history.replace("/projects");
+      this.skillsChild.current.changePage(e, "/projects");
     } else if (
       isScrollingDown === -1 &&
-      history.location.pathname == "/hobbies"
+      history.location.pathname === "/hobbies"
     ) {
-      history.replace("/skills");
+      this.hobbiesChild.current.changePage(e, "/skills");
     }
   };
 
   throttle = (func, limit) => {
     let inThrottle;
-    return function() {
+    return function () {
       const args = arguments; //arguments recieved by the function which probably include the event itself
       const context = this; //binds this
       if (!inThrottle) {
@@ -70,16 +79,16 @@ class App extends React.Component {
       <Container>
         <Switch>
           <Route exact path="/">
-            <About />
+            <About ref={this.aboutChild} />
           </Route>
           <Route path="/projects">
-            <Projects />
+            <Projects ref={this.projectsChild} />
           </Route>
           <Route path="/skills">
-            <Skills />
+            <Skills ref={this.skillsChild} />
           </Route>
           <Route path="/hobbies">
-            <Hobbies />
+            <Hobbies ref={this.hobbiesChild} />
           </Route>
         </Switch>
         <NavContainer />
