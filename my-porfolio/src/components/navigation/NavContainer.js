@@ -60,7 +60,7 @@ class NavContainer extends React.Component {
       // transformOrigin: "right",
       // scaleX: 0,
       x: 500,
-      delay: 3.5,
+      delay: 3.7,
       ease: Power1.easeIn,
     });
     this.timeline.play();

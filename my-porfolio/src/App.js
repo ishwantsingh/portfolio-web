@@ -25,7 +25,10 @@ class App extends React.Component {
     this.hobbiesChild = React.createRef();
   }
   componentDidMount() {
-    window.addEventListener("wheel", this.throttle(this.scrollChangePage, 900));
+    window.addEventListener(
+      "wheel",
+      this.throttle(this.scrollChangePage, 1500)
+    );
   }
 
   scrollChangePage = (e) => {
