@@ -129,7 +129,7 @@ class About extends React.Component {
       .staggerFrom(
         "#texts",
         0.475,
-        { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.9 },
+        { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.5 },
         0.155
       );
     this.timeline.play();

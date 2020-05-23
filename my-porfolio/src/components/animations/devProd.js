@@ -10,7 +10,7 @@ function SvgDevProd2(props) {
         scaleX: 0,
         transformOrigin: "left",
         ease: "slow.easeIn",
-        delay: 1,
+        delay: 2.25,
       })
       .from("#laptop", 0.5, {
         scaleY: 0,
@@ -29,11 +29,16 @@ function SvgDevProd2(props) {
         y: -800,
         ease: "slow.easeIn",
       })
-      .from("#clock", 0.3, {
-        scale: 0,
-        transformOrigin: "center",
-        ease: "bounce.easeOut",
-      });
+      .from(
+        "#clock",
+        0.4,
+        {
+          scale: 0,
+          transformOrigin: "center",
+          ease: "bounce.easeOut",
+        },
+        "<" //starts this animation with the begining of the one before it
+      );
   });
 
   return (
