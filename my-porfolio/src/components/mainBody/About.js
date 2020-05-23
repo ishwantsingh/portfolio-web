@@ -76,7 +76,7 @@ const Container = styled.div`
     width: 27%;
     background: linear-gradient(259.07deg, #daf8ff 4.07%, #b2eaf8 100%);
     background-color: #daf8ff;
-    border-radius: 10px;
+    border-radius: 8px;
     font-family: "Nunito", sans-serif;
     box-shadow: 0px 8px 20px #e5f4f5;
     font-size: 1.4rem;
@@ -92,6 +92,12 @@ const Container = styled.div`
     text-decoration: none;
     font-weight: 300;
     cursor: pointer;
+  }
+  .scroll-down-but:hover {
+    margin-top: 2.88rem;
+    // margin-left: -1.35px;
+    box-shadow: 3px 11px 24px #e5f4f5;
+    border: 2px solid #daf8ff;
   }
   #texts span:after {
     content: "";
@@ -149,7 +155,7 @@ class About extends React.Component {
             <div className="name-div">
               <div id="texts">Hello,</div>
               <div id="texts">
-                My name is <span>Ish.</span>
+                My name is <span>Ishwant</span>
               </div>
             </div>
             <div id="texts" className="about-div">
