@@ -42,7 +42,7 @@ const SubContainer = styled.div`
   }
   .selected-menu {
     border-left: 0 !important;
-    background: linear-gradient(259.07deg, #333 1.07%, #000000 100%);
+    background: linear-gradient(239.07deg, #484848 1.07%, #000000 100%);
     border-radius: 6px !important;
     line-height: 28px;
     color: #ffffff;

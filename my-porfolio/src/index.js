@@ -7,6 +7,8 @@ import "semantic-ui-css/semantic.min.css";
 import { Router } from "react-router-dom";
 import history from "./history";
 
+import "./fonts/Prata-Regular.ttf";
+
 ReactDOM.render(
   // <React.StrictMode>
   <Router history={history}>
