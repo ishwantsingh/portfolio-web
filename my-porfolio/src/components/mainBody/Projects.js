@@ -62,7 +62,7 @@ class Projects extends React.Component {
 
   componentDidMount() {
     this.timeline
-      .from("#content-2", 1.5, {
+      .from("#content-2", 0.5, {
         autoAlpha: 0,
         delay: 0,
         ease: Power1.easeIn,
@@ -72,6 +72,21 @@ class Projects extends React.Component {
         0.475,
         { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.1 },
         0.185
+      )
+      .from("#left-arr", 0.4, {
+        autoAlpha: 0,
+        x: -50,
+        ease: "power1.easeOut",
+      })
+      .from(
+        "#right-arr",
+        0.4,
+        {
+          autoAlpha: 0,
+          x: 50,
+          ease: "power1.easeOut",
+        },
+        "<"
       );
     this.timeline.play();
   }
@@ -90,7 +105,7 @@ class Projects extends React.Component {
       <Container id="content-2">
         <div className="project-heading">Post It!</div>
         <div className="project-content">
-          <Icon name="chevron circle left" className="icon" />
+          <Icon name="chevron circle left" className="icon" id="left-arr" />
           <div class="projectVidContainer" id="video">
             <a href="https://post-it-8.firebaseapp.com/" target="_blank">
               <video
@@ -109,7 +124,7 @@ class Projects extends React.Component {
               </video>
             </a>
           </div>
-          <Icon name="chevron circle right" className="icon" />
+          <Icon name="chevron circle right" className="icon" id="right-arr" />
         </div>
       </Container>
     );
