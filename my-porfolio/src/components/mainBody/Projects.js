@@ -43,7 +43,7 @@ const Container = styled.div`
   }
   .icon {
     width: 5%;
-    text-shadow: 0px 8px 20px #D0D0D0;
+    text-shadow: 0px 8px 18px #D0D0D0;
     color: #303030;
     cursor: pointer;
 

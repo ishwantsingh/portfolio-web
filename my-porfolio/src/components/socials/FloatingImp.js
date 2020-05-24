@@ -13,10 +13,14 @@ const SubContainer = styled.div`
   margin-right: 0.5rem;
   margin-bottom: 0.6rem;
   i.huge.icons {
+    height: 4rem;
     font-size: 3.5em;
+    text-shadow: 0px 4px 10px #d0d0d0;
+    color: #303030;
   }
   i.huge.icons:hover {
     font-size: 3.8em;
+    text-shadow: 0px 0px 0px #ffffff;
   }
 `;
 
