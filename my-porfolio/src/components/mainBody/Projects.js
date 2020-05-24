@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { TimelineMax, Power1 } from "gsap/all";
 import history from "../../history";
 
+import postit from "../../assets/post-it.mp4";
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -13,11 +15,22 @@ const Container = styled.div`
   // border-right: 1.5px solid #e1e0e0;
   background-color: white;
   font-size: 4rem;
+  .projectVidContainer{
+    margin-top: 5rem;
+    width: 67vw;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border 1px dashed #333;
+    border-radius: 5px;
+  }
   .projectVid{
-    margin-top: 10rem;
-    width: 80%;
-    height: 60vh;
-    border 1px solid #333;
+    width: 60vw;
+    // height: 65vh;
+    // border 1px solid #333;
+    box-shadow: 0px 24px 48px #6b6b6b;
+    border-radius: 8px;
   }
 `;
 
@@ -48,8 +61,24 @@ class Projects extends React.Component {
   render() {
     return (
       <Container id="content-2">
-        <div>these are some of the projects i've worked on</div>
-        <div class="projectVid"> </div>
+        <div>Post It!</div>
+        <div class="projectVidContainer">
+          <a href="https://post-it-8.firebaseapp.com/" target="_blank">
+            <video
+              class="projectVid"
+              playsInline="true"
+              src={postit}
+              type="video/mp4"
+              muted
+              autoPlay
+              loop
+              preload="auto"
+            >
+              {" "}
+              Your browser doesn't support HTML5 video tag.
+            </video>
+          </a>
+        </div>
       </Container>
     );
   }
