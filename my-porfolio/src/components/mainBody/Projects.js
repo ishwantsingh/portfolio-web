@@ -15,6 +15,11 @@ const Container = styled.div`
   align-items: center;
   background-color: white;
   font-size: 4rem;
+  .project-heading {
+    width: 100%;
+    height: 5rem;
+    text-align: center;
+  }
   .project-content {
     width: 100%;
     display: flex;
@@ -23,7 +28,6 @@ const Container = styled.div`
     align-items: center;
   }
   .projectVidContainer{
-    margin-top: 5rem;
     width: 67vw;
     height: 75vh;
     display: flex;
@@ -40,9 +44,9 @@ const Container = styled.div`
   .icon {
     width: 5%;
     text-shadow: 0px 8px 20px #D0D0D0;
+    color: #303030;
     cursor: pointer;
-    background-color: white;
-    color: #303030
+
   }
   i.icon:hover {
     font-size: 4.2rem;
@@ -84,7 +88,7 @@ class Projects extends React.Component {
   render() {
     return (
       <Container id="content-2">
-        <div>Post It!</div>
+        <div className="project-heading">Post It!</div>
         <div className="project-content">
           <Icon name="chevron circle left" className="icon" />
           <div class="projectVidContainer" id="video">
