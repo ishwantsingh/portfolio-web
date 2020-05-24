@@ -11,7 +11,12 @@ const Container = styled.div`
   align-items: center;
   // border-right: 1.5px solid #e1e0e0;
   background-color: white;
-  font-size: 7rem;
+  font-size: 4rem;
+  .projectVid{
+    width: 80%;
+    height: 60vh;
+    border 1px solid #333;
+  }
 `;
 
 class Projects extends React.Component {
@@ -39,7 +44,12 @@ class Projects extends React.Component {
   };
 
   render() {
-    return <Container id="content-2">Projects</Container>;
+    return (
+      <Container id="content-2">
+        <div>these are some of the projects i've worked on</div>
+        <div class="projectVid"> </div>
+      </Container>
+    );
   }
 }
 
