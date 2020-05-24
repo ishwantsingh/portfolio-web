@@ -7,12 +7,14 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction:column;
   justify-content: center;
   align-items: center;
   // border-right: 1.5px solid #e1e0e0;
   background-color: white;
   font-size: 4rem;
   .projectVid{
+    margin-top: 10rem;
     width: 80%;
     height: 60vh;
     border 1px solid #333;
