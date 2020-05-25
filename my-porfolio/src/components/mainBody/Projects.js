@@ -64,6 +64,8 @@ class Projects extends React.Component {
       // nextVideo: null
     };
     this.timeline = new TimelineMax({ paused: true });
+    this.videoTimeline = new TimelineMax({ paused: true });
+    this.videoTimeline2 = new TimelineMax({ paused: true });
   }
 
   componentDidMount() {
@@ -106,7 +108,8 @@ class Projects extends React.Component {
     }, timelineDuration);
   };
 
-  changeVideo = (butPressed) => {
+  changeVideo = (e, butPressed) => {
+    e.preventDefault();
     let vid = document.querySelector("div.projectVidContainer #video");
     let vidSrc = document.querySelector(
       "div.projectVidContainer #video-source"
@@ -115,11 +118,30 @@ class Projects extends React.Component {
     vid.pause();
     if (this.state.currentVideo === postit && butPressed === "next") {
       this.setState({ currentVideo: treway });
+      this.videoTimeline.from(vid, 1, {
+        autoAlpha: 0,
+        x: 80,
+        delay: 0.2,
+        ease: "power1.easeOut",
+      });
+      this.videoTimeline.reverse();
       vidSrc.setAttribute("src", treway);
       vid.setAttribute("title", "Treway demo");
+      this.videoTimeline.pause();
+      this.videoTimeline.play();
     } else if (this.state.currentVideo === treway && butPressed === "prev") {
       this.setState({ currentVideo: postit });
+      this.videoTimeline2.from(vid, 1, {
+        autoAlpha: 0,
+        x: -80,
+        delay: 0.2,
+        ease: "power1.easeOut",
+      });
+      this.videoTimeline2.reverse();
       vidSrc.setAttribute("src", postit);
+      vid.setAttribute("title", "Post It Demo");
+      this.videoTimeline2.pause();
+      this.videoTimeline2.play();
     }
     vid.load();
     vid.play();
@@ -134,7 +156,7 @@ class Projects extends React.Component {
             name="chevron circle left"
             className="icon"
             id="left-arr"
-            onClick={() => this.changeVideo("prev")}
+            onClick={(e) => this.changeVideo(e, "prev")}
           />
           <div className="projectVidContainer" id="video">
             <a
@@ -162,7 +184,7 @@ class Projects extends React.Component {
             name="chevron circle right"
             className="icon"
             id="right-arr"
-            onClick={() => this.changeVideo("next")}
+            onClick={(e) => this.changeVideo(e, "next")}
           />
         </div>
       </Container>
