@@ -5,6 +5,7 @@ import { Icon } from "semantic-ui-react";
 import history from "../../history";
 
 import postit from "../../assets/post-it.mp4";
+import treway from "../../assets/treway.mp4";
 
 const Container = styled.div`
   width: 100%;
@@ -57,6 +58,11 @@ const Container = styled.div`
 class Projects extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      // lastVideo: null,
+      currentVideo: postit,
+      // nextVideo: null
+    };
     this.timeline = new TimelineMax({ paused: true });
   }
 
@@ -100,31 +106,64 @@ class Projects extends React.Component {
     }, timelineDuration);
   };
 
+  changeVideo = (butPressed) => {
+    let vid = document.querySelector("div.projectVidContainer #video");
+    let vidSrc = document.querySelector(
+      "div.projectVidContainer #video-source"
+    );
+    console.log("vidSrc", vid);
+    vid.pause();
+    if (this.state.currentVideo === postit && butPressed === "next") {
+      this.setState({ currentVideo: treway });
+      vidSrc.setAttribute("src", treway);
+      vid.setAttribute("title", "Treway demo");
+    } else if (this.state.currentVideo === treway && butPressed === "prev") {
+      this.setState({ currentVideo: postit });
+      vidSrc.setAttribute("src", postit);
+    }
+    vid.load();
+    vid.play();
+  };
+
   render() {
     return (
       <Container id="content-2">
         <div className="project-heading">Post It!</div>
         <div className="project-content">
-          <Icon name="chevron circle left" className="icon" id="left-arr" />
-          <div class="projectVidContainer" id="video">
-            <a href="https://post-it-8.firebaseapp.com/" target="_blank">
+          <Icon
+            name="chevron circle left"
+            className="icon"
+            id="left-arr"
+            onClick={() => this.changeVideo("prev")}
+          />
+          <div className="projectVidContainer" id="video">
+            <a
+              href="https://post-it-8.firebaseapp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <video
                 id="video"
-                class="projectVid"
-                playsInline="true"
-                src={postit}
+                className="projectVid"
+                playsInline={true}
                 type="video/mp4"
                 muted
                 autoPlay
                 loop
                 preload="auto"
+                title="Post It Demo"
               >
-                {" "}
-                Your browser doesn't support HTML5 video tag.
+                <source id="video-source" src={postit} type="video/mp4" /> Your
+                browser doesn't support HTML5 video tag.
               </video>
             </a>
           </div>
-          <Icon name="chevron circle right" className="icon" id="right-arr" />
+          <Icon
+            name="chevron circle right"
+            className="icon"
+            id="right-arr"
+            onClick={() => this.changeVideo("next")}
+          />
         </div>
       </Container>
     );

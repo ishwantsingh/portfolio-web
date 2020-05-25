@@ -91,10 +91,11 @@ const Container = styled.div`
     margin-top: 3rem;
     padding: 0.25% 1.5%;
     text-align: center;
-    transition: all linear 0.3s;
+    transition: all linear 0.2s;
     text-decoration: none;
     font-weight: 300;
     cursor: pointer;
+    border: 2px solid #daf8ff;
   }
   .scroll-down-but:hover {
     margin-top: 2.75rem;
@@ -165,13 +166,13 @@ class About extends React.Component {
               intuitive online experiences through solid research, thoughtful
               design and accessible code. I bleed Design, Code and Paint!
             </div>
-            <a
+            <button
               className="scroll-down-but"
               id="texts"
               onClick={(e) => this.changePage(e, "/projects")}
             >
               Scroll down for more
-            </a>
+            </button>
           </h1>
         </div>
       </Container>
