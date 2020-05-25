@@ -47,11 +47,17 @@ const Container = styled.div`
     text-shadow: 0px 8px 18px #D0D0D0;
     color: #303030;
     cursor: pointer;
-
+    opacity: 1 !important;
+  }
+  i.icon.disabled:hover {
+     font-size: 4rem !important;
+     text-shadow: 0px 8px 18px #D0D0D0;
+     cursor: default;
   }
   i.icon:hover {
     font-size: 4.2rem;
-    text-shadow: 0px 0px 0px #FFFFFF;
+     text-shadow: 0px 0px 0px #FFFFFF;
+     color: #303030;
   }
 `;
 
@@ -61,7 +67,9 @@ class Projects extends React.Component {
     this.state = {
       // lastVideo: null,
       currentVideo: postit,
-      // nextVideo: null
+      // nextVideo: null,
+      leftArrDisabled: true,
+      rightArrDisabled: false,
     };
     this.timeline = new TimelineMax({ paused: true });
     this.videoTimeline = new TimelineMax({ paused: true });
@@ -125,6 +133,8 @@ class Projects extends React.Component {
         ease: "power1.easeOut",
       });
       this.videoTimeline.reverse();
+      this.setState({ leftArrDisabled: false });
+      this.setState({ rightArrDisabled: true });
       vidSrc.setAttribute("src", treway);
       vid.setAttribute("title", "Treway demo");
       this.videoTimeline.pause();
@@ -138,6 +148,8 @@ class Projects extends React.Component {
         ease: "power1.easeOut",
       });
       this.videoTimeline2.reverse();
+      this.setState({ leftArrDisabled: true });
+      this.setState({ rightArrDisabled: false });
       vidSrc.setAttribute("src", postit);
       vid.setAttribute("title", "Post It Demo");
       this.videoTimeline2.pause();
@@ -157,6 +169,11 @@ class Projects extends React.Component {
             className="icon"
             id="left-arr"
             onClick={(e) => this.changeVideo(e, "prev")}
+            disabled={
+              this.state.currentVideo === postit
+                ? this.state.leftArrDisabled
+                : false
+            }
           />
           <div className="projectVidContainer" id="video">
             <a
@@ -185,6 +202,11 @@ class Projects extends React.Component {
             className="icon"
             id="right-arr"
             onClick={(e) => this.changeVideo(e, "next")}
+            disabled={
+              this.state.currentVideo === treway
+                ? this.state.rightArrDisabled
+                : false
+            }
           />
         </div>
       </Container>
