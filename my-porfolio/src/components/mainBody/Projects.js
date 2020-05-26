@@ -6,6 +6,7 @@ import history from "../../history";
 
 import postit from "../../assets/post-it.mp4";
 import treway from "../../assets/treway.mp4";
+import mecon from "../../assets/me-con.mp4";
 
 const Container = styled.div`
   width: 100%;
@@ -38,7 +39,7 @@ const Container = styled.div`
     border-radius: 6px;
   }
   .projectVid{
-    width: 61vw;
+    height: 68vh;
     box-shadow: 0px 18px 36px #6b6b6b;
     border-radius: 10px;
   }
@@ -134,7 +135,7 @@ class Projects extends React.Component {
       });
       this.videoTimeline.reverse();
       this.setState({ leftArrDisabled: false });
-      this.setState({ rightArrDisabled: true });
+      // this.setState({ rightArrDisabled: true });
       vidSrc.setAttribute("src", treway);
       vid.setAttribute("title", "Treway demo");
       this.videoTimeline.pause();
@@ -154,6 +155,21 @@ class Projects extends React.Component {
       vid.setAttribute("title", "Post It Demo");
       this.videoTimeline2.pause();
       this.videoTimeline2.play();
+    } else if (this.state.currentVideo === treway && butPressed === "next") {
+      this.setState({ currentVideo: mecon });
+      this.videoTimeline.from(vid, 1, {
+        autoAlpha: 0,
+        x: 80,
+        delay: 0.2,
+        ease: "power1.easeOut",
+      });
+      this.videoTimeline.reverse();
+      this.setState({ leftArrDisabled: false });
+      this.setState({ rightArrDisabled: true });
+      vidSrc.setAttribute("src", mecon);
+      vid.setAttribute("title", "Mecon demo");
+      this.videoTimeline.pause();
+      this.videoTimeline.play();
     }
     vid.load();
     vid.play();
@@ -203,7 +219,7 @@ class Projects extends React.Component {
             id="right-arr"
             onClick={(e) => this.changeVideo(e, "next")}
             disabled={
-              this.state.currentVideo === treway
+              this.state.currentVideo === mecon
                 ? this.state.rightArrDisabled
                 : false
             }
