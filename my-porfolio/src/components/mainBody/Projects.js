@@ -170,6 +170,21 @@ class Projects extends React.Component {
       vid.setAttribute("title", "Mecon demo");
       this.videoTimeline.pause();
       this.videoTimeline.play();
+    } else if (this.state.currentVideo === mecon && butPressed === "prev") {
+      this.setState({ currentVideo: treway });
+      this.videoTimeline2.from(vid, 1, {
+        autoAlpha: 0,
+        x: -80,
+        delay: 0.2,
+        ease: "power1.easeOut",
+      });
+      this.videoTimeline2.reverse();
+      this.setState({ leftArrDisabled: false });
+      this.setState({ rightArrDisabled: false });
+      vidSrc.setAttribute("src", treway);
+      vid.setAttribute("title", "Treway Demo");
+      this.videoTimeline2.pause();
+      this.videoTimeline2.play();
     }
     vid.load();
     vid.play();
