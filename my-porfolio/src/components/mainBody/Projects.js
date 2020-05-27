@@ -64,6 +64,9 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
   }
+  .field {
+    margin: 1.5rem 0 0 0 !important;
+  }
 `;
 
 class Projects extends React.Component {
