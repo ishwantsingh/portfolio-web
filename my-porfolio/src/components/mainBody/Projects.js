@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { TimelineMax, Power1 } from "gsap/all";
-import { Icon } from "semantic-ui-react";
+import { Icon, Form, Checkbox } from "semantic-ui-react";
 import history from "../../history";
 
 import postit from "../../assets/post-it.mp4";
@@ -60,6 +60,10 @@ const Container = styled.div`
      text-shadow: 0px 0px 0px #FFFFFF;
      color: #303030;
   }
+  .radio-form {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 
 class Projects extends React.Component {
@@ -109,14 +113,25 @@ class Projects extends React.Component {
     this.timeline.play();
   }
 
-  changePage = (e, destination) => {
+  handleChange = (e, { value }) => {
     e.preventDefault();
-    this.timeline.reverse();
-    const timelineDuration = this.timeline.duration() * 1000;
-    setTimeout(() => {
-      history.push(destination);
-    }, timelineDuration);
+    let vid = document.querySelector("div.projectVidContainer #video");
+    let vidSrc = document.querySelector(
+      "div.projectVidContainer #video-source"
+    );
+    console.log("vid", vid);
+    vid.pause();
+    this.setState({ currentVideo: value });
   };
+
+  // changePage = (e, destination) => {
+  //   e.preventDefault();
+  //   this.timeline.reverse();
+  //   const timelineDuration = this.timeline.duration() * 1000;
+  //   setTimeout(() => {
+  //     history.push(destination);
+  //   }, timelineDuration);
+  // };
 
   changeVideo = (e, butPressed) => {
     e.preventDefault();
@@ -126,7 +141,10 @@ class Projects extends React.Component {
     );
     console.log("vidSrc", vid);
     vid.pause();
-    if (this.state.currentVideo === postit && butPressed === "next") {
+    if (
+      (this.state.currentVideo === postit && butPressed === "next") ||
+      (this.state.currentVideo === postit && e.target.value === treway)
+    ) {
       this.setState({ currentVideo: treway });
       this.setState({ currentVidName: "Treway" });
       this.videoTimeline.from(vid, 1, {
@@ -245,6 +263,41 @@ class Projects extends React.Component {
             }
           />
         </div>
+        <Form className="radio-form">
+          {/* <Form.Field> */}
+          {/* Selected value: <b>{this.state.value}</b> */}
+          {/* </Form.Field> */}
+          <Form.Field>
+            <Checkbox
+              radio
+              label=""
+              name="checkboxRadioGroup"
+              value={postit}
+              checked={this.state.currentVideo === postit}
+              onChange={this.changeVideo}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Checkbox
+              radio
+              label=""
+              name="checkboxRadioGroup"
+              value={treway}
+              checked={this.state.currentVideo === treway}
+              onChange={this.changeVideo}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Checkbox
+              radio
+              label=""
+              name="checkboxRadioGroup"
+              value={mecon}
+              checked={this.state.currentVideo === mecon}
+              onChange={this.changeVideo}
+            />
+          </Form.Field>
+        </Form>
       </Container>
     );
   }
