@@ -68,6 +68,7 @@ class Projects extends React.Component {
     this.state = {
       // lastVideo: null,
       currentVideo: postit,
+      currentVidName: "Post It",
       // nextVideo: null,
       leftArrDisabled: true,
       rightArrDisabled: false,
@@ -127,6 +128,7 @@ class Projects extends React.Component {
     vid.pause();
     if (this.state.currentVideo === postit && butPressed === "next") {
       this.setState({ currentVideo: treway });
+      this.setState({ currentVidName: "Treway" });
       this.videoTimeline.from(vid, 1, {
         autoAlpha: 0,
         x: 80,
@@ -142,6 +144,7 @@ class Projects extends React.Component {
       this.videoTimeline.play();
     } else if (this.state.currentVideo === treway && butPressed === "prev") {
       this.setState({ currentVideo: postit });
+      this.setState({ currentVidName: "Post It" });
       this.videoTimeline2.from(vid, 1, {
         autoAlpha: 0,
         x: -80,
@@ -157,6 +160,7 @@ class Projects extends React.Component {
       this.videoTimeline2.play();
     } else if (this.state.currentVideo === treway && butPressed === "next") {
       this.setState({ currentVideo: mecon });
+      this.setState({ currentVidName: "Mecon" });
       this.videoTimeline.from(vid, 1, {
         autoAlpha: 0,
         x: 80,
@@ -172,6 +176,7 @@ class Projects extends React.Component {
       this.videoTimeline.play();
     } else if (this.state.currentVideo === mecon && butPressed === "prev") {
       this.setState({ currentVideo: treway });
+      this.setState({ currentVidName: "Treway" });
       this.videoTimeline2.from(vid, 1, {
         autoAlpha: 0,
         x: -80,
@@ -193,7 +198,7 @@ class Projects extends React.Component {
   render() {
     return (
       <Container id="content-2">
-        <div className="project-heading">Post It!</div>
+        <div className="project-heading">{this.state.currentVidName}</div>
         <div className="project-content">
           <Icon
             name="chevron circle left"
