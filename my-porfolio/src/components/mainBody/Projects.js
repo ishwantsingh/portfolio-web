@@ -113,25 +113,46 @@ class Projects extends React.Component {
     this.timeline.play();
   }
 
-  handleChange = (e, { value }) => {
+  // handleChange = (e, { value }) => {
+  //   this.setState({ currentVideo: value });
+  //   console.log(this.state.currentVideo);
+  // };
+
+  changePage = (e, destination) => {
+    e.preventDefault();
+    this.timeline.reverse();
+    const timelineDuration = this.timeline.duration() * 1000;
+    setTimeout(() => {
+      history.push(destination);
+    }, timelineDuration);
+  };
+
+  nextVideo = (e, butPressed) => {
+    e.preventDefault();
     e.preventDefault();
     let vid = document.querySelector("div.projectVidContainer #video");
     let vidSrc = document.querySelector(
       "div.projectVidContainer #video-source"
     );
-    console.log("vid", vid);
     vid.pause();
-    this.setState({ currentVideo: value });
+    if (this.state.currentVideo === postit && butPressed === "next") {
+      this.setState({ currentVideo: treway });
+      this.setState({ currentVidName: "Treway" });
+      this.videoTimeline.from(vid, 1, {
+        autoAlpha: 0,
+        x: 80,
+        delay: 0.2,
+        ease: "power1.easeOut",
+      });
+      this.videoTimeline.reverse();
+      this.setState({ leftArrDisabled: false });
+      // this.setState({ rightArrDisabled: true });
+      vidSrc.setAttribute("src", treway);
+      vid.setAttribute("title", "Treway demo");
+      this.videoTimeline.pause();
+      this.videoTimeline.play();
+    }
   };
-
-  // changePage = (e, destination) => {
-  //   e.preventDefault();
-  //   this.timeline.reverse();
-  //   const timelineDuration = this.timeline.duration() * 1000;
-  //   setTimeout(() => {
-  //     history.push(destination);
-  //   }, timelineDuration);
-  // };
 
   changeVideo = (e, butPressed) => {
     e.preventDefault();
@@ -141,10 +162,7 @@ class Projects extends React.Component {
     );
     console.log("vidSrc", vid);
     vid.pause();
-    if (
-      (this.state.currentVideo === postit && butPressed === "next") ||
-      (this.state.currentVideo === postit && e.target.value === treway)
-    ) {
+    if (this.state.currentVideo === postit && butPressed === "next") {
       this.setState({ currentVideo: treway });
       this.setState({ currentVidName: "Treway" });
       this.videoTimeline.from(vid, 1, {
@@ -264,17 +282,14 @@ class Projects extends React.Component {
           />
         </div>
         <Form className="radio-form">
-          {/* <Form.Field> */}
-          {/* Selected value: <b>{this.state.value}</b> */}
-          {/* </Form.Field> */}
           <Form.Field>
             <Checkbox
               radio
               label=""
               name="checkboxRadioGroup"
-              value={postit}
-              checked={this.state.currentVideo === postit}
-              onChange={this.changeVideo}
+              value="Post It"
+              checked={this.state.currentVidName === "Post It"}
+              // onChange={(e) => this.changeVideo(e, "postit")}
             />
           </Form.Field>
           <Form.Field>
@@ -282,9 +297,9 @@ class Projects extends React.Component {
               radio
               label=""
               name="checkboxRadioGroup"
-              value={treway}
-              checked={this.state.currentVideo === treway}
-              onChange={this.changeVideo}
+              value="Treway"
+              checked={this.state.currentVidName === "Treway"}
+              // onChange={(e) => this.changeVideo(e, "treway")}
             />
           </Form.Field>
           <Form.Field>
@@ -292,9 +307,9 @@ class Projects extends React.Component {
               radio
               label=""
               name="checkboxRadioGroup"
-              value={mecon}
-              checked={this.state.currentVideo === mecon}
-              onChange={this.changeVideo}
+              value="Mecon"
+              checked={this.state.currentVidName === "Mecon"}
+              // onChange={(e) => this.changeVideo(e, "mecon")}
             />
           </Form.Field>
         </Form>
