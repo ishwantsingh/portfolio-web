@@ -12,7 +12,7 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: white;
@@ -25,40 +25,40 @@ const Container = styled.div`
   .project-content {
     width: 100%;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
   }
-  .projectVidContainer{
+  .projectVidContainer {
     width: 67vw;
     height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    border 1px dashed rgb(224,222,222);
     border-radius: 6px;
   }
-  .projectVid{
+  .projectVid {
     height: 68vh;
     box-shadow: 0px 18px 36px #6b6b6b;
     border-radius: 10px;
+    opacity: 1;
   }
   .icon {
     width: 5%;
-    text-shadow: 0px 8px 18px #D0D0D0;
+    text-shadow: 0px 8px 18px #d0d0d0;
     color: #303030;
     cursor: pointer;
     opacity: 1 !important;
   }
   i.icon.disabled:hover {
-     font-size: 4rem !important;
-     text-shadow: 0px 8px 18px #D0D0D0;
-     cursor: default;
+    font-size: 4rem !important;
+    text-shadow: 0px 8px 18px #d0d0d0;
+    cursor: default;
   }
   i.icon:hover {
     font-size: 4.2rem;
-     text-shadow: 0px 0px 0px #FFFFFF;
-     color: #303030;
+    text-shadow: 0px 0px 0px #ffffff;
+    color: #303030;
   }
   .radio-form {
     display: flex;
@@ -73,10 +73,8 @@ class Projects extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // lastVideo: null,
       currentVideo: postit,
       currentVidName: "Post It",
-      // nextVideo: null,
       leftArrDisabled: true,
       rightArrDisabled: false,
     };
@@ -152,11 +150,9 @@ class Projects extends React.Component {
         delay: 0.2,
         ease: "power1.easeOut",
       });
-      this.videoTimeline.reverse();
       this.setState({ leftArrDisabled: false });
       vidSrc.setAttribute("src", treway);
       vid.setAttribute("title", "Treway demo");
-      this.videoTimeline.pause();
       this.videoTimeline.play();
     } else if (this.state.currentVideo === treway && butPressed === "prev") {
       this.setState({ currentVideo: postit });
@@ -167,12 +163,10 @@ class Projects extends React.Component {
         delay: 0.2,
         ease: "power1.easeOut",
       });
-      this.videoTimeline2.reverse();
       this.setState({ leftArrDisabled: true });
       this.setState({ rightArrDisabled: false });
       vidSrc.setAttribute("src", postit);
       vid.setAttribute("title", "Post It Demo");
-      this.videoTimeline2.pause();
       this.videoTimeline2.play();
     } else if (this.state.currentVideo === treway && butPressed === "next") {
       this.setState({ currentVideo: mecon });
@@ -183,12 +177,10 @@ class Projects extends React.Component {
         delay: 0.2,
         ease: "power1.easeOut",
       });
-      this.videoTimeline.reverse();
       this.setState({ leftArrDisabled: false });
       this.setState({ rightArrDisabled: true });
       vidSrc.setAttribute("src", mecon);
       vid.setAttribute("title", "Mecon demo");
-      this.videoTimeline.pause();
       this.videoTimeline.play();
     } else if (this.state.currentVideo === mecon && butPressed === "prev") {
       this.setState({ currentVideo: treway });
@@ -199,12 +191,10 @@ class Projects extends React.Component {
         delay: 0.2,
         ease: "power1.easeOut",
       });
-      this.videoTimeline2.reverse();
       this.setState({ leftArrDisabled: false });
       this.setState({ rightArrDisabled: false });
       vidSrc.setAttribute("src", treway);
       vid.setAttribute("title", "Treway Demo");
-      this.videoTimeline2.pause();
       this.videoTimeline2.play();
     }
     vid.load();
@@ -269,7 +259,6 @@ class Projects extends React.Component {
               name="checkboxRadioGroup"
               value="Post It"
               checked={this.state.currentVidName === "Post It"}
-              // onChange={(e) => this.changeVideo(e, "postit")}
             />
           </Form.Field>
           <Form.Field>
@@ -279,7 +268,6 @@ class Projects extends React.Component {
               name="checkboxRadioGroup"
               value="Treway"
               checked={this.state.currentVidName === "Treway"}
-              // onChange={(e) => this.changeVideo(e, "treway")}
             />
           </Form.Field>
           <Form.Field>
@@ -289,7 +277,6 @@ class Projects extends React.Component {
               name="checkboxRadioGroup"
               value="Mecon"
               checked={this.state.currentVidName === "Mecon"}
-              // onChange={(e) => this.changeVideo(e, "mecon")}
             />
           </Form.Field>
         </Form>
