@@ -65,7 +65,7 @@ const Container = styled.div`
     flex-direction: row;
   }
   .field {
-    margin: 1.5rem 0 0 0 !important;
+    margin: 1.5rem 0 0 0 !important ;
   }
 `;
 
@@ -112,14 +112,19 @@ class Projects extends React.Component {
           ease: "power1.easeOut",
         },
         "<"
+      )
+      .from(
+        "#radio-buts",
+        0.4,
+        {
+          autoAlpha: 0,
+          y: 50,
+          ease: "power1.easeOut",
+        },
+        "<"
       );
     this.timeline.play();
   }
-
-  // handleChange = (e, { value }) => {
-  //   this.setState({ currentVideo: value });
-  //   console.log(this.state.currentVideo);
-  // };
 
   changePage = (e, destination) => {
     e.preventDefault();
@@ -128,33 +133,6 @@ class Projects extends React.Component {
     setTimeout(() => {
       history.push(destination);
     }, timelineDuration);
-  };
-
-  nextVideo = (e, butPressed) => {
-    e.preventDefault();
-    e.preventDefault();
-    let vid = document.querySelector("div.projectVidContainer #video");
-    let vidSrc = document.querySelector(
-      "div.projectVidContainer #video-source"
-    );
-    vid.pause();
-    if (this.state.currentVideo === postit && butPressed === "next") {
-      this.setState({ currentVideo: treway });
-      this.setState({ currentVidName: "Treway" });
-      this.videoTimeline.from(vid, 1, {
-        autoAlpha: 0,
-        x: 80,
-        delay: 0.2,
-        ease: "power1.easeOut",
-      });
-      this.videoTimeline.reverse();
-      this.setState({ leftArrDisabled: false });
-      // this.setState({ rightArrDisabled: true });
-      vidSrc.setAttribute("src", treway);
-      vid.setAttribute("title", "Treway demo");
-      this.videoTimeline.pause();
-      this.videoTimeline.play();
-    }
   };
 
   changeVideo = (e, butPressed) => {
@@ -176,7 +154,6 @@ class Projects extends React.Component {
       });
       this.videoTimeline.reverse();
       this.setState({ leftArrDisabled: false });
-      // this.setState({ rightArrDisabled: true });
       vidSrc.setAttribute("src", treway);
       vid.setAttribute("title", "Treway demo");
       this.videoTimeline.pause();
@@ -284,7 +261,7 @@ class Projects extends React.Component {
             }
           />
         </div>
-        <Form className="radio-form">
+        <Form className="radio-form" id="radio-buts">
           <Form.Field>
             <Checkbox
               radio
