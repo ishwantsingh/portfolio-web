@@ -84,6 +84,10 @@ class Projects extends React.Component {
       currentVidName: "Post It",
       leftArrDisabled: true,
       rightArrDisabled: false,
+      postitLink: "https://post-it-8.firebaseapp.com/",
+      trewayLink: "https://tre-way.web.app/",
+      meconLink:
+        "https://play.google.com/store/apps/details?id=com.paislay.mecon&hl=en",
     };
     this.timeline = new TimelineMax({ paused: true });
     this.videoTimeline = new TimelineMax({ paused: true });
@@ -146,6 +150,7 @@ class Projects extends React.Component {
     let vidSrc = document.querySelector(
       "div.projectVidContainer #video-source"
     );
+    let anchorTag = document.querySelector("div.projectVidContainer a");
     console.log("vidSrc", vid);
     vid.pause();
     if (this.state.currentVideo === postit && butPressed === "next") {
@@ -160,6 +165,7 @@ class Projects extends React.Component {
       this.setState({ leftArrDisabled: false });
       vidSrc.setAttribute("src", treway);
       vid.setAttribute("title", "Treway demo");
+      anchorTag.setAttribute("href", this.state.trewayLink);
       this.videoTimeline.play();
     } else if (this.state.currentVideo === treway && butPressed === "prev") {
       this.setState({ currentVideo: postit });
@@ -174,6 +180,7 @@ class Projects extends React.Component {
       this.setState({ rightArrDisabled: false });
       vidSrc.setAttribute("src", postit);
       vid.setAttribute("title", "Post It Demo");
+      anchorTag.setAttribute("href", this.state.postitLink);
       this.videoTimeline2.play();
     } else if (this.state.currentVideo === treway && butPressed === "next") {
       this.setState({ currentVideo: mecon });
@@ -189,6 +196,7 @@ class Projects extends React.Component {
       vidSrc.setAttribute("src", mecon);
       vid.setAttribute("title", "Mecon demo");
       vid.setAttribute("class", "meconProjectVid");
+      anchorTag.setAttribute("href", this.state.meconLink);
       this.videoTimeline.play();
     } else if (this.state.currentVideo === mecon && butPressed === "prev") {
       this.setState({ currentVideo: treway });
@@ -204,6 +212,7 @@ class Projects extends React.Component {
       vidSrc.setAttribute("src", treway);
       vid.setAttribute("title", "Treway Demo");
       vid.setAttribute("class", "projectVid");
+      anchorTag.setAttribute("href", this.state.trewayLink);
       this.videoTimeline2.play();
     }
     vid.load();
