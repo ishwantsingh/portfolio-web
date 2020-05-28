@@ -21,6 +21,9 @@ const Container = styled.div`
     width: 100%;
     height: 5rem;
     text-align: center;
+    font-family: "Prata", serif;
+    color: #383838;
+    font-weight: 500;
   }
   .project-content {
     width: 100%;
@@ -84,7 +87,7 @@ class Projects extends React.Component {
       currentVidName: "Post It",
       leftArrDisabled: true,
       rightArrDisabled: false,
-      postitLink: "https://post-it-8.firebaseapp.com/",
+      postitLink: "https://github.com/ishwantsingh/Post-It-",
       trewayLink: "https://tre-way.web.app/",
       meconLink:
         "https://play.google.com/store/apps/details?id=com.paislay.mecon&hl=en",
@@ -237,7 +240,7 @@ class Projects extends React.Component {
           />
           <div className="projectVidContainer" id="video">
             <a
-              href="https://post-it-8.firebaseapp.com/"
+              href="https://github.com/ishwantsingh/Post-It-"
               target="_blank"
               rel="noopener noreferrer"
             >
