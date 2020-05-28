@@ -38,6 +38,13 @@ const Container = styled.div`
     border-radius: 6px;
   }
   .projectVid {
+    // height: 68vh;
+    width: 63vw;
+    box-shadow: 0px 18px 36px #6b6b6b;
+    border-radius: 10px;
+    opacity: 1;
+  }
+  .meconProjectVid {
     height: 68vh;
     box-shadow: 0px 18px 36px #6b6b6b;
     border-radius: 10px;
@@ -181,6 +188,7 @@ class Projects extends React.Component {
       this.setState({ rightArrDisabled: true });
       vidSrc.setAttribute("src", mecon);
       vid.setAttribute("title", "Mecon demo");
+      vid.setAttribute("class", "meconProjectVid");
       this.videoTimeline.play();
     } else if (this.state.currentVideo === mecon && butPressed === "prev") {
       this.setState({ currentVideo: treway });
@@ -195,6 +203,7 @@ class Projects extends React.Component {
       this.setState({ rightArrDisabled: false });
       vidSrc.setAttribute("src", treway);
       vid.setAttribute("title", "Treway Demo");
+      vid.setAttribute("class", "projectVid");
       this.videoTimeline2.play();
     }
     vid.load();
