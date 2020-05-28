@@ -56,8 +56,10 @@ const Container = styled.div`
     flex-direction: column;
     justify-self: center;
     margin-top: 6.5rem;
-    font-weight: 700;
-    font-size: 4rem;
+    font-weight: 600;
+    font-size: 3.5rem;
+    font-family: "Prata", serif;
+    color: #383838;
   }
   .about-div {
     width: 92%;
@@ -68,9 +70,10 @@ const Container = styled.div`
     font-size: 1.6rem;
     color: #6e6e6e;
     margin-top: 0.6rem;
-    letter-spacing: 0 !important;
+    letter-spacing: 0;
     font-weight: 200;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-family: "Roboto", serif;
   }
   .scroll-down-but {
     width: 27%;
@@ -78,7 +81,7 @@ const Container = styled.div`
     background-color: #daf8ff;
     border-radius: 8px;
     font-family: "Nunito", sans-serif;
-    box-shadow: 0px 8px 20px #e5f4f5;
+    box-shadow: 0px 10px 24px #e5f4f5;
     font-size: 1.4rem;
     line-height: 35px;
     background-color: #daf8ff;
@@ -88,14 +91,14 @@ const Container = styled.div`
     margin-top: 3rem;
     padding: 0.25% 1.5%;
     text-align: center;
-    transition: all linear 0.3s;
+    transition: all linear 0.2s;
     text-decoration: none;
     font-weight: 300;
     cursor: pointer;
+    border: 2px solid #daf8ff;
   }
   .scroll-down-but:hover {
-    margin-top: 2.88rem;
-    // margin-left: -1.35px;
+    margin-top: 2.75rem;
     box-shadow: 3px 11px 24px #e5f4f5;
     border: 2px solid #daf8ff;
   }
@@ -155,21 +158,21 @@ class About extends React.Component {
             <div className="name-div">
               <div id="texts">Hello,</div>
               <div id="texts">
-                My name is <span>Ishwant</span>
+                my name is <span>Ishwant</span>
               </div>
             </div>
             <div id="texts" className="about-div">
-              I’m a Fullstack Develop from India. I create beautiful, intuitive
-              online experiences through solid research, thoughtful design and
-              accessible code. I bleed Design, Code and Paint!
+              I’m a Fullstack Developer from India. I create beautiful,
+              intuitive online experiences through solid research, thoughtful
+              design and accessible code. I bleed Design, Code and Paint!
             </div>
-            <a
+            <button
               className="scroll-down-but"
               id="texts"
               onClick={(e) => this.changePage(e, "/projects")}
             >
               Scroll down for more
-            </a>
+            </button>
           </h1>
         </div>
       </Container>
