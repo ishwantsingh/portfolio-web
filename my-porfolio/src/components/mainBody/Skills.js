@@ -39,7 +39,11 @@ class Skills extends React.Component {
   };
 
   render() {
-    return <Container id="content-3">Skills</Container>;
+    return (
+      <Container id="content-3">
+        <div>Skills</div>
+      </Container>
+    );
   }
 }
 export default Skills;

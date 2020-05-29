@@ -7,6 +7,7 @@ import history from "../../history";
 import postit from "../../assets/post-it.mp4";
 import treway from "../../assets/treway.mp4";
 import mecon from "../../assets/me-con.mp4";
+import bgImage from "../../assets/line-art-left.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -16,6 +17,9 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
+  background-image: url(${bgImage});
+  background-repeat: no-repeat;
+  background-size: content;
   font-size: 4rem;
   .project-heading {
     width: 100%;
