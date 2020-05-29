@@ -81,6 +81,9 @@ const Container = styled.div`
   .field {
     margin: 1.5rem 0 0 0 !important ;
   }
+  .ui.checkbox input.hidden + label {
+    cursor: default !important;
+  }
 `;
 
 class Projects extends React.Component {
