@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { TimelineMax, Power1 } from "gsap";
 import history from "../../history";
 
+import avatar from "../../assets/avatar.svg";
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -42,6 +44,7 @@ class Skills extends React.Component {
     return (
       <Container id="content-3">
         <div>Skills</div>
+        <img src={avatar} alt="avatar image" />
       </Container>
     );
   }
