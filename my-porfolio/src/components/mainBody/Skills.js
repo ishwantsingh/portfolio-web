@@ -12,7 +12,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  // border-right: 1.5px solid #e1e0e0;
   background-color: #ffffff;
   font-size: 7rem;
 `;

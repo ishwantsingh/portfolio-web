@@ -67,8 +67,6 @@ class NavContainer extends React.Component {
   componentDidMount() {
     this.timeline.from("#content", 1, {
       autoAlpha: 0,
-      // transformOrigin: "right",
-      // scaleX: 0,
       x: 500,
       delay: 3.7,
       ease: Power1.easeIn,
