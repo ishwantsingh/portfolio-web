@@ -39,7 +39,7 @@ class Hobbies extends React.Component {
   };
 
   render() {
-    return <Container id="content-4">Hobbies</Container>;
+    return <Container id="content-4">Hobbies :O</Container>;
   }
 }
 export default Hobbies;
