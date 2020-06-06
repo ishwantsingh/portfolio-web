@@ -44,7 +44,7 @@ class Skills extends React.Component {
     return (
       <Container id="content-3">
         <div>Skills =></div>
-        <img src={avatar} alt="avatar image" />
+        <img src={avatar} alt="avatar" />
       </Container>
     );
   }

@@ -282,6 +282,7 @@ class Projects extends React.Component {
         <Form className="radio-form" id="radio-buts">
           <Form.Field>
             <Checkbox
+              disabled
               radio
               label=""
               name="checkboxRadioGroup"
@@ -291,6 +292,7 @@ class Projects extends React.Component {
           </Form.Field>
           <Form.Field>
             <Checkbox
+              disabled
               radio
               label=""
               name="checkboxRadioGroup"
@@ -300,6 +302,7 @@ class Projects extends React.Component {
           </Form.Field>
           <Form.Field>
             <Checkbox
+              disabled
               radio
               label=""
               name="checkboxRadioGroup"
