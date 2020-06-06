@@ -161,7 +161,6 @@ class Projects extends React.Component {
       "div.projectVidContainer #video-source"
     );
     let anchorTag = document.querySelector("div.projectVidContainer a");
-    console.log("vidSrc", vid);
     vid.pause();
     if (this.state.currentVideo === postit && butPressed === "next") {
       this.setState({ currentVideo: treway });
