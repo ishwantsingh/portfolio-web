@@ -4,6 +4,7 @@ import { TimelineMax, Power1 } from "gsap";
 import history from "../../history";
 
 import avatar from "../../assets/avatar.svg";
+import SvgCoolBg from "../animations/cool-Bg.js";
 
 const Container = styled.div`
   width: 100%;
@@ -14,6 +15,27 @@ const Container = styled.div`
   align-items: center;
   background-color: #ffffff;
   font-size: 7rem;
+  .imageDiv {
+    width: 35%;
+    height: 40vh;
+    display: flex;
+    justify-content: flex-start;
+    align-self: flex-end;
+    margin: 0 0 1.5rem 1.5rem;
+  }
+  .bgImage {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    // width: 25vw;
+    // height: 35vh;
+    // display: flex;
+    // justify-self: flex-start;
+    // align-self: flex-start;
+  }
 `;
 
 class Skills extends React.Component {
@@ -43,6 +65,9 @@ class Skills extends React.Component {
   render() {
     return (
       <Container id="content-3">
+        <div className="imageDiv">
+          <SvgCoolBg className="bgImage" />
+        </div>
         <div>Skills =></div>
         <img src={avatar} alt="avatar" />
       </Container>

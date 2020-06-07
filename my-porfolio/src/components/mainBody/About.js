@@ -96,6 +96,7 @@ const Container = styled.div`
     font-weight: 300;
     cursor: pointer;
     border: 2px solid #daf8ff;
+    outline: none;
   }
   .scroll-down-but:hover {
     margin-top: 2.75rem;
