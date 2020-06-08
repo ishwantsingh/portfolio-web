@@ -15,21 +15,25 @@ const Container = styled.div`
   align-items: center;
   background-color: #ffffff;
   font-size: 7rem;
-  .imageDiv {
-    width: 35%;
-    height: 40vh;
-    display: flex;
-    justify-content: flex-start;
-    align-self: flex-end;
-    margin: 0 0 1.5rem 1.5rem;
-  }
+  z-index: 1;
+  // .imageDiv {
+  //   width: 35%;
+  //   height: 40vh;
+  //   display: flex;
+  //   justify-content: flex-start;
+  //   align-self: flex-end;
+  //   margin: 0 0 1.5rem 1.5rem;
+  // }
   .bgImage {
     position: absolute;
-    width: 150%;
-    height: 150%;
-    top: -50%;
-    left: -50%;
+    // width: 150%;
+    // height: 150%;
+    top: 0%;
+    left: -15%;
     z-index: -1;
+    display: flex;
+    width: 100%;
+    height: 100%;
     // width: 25vw;
     // height: 35vh;
     // display: flex;
@@ -47,7 +51,7 @@ class Skills extends React.Component {
   componentDidMount() {
     this.timeline.from("#content-3", 1.5, {
       autoAlpha: 0,
-      delay: 0,
+      delay: 2,
       ease: Power1.easeIn,
     });
     this.timeline.play();
@@ -64,12 +68,14 @@ class Skills extends React.Component {
 
   render() {
     return (
-      <Container id="content-3">
-        <div className="imageDiv">
-          <SvgCoolBg className="bgImage" />
+      <Container>
+        {/* <div className="imageDiv"> */}
+        <SvgCoolBg className="bgImage" />
+        {/* </div> */}
+        <div id="content-3">
+          <div>Skills =></div>
+          <img src={avatar} alt="avatar" />
         </div>
-        <div>Skills =></div>
-        <img src={avatar} alt="avatar" />
       </Container>
     );
   }

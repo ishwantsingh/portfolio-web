@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { TimelineMax, Power1 } from "gsap/all";
 import history from "../../history";
 
+import SvgCoolBg from "../animations/cool-Bg.js";
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -12,6 +14,20 @@ const Container = styled.div`
   // border-right: 1.5px solid #e1e0e0;
   background-color: white;
   font-size: 7rem;
+  .bgImage {
+    display: flex;
+    // position: absolute;
+    width: 100%;
+    height: 100%;
+    // top: -50%;
+    // left: -50%;
+    // z-index: -1;
+    // width: 25vw;
+    // height: 35vh;
+    // display: flex;
+    // justify-self: flex-start;
+    // align-self: flex-start;
+  }
 `;
 
 class Hobbies extends React.Component {
@@ -21,12 +37,12 @@ class Hobbies extends React.Component {
   }
 
   componentDidMount() {
-    this.timeline.from("#content-4", 1.5, {
-      autoAlpha: 0,
-      delay: 0,
-      ease: Power1.easeIn,
-    });
-    this.timeline.play();
+    // this.timeline.from("#content-4", 1.5, {
+    //   autoAlpha: 0,
+    //   delay: 0,
+    //   ease: Power1.easeIn,
+    // });
+    // this.timeline.play();
   }
 
   changePage = (e, destination) => {
@@ -39,7 +55,11 @@ class Hobbies extends React.Component {
   };
 
   render() {
-    return <Container id="content-4">Hobbies :O</Container>;
+    return (
+      <Container id="content-4">
+        <SvgCoolBg className="bgImage" />
+      </Container>
+    );
   }
 }
 export default Hobbies;
