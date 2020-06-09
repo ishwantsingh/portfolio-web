@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { TimelineMax, Power1 } from "gsap/all";
 import history from "../../history";
 
-import SvgCoolBg from "../animations/cool-Bg.js";
-
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -55,11 +53,7 @@ class Hobbies extends React.Component {
   };
 
   render() {
-    return (
-      <Container id="content-4">
-        <SvgCoolBg className="bgImage" />
-      </Container>
-    );
+    return <Container id="content-4">hobbies</Container>;
   }
 }
 export default Hobbies;
