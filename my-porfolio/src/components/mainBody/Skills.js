@@ -73,8 +73,8 @@ class Skills extends React.Component {
         <SvgCoolBg className="bgImage" />
         {/* </div> */}
         <div id="content-3">
-          <div>Skills =></div>
-          <img src={avatar} alt="avatar" />
+          {/* <div>Skills =></div>
+          <img src={avatar} alt="avatar" /> */}
         </div>
       </Container>
     );
