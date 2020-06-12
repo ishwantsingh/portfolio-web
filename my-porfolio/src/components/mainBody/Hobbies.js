@@ -35,12 +35,12 @@ class Hobbies extends React.Component {
   }
 
   componentDidMount() {
-    // this.timeline.from("#content-4", 1.5, {
-    //   autoAlpha: 0,
-    //   delay: 0,
-    //   ease: Power1.easeIn,
-    // });
-    // this.timeline.play();
+    this.timeline.from("#content-4", 1.5, {
+      autoAlpha: 0,
+      delay: 0,
+      ease: Power1.easeIn,
+    });
+    this.timeline.play();
   }
 
   changePage = (e, destination) => {
