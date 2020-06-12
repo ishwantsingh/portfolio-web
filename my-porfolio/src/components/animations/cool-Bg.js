@@ -7,20 +7,21 @@ function SvgCoolBg(props) {
   React.useEffect(() => {
     svgTween.staggerFrom(
       "#curve",
-      0.275,
+      0.235,
       {
+        autoAlpha: 0,
         scaleX: 0,
         transformOrigin: "left",
-        autoAlpha: 0,
         x: -25,
         ease: Power1.easeOut,
-        delay: 1.5,
+        delay: 0,
       },
-      -0.105
+      -0.1
     );
+    svgTween.play();
   });
   return (
-    <svg viewBox="0 0 1080 720" fill="none" {...props}>
+    <svg viewBox="0 0 1080 720" fill="none" {...props} style={{ opacity: 0.9 }}>
       <g clipPath="url(#cool-Bg_svg__clip0)">
         <path fill="#fff" d="M1080 0H0v720h1080z" />
         <path
