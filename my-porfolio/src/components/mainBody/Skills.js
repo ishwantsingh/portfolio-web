@@ -8,6 +8,7 @@ import web from "../../assets/web.svg";
 import design from "../../assets/design.svg";
 import mobile from "../../assets/mobile.svg";
 import SvgCoolBg from "../animations/cool-Bg.js";
+import prodBlob from "../../assets/prod-blob.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -107,6 +108,10 @@ class Skills extends React.Component {
     }, timelineDuration);
   };
 
+  showDesign = (e) => {
+    e.preventDefault();
+  };
+
   render() {
     return (
       <Container>
@@ -116,7 +121,10 @@ class Skills extends React.Component {
         <div id="content-3">
           <div id="skills">
             <div id="skill-div">
-              <span className="skill-name">design</span>
+              <span className="skill-name" onMouseOver={this.showDesign}>
+                product
+              </span>
+              {/* <img src={prodBlob} alt="blob" /> */}
               <img src={design} alt="design" className="skill-img" />
             </div>
             <div id="skill-div">
