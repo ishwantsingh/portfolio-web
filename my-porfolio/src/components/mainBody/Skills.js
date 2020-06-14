@@ -42,9 +42,13 @@ const Container = styled.div`
         width: 17vw;
         height: 13vh;
       }
+      span {
+        font-weight: normal;
+        text-decoration: none;
+      }
       .skill-name {
         z-index: 1;
-        margin-right: -5%;
+        margin-right: 1%;
       }
       .skill-name:hover {
         font-weight: bold;
@@ -122,12 +126,12 @@ class Skills extends React.Component {
   hideDesign = (e) => {
     e.preventDefault();
     console.log("target", e.target.parentNode.children[1]);
-    e.target.parentNode.children[1].classList.add("hide-content");
+    e.target.parentNode.children[2].classList.add("hide-content");
   };
 
   showDesign = (e) => {
     e.preventDefault();
-    e.target.parentNode.children[1].classList.remove("hide-content");
+    e.target.parentNode.children[2].classList.remove("hide-content");
   };
 
   render() {
@@ -146,6 +150,7 @@ class Skills extends React.Component {
               >
                 product
               </span>
+              <span>•</span>
               <img
                 src={prodBlob}
                 alt="blob"
@@ -154,15 +159,18 @@ class Skills extends React.Component {
               <img src={design} alt="design" className="skill-img" />
             </div>
             <div id="skill-div">
-              <span className="skill-name">ui/ux</span>{" "}
+              <span className="skill-name">ui/ux</span>
+              <span>•</span>
               <img src={ui} alt="ui" className="skill-img" />
             </div>
             <div id="skill-div">
               <span className="skill-name">mobile</span>
+              <span>•</span>
               <img src={mobile} alt="mobile" className="skill-img" />
             </div>
             <div id="skill-div">
               <span className="skill-name">web</span>
+              <span>•</span>
               <img src={web} alt="web" className="skill-img" />
             </div>
           </div>
