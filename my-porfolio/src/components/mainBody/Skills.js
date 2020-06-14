@@ -20,6 +20,9 @@ const Container = styled.div`
   background-color: #ffffff;
   font-size: 7rem;
   z-index: 1;
+  .hide-content {
+    display: none !important;
+  }
   #skills {
     height: 80vh;
     display: flex;
@@ -75,6 +78,14 @@ const Container = styled.div`
     // justify-self: flex-start;
     // align-self: flex-start;
   }
+  .info-blob {
+    position: absolute;
+    top: -15vh;
+    right: 20vw;
+    width: 60vw;
+    height 90vh;
+    text-shadow: 0px 16px 40px #333;
+  }
 `;
 
 class Skills extends React.Component {
@@ -108,8 +119,15 @@ class Skills extends React.Component {
     }, timelineDuration);
   };
 
+  hideDesign = (e) => {
+    e.preventDefault();
+    console.log("target", e.target.parentNode.children[1]);
+    e.target.parentNode.children[1].classList.add("hide-content");
+  };
+
   showDesign = (e) => {
     e.preventDefault();
+    e.target.parentNode.children[1].classList.remove("hide-content");
   };
 
   render() {
@@ -121,10 +139,18 @@ class Skills extends React.Component {
         <div id="content-3">
           <div id="skills">
             <div id="skill-div">
-              <span className="skill-name" onMouseOver={this.showDesign}>
+              <span
+                className="skill-name"
+                onMouseOver={this.showDesign}
+                onMouseLeave={this.hideDesign}
+              >
                 product
               </span>
-              {/* <img src={prodBlob} alt="blob" /> */}
+              <img
+                src={prodBlob}
+                alt="blob"
+                className="info-blob hide-content"
+              />
               <img src={design} alt="design" className="skill-img" />
             </div>
             <div id="skill-div">
