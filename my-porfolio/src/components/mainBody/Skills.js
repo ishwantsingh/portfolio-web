@@ -9,6 +9,9 @@ import design from "../../assets/design.svg";
 import mobile from "../../assets/mobile.svg";
 import SvgCoolBg from "../animations/cool-Bg.js";
 import prodBlob from "../../assets/prod-blob.svg";
+import uiBlob from "../../assets/ui-blob.svg";
+import mobileBlob from "../../assets/mobile-blob.svg";
+import webBlob from "../../assets/web-blob.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -83,18 +86,48 @@ const Container = styled.div`
     // align-self: flex-start;
   }
   .info-blob {
+    width: 60vw;
+    height 91vh;
+    filter: drop-shadow(0px 6px 15px #696969) blur(0.5px);;
+  }
+  .info-div {
+    width: 52vw;
+    height 75vh;
+    position: absolute;
+    top: -5vh;
+    right: 25vw;
+    background-color: white;
+    // border: 2px solid #e1e0e0;
+    border-radius: 15px;
+    // box-shadow: 0px 10px 24px #808080;
+    // box-shadow: 0px 1px 2px #808080;
+  }
+  .prod  {
     position: absolute;
     top: -15vh;
     right: 20vw;
-    width: 60vw;
-    height 90vh;
-    text-shadow: 0px 16px 40px #333;
+  }
+  .ui {
+    position: absolute;
+    top: -33.5vh;
+    right: 20vw;
+  }
+  .mobile {
+    position: absolute;
+    top: -52vh;
+    right: 20vw;
+  }
+  .web {
+    position: absolute;
+    top: -70vh;
+    right: 20vw;
   }
 `;
 
 class Skills extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
     this.timeline = new TimelineMax({ paused: true });
   }
 
@@ -151,26 +184,63 @@ class Skills extends React.Component {
                 product
               </span>
               <span>•</span>
-              <img
+              {/* <img
                 src={prodBlob}
                 alt="blob"
-                className="info-blob hide-content"
-              />
+                className="prod info-blob hide-content"
+              /> */}
+              <div className="info-div"></div>
               <img src={design} alt="design" className="skill-img" />
             </div>
             <div id="skill-div">
-              <span className="skill-name">ui/ux</span>
+              <span
+                className="skill-name"
+                onMouseOver={this.showDesign}
+                onMouseLeave={this.hideDesign}
+              >
+                ui/ux
+              </span>
               <span>•</span>
+              {/* <img
+                src={uiBlob}
+                alt="blob"
+                className="ui info-blob hide-content"
+              /> */}
+              <div className="info-div hide-content"></div>
               <img src={ui} alt="ui" className="skill-img" />
             </div>
             <div id="skill-div">
-              <span className="skill-name">mobile</span>
+              <span
+                className="skill-name"
+                onMouseOver={this.showDesign}
+                onMouseLeave={this.hideDesign}
+              >
+                mobile
+              </span>
               <span>•</span>
+              {/* <img
+                src={mobileBlob}
+                alt="blob"
+                className="mobile info-blob hide-content"
+              /> */}
+              <div className="info-div hide-content"></div>
               <img src={mobile} alt="mobile" className="skill-img" />
             </div>
             <div id="skill-div">
-              <span className="skill-name">web</span>
+              <span
+                className="skill-name"
+                onMouseOver={this.showDesign}
+                onMouseLeave={this.hideDesign}
+              >
+                web
+              </span>
               <span>•</span>
+              {/* <img
+                src={webBlob}
+                alt="blob"
+                className="web info-blob hide-content"
+              /> */}
+              <div className="info-div hide-content"></div>
               <img src={web} alt="web" className="skill-img" />
             </div>
           </div>
