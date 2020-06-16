@@ -104,35 +104,14 @@ const Container = styled.div`
     align-items: flex-start;
     justify-content: space-evenly;
     width: 52vw;
-    height 75vh;
+    height 78vh;
     position: absolute;
-    top: 12vh;
+    top: 11vh;
     right: 35vw;
     background-color: white;
     border-left: 4px solid #1B1C1D;
-    // border-radius: 15px;
-    // box-shadow: 0px 10px 24px #808080;
-    // box-shadow: 0px 1px 2px #808080;
-  }
-  .prod  {
-    position: absolute;
-    top: -15vh;
-    right: 20vw;
-  }
-  .ui {
-    position: absolute;
-    top: -33.5vh;
-    right: 20vw;
-  }
-  .mobile {
-    position: absolute;
-    top: -52vh;
-    right: 20vw;
-  }
-  .web {
-    position: absolute;
-    top: -70vh;
-    right: 20vw;
+    border-top-left-radius: 6px 8px; 
+    border-bottom-left-radius: 6px 8px;
   }
 `;
 
@@ -211,9 +190,7 @@ class Skills extends React.Component {
   render() {
     return (
       <Container>
-        {/* <div className="imageDiv"> */}
         <SvgCoolBg className="bgImage" />
-        {/* </div> */}
         <div id="content-3">
           <div className="info-div-2">
             <div>{this.state.heading}</div>
