@@ -8,10 +8,6 @@ import web from "../../assets/web.svg";
 import design from "../../assets/design.svg";
 import mobile from "../../assets/mobile.svg";
 import SvgCoolBg from "../animations/cool-Bg.js";
-import prodBlob from "../../assets/prod-blob.svg";
-import uiBlob from "../../assets/ui-blob.svg";
-import mobileBlob from "../../assets/mobile-blob.svg";
-import webBlob from "../../assets/web-blob.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -201,9 +197,8 @@ class Skills extends React.Component {
   };
 
   showDesign = (e, skill) => {
-    // e.preventDefault();
+    e.preventDefault();
     // e.target.parentNode.children[2].classList.remove("hide-content");
-    // var target =
     for (let i = 0; i <= 4; i++) {
       console.log("i", i, skill);
       console.log(this.state[skill]);
@@ -211,8 +206,6 @@ class Skills extends React.Component {
         i
       ].innerHTML = this.state[skill][i];
     }
-
-    // this.setState({ heading: "Projects" });
   };
 
   render() {
@@ -239,12 +232,6 @@ class Skills extends React.Component {
                 product
               </span>
               <span>•</span>
-              {/* <img
-                src={prodBlob}
-                alt="blob"
-                className="prod info-blob hide-content"
-              /> */}
-              {/* <div className="info-div"></div> */}
               <img src={design} alt="design" className="skill-img" />
             </div>
             <div id="skill-div">
@@ -256,12 +243,6 @@ class Skills extends React.Component {
                 ui/ux
               </span>
               <span>•</span>
-              {/* <img
-                src={uiBlob}
-                alt="blob"
-                className="ui info-blob hide-content"
-              /> */}
-              {/* <div className="info-div hide-content"></div> */}
               <img src={ui} alt="ui" className="skill-img" />
             </div>
             <div id="skill-div">
@@ -273,12 +254,6 @@ class Skills extends React.Component {
                 mobile
               </span>
               <span>•</span>
-              {/* <img
-                src={mobileBlob}
-                alt="blob"
-                className="mobile info-blob hide-content"
-              /> */}
-              {/* <div className="info-div hide-content"></div> */}
               <img src={mobile} alt="mobile" className="skill-img" />
             </div>
             <div id="skill-div">
@@ -290,12 +265,6 @@ class Skills extends React.Component {
                 web
               </span>
               <span>•</span>
-              {/* <img
-                src={webBlob}
-                alt="blob"
-                className="web info-blob hide-content"
-              /> */}
-              {/* <div className="info-div hide-content"></div> */}
               <img src={web} alt="web" className="skill-img" />
             </div>
           </div>
