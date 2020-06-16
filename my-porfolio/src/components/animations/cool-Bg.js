@@ -7,7 +7,7 @@ function SvgCoolBg(props) {
   React.useEffect(() => {
     svgTween.staggerFrom(
       "#curve",
-      0.235,
+      0.215,
       {
         autoAlpha: 0,
         scaleX: 0,

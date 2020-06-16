@@ -97,8 +97,24 @@ const Container = styled.div`
     top: -5vh;
     right: 25vw;
     background-color: white;
-    // border: 2px solid #e1e0e0;
-    border-radius: 15px;
+    border-left: 4px solid #1B1C1D;
+    // border-radius: 15px;
+    // box-shadow: 0px 10px 24px #808080;
+    // box-shadow: 0px 1px 2px #808080;
+  }
+  .info-div-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 52vw;
+    height 75vh;
+    position: absolute;
+    top: 12vh;
+    right: 35vw;
+    background-color: white;
+    border-left: 4px solid #1B1C1D;
+    // border-radius: 15px;
     // box-shadow: 0px 10px 24px #808080;
     // box-shadow: 0px 1px 2px #808080;
   }
@@ -127,7 +143,17 @@ const Container = styled.div`
 class Skills extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      heading: "Heading",
+      content1: "Content 1",
+      content2: "Content 2",
+      content3: "Content 3",
+      content4: "Content 4",
+      product: ["Product", "Product 1", "Product 2", "Product 3", "Product 4"],
+      ui: ["UI/UX", "UI 1", "UI 2", "UI 3", "UI 4"],
+      mobile: ["Mobile", "Mobile 1", "Mobile 2", "Mobile 3", "Mobile 4"],
+      web: ["Web", "Web 1", "Web 2", "Web 3", "Web 4"],
+    };
     this.timeline = new TimelineMax({ paused: true });
   }
 
@@ -138,10 +164,22 @@ class Skills extends React.Component {
       //   delay: 2,
       //   ease: Power1.easeIn,
       // })
+      .from(".info-div-2", 0.5, {
+        scaleX: 0,
+        transformOrigin: "right",
+        ease: Power1.easeIn,
+        delay: 1.1,
+      })
+      .staggerFrom(
+        ".info-div-2 > div",
+        0.3,
+        { autoAlpha: 0, x: -40, ease: Power1.easeOut, delay: 0.1 },
+        0.1
+      )
       .staggerFrom(
         "#skill-div",
         0.5,
-        { autoAlpha: 0, x: -40, ease: Power1.easeOut, delay: 1.5 },
+        { autoAlpha: 0, x: -40, ease: Power1.easeOut, delay: 0.1 },
         0.1
       );
     this.timeline.play();
@@ -162,9 +200,19 @@ class Skills extends React.Component {
     e.target.parentNode.children[2].classList.add("hide-content");
   };
 
-  showDesign = (e) => {
-    e.preventDefault();
-    e.target.parentNode.children[2].classList.remove("hide-content");
+  showDesign = (e, skill) => {
+    // e.preventDefault();
+    // e.target.parentNode.children[2].classList.remove("hide-content");
+    // var target =
+    for (let i = 0; i <= 4; i++) {
+      console.log("i", i, skill);
+      console.log(this.state[skill]);
+      e.target.parentNode.parentNode.parentNode.children[0].children[
+        i
+      ].innerHTML = this.state[skill][i];
+    }
+
+    // this.setState({ heading: "Projects" });
   };
 
   render() {
@@ -174,12 +222,19 @@ class Skills extends React.Component {
         <SvgCoolBg className="bgImage" />
         {/* </div> */}
         <div id="content-3">
+          <div className="info-div-2">
+            <div>{this.state.heading}</div>
+            <div>{this.state.content1}</div>
+            <div>{this.state.content2}</div>
+            <div>{this.state.content3}</div>
+            <div>{this.state.content4}</div>
+          </div>
           <div id="skills">
             <div id="skill-div">
               <span
                 className="skill-name"
-                onMouseOver={this.showDesign}
-                onMouseLeave={this.hideDesign}
+                onMouseOver={(e) => this.showDesign(e, "product")}
+                // onMouseLeave={this.hideDesign}
               >
                 product
               </span>
@@ -189,14 +244,14 @@ class Skills extends React.Component {
                 alt="blob"
                 className="prod info-blob hide-content"
               /> */}
-              <div className="info-div"></div>
+              {/* <div className="info-div"></div> */}
               <img src={design} alt="design" className="skill-img" />
             </div>
             <div id="skill-div">
               <span
                 className="skill-name"
-                onMouseOver={this.showDesign}
-                onMouseLeave={this.hideDesign}
+                onMouseOver={(e) => this.showDesign(e, "ui")}
+                // onMouseLeave={this.hideDesign}
               >
                 ui/ux
               </span>
@@ -206,14 +261,14 @@ class Skills extends React.Component {
                 alt="blob"
                 className="ui info-blob hide-content"
               /> */}
-              <div className="info-div hide-content"></div>
+              {/* <div className="info-div hide-content"></div> */}
               <img src={ui} alt="ui" className="skill-img" />
             </div>
             <div id="skill-div">
               <span
                 className="skill-name"
-                onMouseOver={this.showDesign}
-                onMouseLeave={this.hideDesign}
+                onMouseOver={(e) => this.showDesign(e, "mobile")}
+                // onMouseLeave={this.hideDesign}
               >
                 mobile
               </span>
@@ -223,14 +278,14 @@ class Skills extends React.Component {
                 alt="blob"
                 className="mobile info-blob hide-content"
               /> */}
-              <div className="info-div hide-content"></div>
+              {/* <div className="info-div hide-content"></div> */}
               <img src={mobile} alt="mobile" className="skill-img" />
             </div>
             <div id="skill-div">
               <span
                 className="skill-name"
-                onMouseOver={this.showDesign}
-                onMouseLeave={this.hideDesign}
+                onMouseOver={(e) => this.showDesign(e, "web")}
+                // onMouseLeave={this.hideDesign}
               >
                 web
               </span>
@@ -240,7 +295,7 @@ class Skills extends React.Component {
                 alt="blob"
                 className="web info-blob hide-content"
               /> */}
-              <div className="info-div hide-content"></div>
+              {/* <div className="info-div hide-content"></div> */}
               <img src={web} alt="web" className="skill-img" />
             </div>
           </div>
