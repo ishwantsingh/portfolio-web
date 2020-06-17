@@ -245,8 +245,6 @@ class Skills extends React.Component {
               <img src={web} alt="web" className="skill-img" />
             </div>
           </div>
-          {/* <div>Skills =></div>
-          <img src={avatar} alt="avatar" /> */}
         </div>
       </Container>
     );
