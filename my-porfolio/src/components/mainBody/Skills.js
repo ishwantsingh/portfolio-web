@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { TimelineMax, Power1 } from "gsap";
 import history from "../../history";
 
-import ui from "../../assets/ui.svg";
+import backend from "../../assets/backend.svg";
 import web from "../../assets/web.svg";
-import design from "../../assets/design.svg";
+import ui from "../../assets/ui.svg";
 import mobile from "../../assets/mobile.svg";
 import SvgCoolBg from "../animations/cool-Bg.js";
 
@@ -38,6 +38,8 @@ const Container = styled.div`
       // vertical-align: middle;
       text-align: left;
       .skill-img {
+        // width: 13vw;
+        // height: 6.5vw;
         width: 17vw;
         height: 13vh;
       }
@@ -109,11 +111,14 @@ const Container = styled.div`
     top: 11vh;
     right: 35vw;
     padding: 0 0 0 5%;
-    font-size: 3rem;
+    font-size: 2.5rem;
     background-color: white;
     border-left: 4px solid #1B1C1D;
-    border-top-left-radius: 6px 8px; 
-    border-bottom-left-radius: 6px 8px;
+    // border-left: 1px solid #E1E0E0;
+    border-top: 1px dashed #E1E0E0;
+    border-bottom: 1px dashed #E1E0E0;
+    border-top-left-radius: 6px 1.5px; 
+    border-bottom-left-radius: 6px 1.5px;
   }
 `;
 
@@ -126,10 +131,36 @@ class Skills extends React.Component {
       content2: "Content 2",
       content3: "Content 3",
       content4: "Content 4",
-      product: ["Product", "Product 1", "Product 2", "Product 3", "Product 4"],
-      ui: ["UI/UX", "UI 1", "UI 2", "UI 3", "UI 4"],
-      mobile: ["Mobile", "Mobile 1", "Mobile 2", "Mobile 3", "Mobile 4"],
-      web: ["Web", "Web 1", "Web 2", "Web 3", "Web 4"],
+      ui: [
+        "Website Wireframing",
+        "Figma",
+        "Svg Animation",
+        "Css Animation",
+        "User research",
+        "Paper prototyping",
+      ],
+      mobile: [
+        "React native",
+        "Expo",
+        "Redux",
+        "Styled-Components",
+        "React-Navigation",
+      ],
+      frontend: [
+        "Html5",
+        "Css3",
+        "JavaScript",
+        "React.js",
+        "Redux",
+        "Styled-Components",
+      ],
+      backend: [
+        "Node.js",
+        "Express",
+        "SQL (mySQL)",
+        "NoSQL (Firebase)",
+        "REST",
+      ],
     };
     this.timeline = new TimelineMax({ paused: true });
   }
@@ -197,17 +228,9 @@ class Skills extends React.Component {
             <div>{this.state.content4}</div>
           </div>
           <div id="skills">
-            <div id="skill-div">
-              <span
-                className="skill-name"
-                onMouseOver={(e) => this.showDesign(e, "product")}
-                // onMouseLeave={this.hideDesign}
-              >
-                product
-              </span>
-              <span>•</span>
-              <img src={design} alt="design" className="skill-img" />
-            </div>
+            {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
+
+            {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
             <div id="skill-div">
               <span
                 className="skill-name"
@@ -219,6 +242,7 @@ class Skills extends React.Component {
               <span>•</span>
               <img src={ui} alt="ui" className="skill-img" />
             </div>
+            {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
             <div id="skill-div">
               <span
                 className="skill-name"
@@ -230,16 +254,29 @@ class Skills extends React.Component {
               <span>•</span>
               <img src={mobile} alt="mobile" className="skill-img" />
             </div>
+            {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
             <div id="skill-div">
               <span
                 className="skill-name"
-                onMouseOver={(e) => this.showDesign(e, "web")}
+                onMouseOver={(e) => this.showDesign(e, "frontend")}
                 // onMouseLeave={this.hideDesign}
               >
-                web
+                frontend
               </span>
               <span>•</span>
-              <img src={web} alt="web" className="skill-img" />
+              <img src={web} alt="frontend" className="skill-img" />
+            </div>
+            {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
+            <div id="skill-div">
+              <span
+                className="skill-name"
+                onMouseOver={(e) => this.showDesign(e, "backend")}
+                // onMouseLeave={this.hideDesign}
+              >
+                backend
+              </span>
+              <span>•</span>
+              <img src={backend} alt="backend" className="skill-img" />
             </div>
           </div>
         </div>
