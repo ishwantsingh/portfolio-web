@@ -136,11 +136,6 @@ class Skills extends React.Component {
 
   componentDidMount() {
     this.timeline
-      // .from("#content-3", 1.5, {
-      //   autoAlpha: 0,
-      //   delay: 2,
-      //   ease: Power1.easeIn,
-      // })
       .from(".info-div-2", 0.5, {
         scaleX: 0,
         transformOrigin: "right",
