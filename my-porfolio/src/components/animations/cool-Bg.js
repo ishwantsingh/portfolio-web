@@ -1,20 +1,21 @@
 import * as React from "react";
-import { TimelineMax, Power1 } from "gsap";
+import { TimelineMax, Power1, Circ } from "gsap";
 
 function SvgCoolBg(props) {
   const svgTween = new TimelineMax();
 
   React.useEffect(() => {
-    svgTween.staggerFrom(
+    svgTween.from(
       "#curve",
-      0.215,
       {
+        duration: 1.1,
         autoAlpha: 0,
         scaleX: 0,
         transformOrigin: "left",
         x: -25,
-        ease: Power1.easeOut,
-        delay: 0,
+        ease: Circ.easeInOut,
+        delay: 0.1,
+        stagger: { amount: 0.35, axis: "x", from: "edges" },
       },
       -0.1
     );

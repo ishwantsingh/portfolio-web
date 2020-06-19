@@ -108,6 +108,8 @@ const Container = styled.div`
     position: absolute;
     top: 11vh;
     right: 35vw;
+    padding: 0 0 0 5%;
+    font-size: 3rem;
     background-color: white;
     border-left: 4px solid #1B1C1D;
     border-top-left-radius: 6px 8px; 
