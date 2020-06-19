@@ -83,6 +83,7 @@ const Container = styled.div`
     top: 11vh;
     right: 35vw;
     padding: 0 0 0 5%;
+    font-family: "Roboto", serif;
     font-size: 2.5rem;
     background-color: white;
     border-left: 4px solid #1B1C1D;
