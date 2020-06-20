@@ -84,13 +84,22 @@ const Container = styled.div`
     right: 35vw;
     padding: 0 0 0 5%;
     font-family: "Roboto", serif;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     background-color: white;
     border-left: 4px solid #1B1C1D;
     border-top: 1px dashed #E1E0E0;
     border-bottom: 1px dashed #E1E0E0;
     border-top-left-radius: 6px 1.5px; 
     border-bottom-left-radius: 6px 1.5px;
+  }
+  .tech-skill {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    width: 70%;
+    padding-left: 3%;
+    border: 1px solid #E1E0E0;
+    border-radius: 2px;
   }
 `;
 
@@ -105,10 +114,10 @@ class Skills extends React.Component {
       content4: "Content 4",
       ui: [
         "Website Wireframing",
+        "User research",
         "Figma",
         "Svg Animation",
         "Css Animation",
-        "User research",
         "Paper prototyping",
       ],
       mobile: [
@@ -171,12 +180,22 @@ class Skills extends React.Component {
 
   showDesign = (e, skill) => {
     e.preventDefault();
-    for (let i = 0; i <= 4; i++) {
+    let lastSkillIndex = this.state[skill].length - 1;
+    for (let i = 0; i <= lastSkillIndex; i++) {
       console.log("i", i, skill);
-      console.log(this.state[skill]);
-      e.target.parentNode.parentNode.parentNode.children[0].children[
-        i
-      ].innerHTML = this.state[skill][i];
+      let techSkillDiv = document.createElement("div");
+      techSkillDiv.classList.add("tech-skill");
+      techSkillDiv.innerHTML = this.state[skill][i];
+      let parentNode = e.target.parentNode.parentNode.parentNode.children[0];
+      console.log(parentNode);
+      e.target.parentNode.parentNode.parentNode.children[0].replaceChild(
+        techSkillDiv,
+        e.target.parentNode.parentNode.parentNode.children[0].children[i]
+      );
+
+      // e.target.parentNode.parentNode.parentNode.children[0].children[
+      //   i
+      // ].innerHTML = this.state[skill][i];
     }
   };
 
@@ -186,11 +205,13 @@ class Skills extends React.Component {
         <SvgCoolBg className="bgImage" />
         <div id="content-3">
           <div className="info-div">
-            <div>{this.state.heading}</div>
-            <div>{this.state.content1}</div>
-            <div>{this.state.content2}</div>
-            <div>{this.state.content3}</div>
-            <div>{this.state.content4}</div>
+            {/* <div></div> */}
+            <div className="tech-skill">{this.state.heading}</div>
+            <div className="tech-skill">{this.state.content1}</div>
+            <div className="tech-skill">{this.state.content2}</div>
+            <div className="tech-skill">{this.state.content3}</div>
+            <div className="tech-skill">{this.state.content4}</div>
+            <div className="tech-skill">{this.state.content5}</div>
           </div>
           <div id="skills">
             {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
