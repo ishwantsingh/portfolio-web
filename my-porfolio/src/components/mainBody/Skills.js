@@ -50,12 +50,19 @@ const Container = styled.div`
         z-index: 1;
         margin-right: 1%;
       }
-      .skill-name:hover {
+      .skill-hover {
         font-weight: bold;
         font-style: italic;
         text-decoration: underline;
         cursor: pointer;
       }
+      // .skill-name:hover {
+      //   font-weight: bold;
+      //   font-style: italic;
+      //   text-decoration: underline;
+      //   cursor: pointer;
+      // }
+
     }
   }
   .bgImage {
@@ -97,19 +104,24 @@ const Container = styled.div`
     flex-direction: row;
     align-items: center;
     height: 3rem;
-    width: 80%;
-    border: 1px solid #1B1C1D;
-    border-radius: 1px;
+    width: 75%;
+    border: 2px solid #1B1C1D;
+    border-radius: 6px;
     .tech-skill-name{
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 27%;
+      width: 22%;
       height: 100%;
       font-weight: 500;
-      color: white;
-      border: 2px solid #1B1C1D;
+      // color: white;
+      border-right: 2px solid #000000;  // REMOVE THIS LATER
+      // border-radius: 5px;
+
       // background-color: #333333;
+      // background: linear-gradient(239.07deg, #333333 1.07%, #000000 100%);
+    }
+    .tech-skill-fill {
       background: linear-gradient(239.07deg, #333333 1.07%, #000000 100%);
     }
   }
@@ -127,19 +139,19 @@ class Skills extends React.Component {
       content5: "Content 5",
       ui: [
         "Figma",
-        "Website Wireframing",
+        "Wireframing",
         "Svg Animation",
         "Css Animation",
         "User Research",
-        "Paper prototyping",
+        "Prototyping",
       ],
       mobile: [
-        "React native",
+        "React Native",
         "Expo",
         "Expo-APIs",
         "Redux",
-        "Styled-Components",
-        "React-Navigation",
+        "Styled-Comp",
+        "React-Nav",
       ],
       frontend: [
         "Html5",
@@ -147,7 +159,7 @@ class Skills extends React.Component {
         "JavaScript",
         "React.js",
         "Redux",
-        "Styled-Components",
+        "Styled-Comp",
       ],
       backend: ["Node.js", "Express", "SQL", "NoSQL", "REST", "Firebase"],
     };
@@ -188,6 +200,63 @@ class Skills extends React.Component {
 
   showDesign = (e, skill) => {
     e.preventDefault();
+    console.log(e.target.parentNode.parentNode.children[0].children[0]);
+    console.log(e.target.parentNode.parentNode.children[1].children[0]);
+    console.log(e.target.parentNode.parentNode.children[2].children[0]);
+    console.log(e.target.parentNode.parentNode.children[3].children[0]);
+    switch (skill) {
+      default:
+        break;
+      case "ui":
+        e.target.classList.add("skill-hover");
+        e.target.parentNode.parentNode.children[1].children[0].classList.remove(
+          "skill-hover"
+        );
+        e.target.parentNode.parentNode.children[2].children[0].classList.remove(
+          "skill-hover"
+        );
+        e.target.parentNode.parentNode.children[3].children[0].classList.remove(
+          "skill-hover"
+        );
+        break;
+      case "mobile":
+        e.target.classList.add("skill-hover");
+        e.target.parentNode.parentNode.children[0].children[0].classList.remove(
+          "skill-hover"
+        );
+        e.target.parentNode.parentNode.children[2].children[0].classList.remove(
+          "skill-hover"
+        );
+        e.target.parentNode.parentNode.children[3].children[0].classList.remove(
+          "skill-hover"
+        );
+        break;
+      case "frontend":
+        e.target.classList.add("skill-hover");
+        e.target.parentNode.parentNode.children[0].children[0].classList.remove(
+          "skill-hover"
+        );
+        e.target.parentNode.parentNode.children[1].children[0].classList.remove(
+          "skill-hover"
+        );
+        e.target.parentNode.parentNode.children[3].children[0].classList.remove(
+          "skill-hover"
+        );
+        break;
+      case "backend":
+        e.target.classList.add("skill-hover");
+        e.target.parentNode.parentNode.children[0].children[0].classList.remove(
+          "skill-hover"
+        );
+        e.target.parentNode.parentNode.children[1].children[0].classList.remove(
+          "skill-hover"
+        );
+        e.target.parentNode.parentNode.children[2].children[0].classList.remove(
+          "skill-hover"
+        );
+        break;
+    }
+
     let lastSkillIndex = this.state[skill].length - 1;
     for (let i = 0; i <= lastSkillIndex; i++) {
       console.log("i", i, skill);
@@ -215,30 +284,37 @@ class Skills extends React.Component {
         <div id="content-3">
           <div className="info-div">
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.heading}</span>
+              <span className="tech-skill-name">{this.state.ui[0]}</span>
+              <span className="tech-skill-fill"></span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.content1}</span>
+              <span className="tech-skill-name">{this.state.ui[1]}</span>
+              <span className="tech-skill-fill"></span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.content2}</span>
+              <span className="tech-skill-name">{this.state.ui[2]}</span>
+              <span className="tech-skill-fill"></span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.content3}</span>
+              <span className="tech-skill-name">{this.state.ui[3]}</span>
+              <span className="tech-skill-fill"></span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.content4}</span>
+              <span className="tech-skill-name">{this.state.ui[4]}</span>
+              <span className="tech-skill-fill"></span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.content5}</span>
+              <span className="tech-skill-name">{this.state.ui[5]}</span>
+              <span className="tech-skill-fill"></span>
             </div>
           </div>
           <div id="skills">
             {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
             <div id="skill-div">
               <span
-                className="skill-name"
+                className="skill-name skill-hover"
                 onMouseOver={(e) => this.showDesign(e, "ui")}
+                // onMouseLeave={(e) => e.target.classList.remove("skill-hover")}
               >
                 ui/ux
               </span>
