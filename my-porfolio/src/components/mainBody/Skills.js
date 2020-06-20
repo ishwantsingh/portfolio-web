@@ -95,7 +95,6 @@ const Container = styled.div`
   .tech-skill {
     display: flex;
     flex-direction: row;
-    align-items: center;
     height: 3rem;
     width: 75%;
     border: 2px solid #1B1C1D;
@@ -104,7 +103,8 @@ const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 22%;
+      justify-self: flex-start !important;
+      width: 22% !important;
       height: 100%;
       font-weight: 500;
       // color: white;
@@ -115,7 +115,18 @@ const Container = styled.div`
       // background: linear-gradient(239.07deg, #333333 1.07%, #000000 100%);
     }
     .tech-skill-fill {
+      display: flex;
+      justify-self: flex-start !important;
+      height: 100%;
       background: linear-gradient(239.07deg, #333333 1.07%, #000000 100%);
+    }
+    .tech-skill-perc {
+      display: flex;
+      justify-self: flex-end !important;
+      justify-content: center;
+      align-items: center;
+      width: 8%;
+      height: 100%;
     }
   }
 `;
@@ -124,37 +135,38 @@ class Skills extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      heading: "Heading",
-      content1: "Content 1",
-      content2: "Content 2",
-      content3: "Content 3",
-      content4: "Content 4",
-      content5: "Content 5",
       ui: [
-        "Figma",
-        "Wireframing",
-        "Svg Animation",
-        "Css Animation",
-        "User Research",
-        "Prototyping",
+        ["Figma", 85],
+        ["Wireframing", 90],
+        ["Svg Animation", 80],
+        ["Css Animation", 70],
+        ["User Research", 70],
+        ["Prototyping", 85],
       ],
       mobile: [
-        "React Native",
-        "Expo",
-        "Expo-APIs",
-        "Redux",
-        "Styled-Comp",
-        "React-Nav",
+        ["React Native", 75],
+        ["Expo", 80],
+        ["Expo-APIs", 70],
+        ["Redux", 80],
+        ["Styled-Comp", 90],
+        ["React-Nav", 80],
       ],
       frontend: [
-        "Html5",
-        "Css3",
-        "JavaScript",
-        "React.js",
-        "Redux",
-        "Styled-Comp",
+        ["Html5", 90],
+        ["Css3", 90],
+        ["JavaScript", 85],
+        ["React.js", 85],
+        ["Redux", 80],
+        ["Styled-Comp", 90],
       ],
-      backend: ["Node.js", "Express", "SQL", "NoSQL", "REST", "Firebase"],
+      backend: [
+        ["Node.js", 65],
+        ["Express", 65],
+        ["SQL", 60],
+        ["NoSQL", 70],
+        ["REST", 60],
+        ["Firebase", 80],
+      ],
     };
     this.timeline = new TimelineMax({ paused: true });
   }
@@ -252,39 +264,64 @@ class Skills extends React.Component {
       let techSkillNameSpan =
         e.target.parentNode.parentNode.parentNode.children[0].children[i]
           .children[0];
-      techSkillNameSpan.innerHTML = this.state[skill][i];
+      techSkillNameSpan.innerHTML = this.state[skill][i][0];
     }
   };
 
   render() {
+    let a = this.state.ui[0][1];
     return (
       <Container>
         <SvgCoolBg className="bgImage" />
         <div id="content-3">
           <div className="info-div">
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.ui[0]}</span>
-              <span className="tech-skill-fill"></span>
+              <span className="tech-skill-name">{this.state.ui[0][0]}</span>
+              <span
+                className="tech-skill-fill"
+                style={{ width: `${this.state.ui[0][1] * 0.7}%` }}
+              ></span>
+              <span className="tech-skill-perc">{this.state.ui[0][1]}%</span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.ui[1]}</span>
-              <span className="tech-skill-fill"></span>
+              <span className="tech-skill-name">{this.state.ui[1][0]}</span>
+              <span
+                className="tech-skill-fill"
+                style={{ width: `${this.state.ui[1][1] * 0.7}%` }}
+              ></span>
+              <span className="tech-skill-perc">{this.state.ui[1][1]}%</span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.ui[2]}</span>
-              <span className="tech-skill-fill"></span>
+              <span className="tech-skill-name">{this.state.ui[2][0]}</span>
+              <span
+                className="tech-skill-fill"
+                style={{ width: `${this.state.ui[2][1] * 0.7}%` }}
+              ></span>
+              <span className="tech-skill-perc">{this.state.ui[2][1]}%</span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.ui[3]}</span>
-              <span className="tech-skill-fill"></span>
+              <span className="tech-skill-name">{this.state.ui[3][0]}</span>
+              <span
+                className="tech-skill-fill"
+                style={{ width: `${this.state.ui[3][1] * 0.7}%` }}
+              ></span>
+              <span className="tech-skill-perc">{this.state.ui[3][1]}%</span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.ui[4]}</span>
-              <span className="tech-skill-fill"></span>
+              <span className="tech-skill-name">{this.state.ui[4][0]}</span>
+              <span
+                className="tech-skill-fill"
+                style={{ width: `${this.state.ui[4][1] * 0.7}%` }}
+              ></span>
+              <span className="tech-skill-perc">{this.state.ui[4][1]}%</span>
             </div>
             <div className="tech-skill">
-              <span className="tech-skill-name">{this.state.ui[5]}</span>
-              <span className="tech-skill-fill"></span>
+              <span className="tech-skill-name">{this.state.ui[5][0]}</span>
+              <span
+                className="tech-skill-fill"
+                style={{ width: `${this.state.ui[5][1] * 0.7}%` }}
+              ></span>
+              <span className="tech-skill-perc">{this.state.ui[5][1]}%</span>
             </div>
           </div>
           <div id="skills">
