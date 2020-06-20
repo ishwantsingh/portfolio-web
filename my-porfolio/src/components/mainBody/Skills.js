@@ -56,13 +56,6 @@ const Container = styled.div`
         text-decoration: underline;
         cursor: pointer;
       }
-      // .skill-name:hover {
-      //   font-weight: bold;
-      //   font-style: italic;
-      //   text-decoration: underline;
-      //   cursor: pointer;
-      // }
-
     }
   }
   .bgImage {
@@ -200,10 +193,6 @@ class Skills extends React.Component {
 
   showDesign = (e, skill) => {
     e.preventDefault();
-    console.log(e.target.parentNode.parentNode.children[0].children[0]);
-    console.log(e.target.parentNode.parentNode.children[1].children[0]);
-    console.log(e.target.parentNode.parentNode.children[2].children[0]);
-    console.log(e.target.parentNode.parentNode.children[3].children[0]);
     switch (skill) {
       default:
         break;
@@ -260,16 +249,6 @@ class Skills extends React.Component {
     let lastSkillIndex = this.state[skill].length - 1;
     for (let i = 0; i <= lastSkillIndex; i++) {
       console.log("i", i, skill);
-      // let techSkillDiv = document.createElement("div");
-      // techSkillDiv.classList.add("tech-skill");
-      // techSkillDiv.innerHTML = this.state[skill][i];
-      // let parentNode = e.target.parentNode.parentNode.parentNode.children[0];
-      // console.log(parentNode);
-      // e.target.parentNode.parentNode.parentNode.children[0].replaceChild(
-      //   techSkillDiv,
-      //   e.target.parentNode.parentNode.parentNode.children[0].children[i]
-      // );
-
       let techSkillNameSpan =
         e.target.parentNode.parentNode.parentNode.children[0].children[i]
           .children[0];
@@ -314,7 +293,6 @@ class Skills extends React.Component {
               <span
                 className="skill-name skill-hover"
                 onMouseOver={(e) => this.showDesign(e, "ui")}
-                // onMouseLeave={(e) => e.target.classList.remove("skill-hover")}
               >
                 ui/ux
               </span>
