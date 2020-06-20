@@ -84,7 +84,7 @@ const Container = styled.div`
     right: 35vw;
     padding: 0 0 0 5%;
     font-family: "Roboto", serif;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     background-color: white;
     border-left: 4px solid #1B1C1D;
     border-top: 1px dashed #E1E0E0;
@@ -94,12 +94,24 @@ const Container = styled.div`
   }
   .tech-skill {
     display: flex;
+    flex-direction: row;
     align-items: center;
     height: 3rem;
-    width: 70%;
-    padding-left: 3%;
-    border: 1px solid #E1E0E0;
-    border-radius: 2px;
+    width: 80%;
+    border: 1px solid #1B1C1D;
+    border-radius: 1px;
+    .tech-skill-name{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 27%;
+      height: 100%;
+      font-weight: 500;
+      color: white;
+      border: 2px solid #1B1C1D;
+      // background-color: #333333;
+      background: linear-gradient(239.07deg, #333333 1.07%, #000000 100%);
+    }
   }
 `;
 
@@ -112,17 +124,19 @@ class Skills extends React.Component {
       content2: "Content 2",
       content3: "Content 3",
       content4: "Content 4",
+      content5: "Content 5",
       ui: [
-        "Website Wireframing",
-        "User research",
         "Figma",
+        "Website Wireframing",
         "Svg Animation",
         "Css Animation",
+        "User Research",
         "Paper prototyping",
       ],
       mobile: [
         "React native",
         "Expo",
+        "Expo-APIs",
         "Redux",
         "Styled-Components",
         "React-Navigation",
@@ -135,13 +149,7 @@ class Skills extends React.Component {
         "Redux",
         "Styled-Components",
       ],
-      backend: [
-        "Node.js",
-        "Express",
-        "SQL (mySQL)",
-        "NoSQL (Firebase)",
-        "REST",
-      ],
+      backend: ["Node.js", "Express", "SQL", "NoSQL", "REST", "Firebase"],
     };
     this.timeline = new TimelineMax({ paused: true });
   }
@@ -183,19 +191,20 @@ class Skills extends React.Component {
     let lastSkillIndex = this.state[skill].length - 1;
     for (let i = 0; i <= lastSkillIndex; i++) {
       console.log("i", i, skill);
-      let techSkillDiv = document.createElement("div");
-      techSkillDiv.classList.add("tech-skill");
-      techSkillDiv.innerHTML = this.state[skill][i];
-      let parentNode = e.target.parentNode.parentNode.parentNode.children[0];
-      console.log(parentNode);
-      e.target.parentNode.parentNode.parentNode.children[0].replaceChild(
-        techSkillDiv,
-        e.target.parentNode.parentNode.parentNode.children[0].children[i]
-      );
+      // let techSkillDiv = document.createElement("div");
+      // techSkillDiv.classList.add("tech-skill");
+      // techSkillDiv.innerHTML = this.state[skill][i];
+      // let parentNode = e.target.parentNode.parentNode.parentNode.children[0];
+      // console.log(parentNode);
+      // e.target.parentNode.parentNode.parentNode.children[0].replaceChild(
+      //   techSkillDiv,
+      //   e.target.parentNode.parentNode.parentNode.children[0].children[i]
+      // );
 
-      // e.target.parentNode.parentNode.parentNode.children[0].children[
-      //   i
-      // ].innerHTML = this.state[skill][i];
+      let techSkillNameSpan =
+        e.target.parentNode.parentNode.parentNode.children[0].children[i]
+          .children[0];
+      techSkillNameSpan.innerHTML = this.state[skill][i];
     }
   };
 
@@ -205,13 +214,24 @@ class Skills extends React.Component {
         <SvgCoolBg className="bgImage" />
         <div id="content-3">
           <div className="info-div">
-            {/* <div></div> */}
-            <div className="tech-skill">{this.state.heading}</div>
-            <div className="tech-skill">{this.state.content1}</div>
-            <div className="tech-skill">{this.state.content2}</div>
-            <div className="tech-skill">{this.state.content3}</div>
-            <div className="tech-skill">{this.state.content4}</div>
-            <div className="tech-skill">{this.state.content5}</div>
+            <div className="tech-skill">
+              <span className="tech-skill-name">{this.state.heading}</span>
+            </div>
+            <div className="tech-skill">
+              <span className="tech-skill-name">{this.state.content1}</span>
+            </div>
+            <div className="tech-skill">
+              <span className="tech-skill-name">{this.state.content2}</span>
+            </div>
+            <div className="tech-skill">
+              <span className="tech-skill-name">{this.state.content3}</span>
+            </div>
+            <div className="tech-skill">
+              <span className="tech-skill-name">{this.state.content4}</span>
+            </div>
+            <div className="tech-skill">
+              <span className="tech-skill-name">{this.state.content5}</span>
+            </div>
           </div>
           <div id="skills">
             {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}

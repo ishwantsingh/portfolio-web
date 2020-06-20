@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TimelineMax, Power1, Circ } from "gsap";
+import { TimelineMax, Circ } from "gsap";
 
 function SvgCoolBg(props) {
   const svgTween = new TimelineMax();
