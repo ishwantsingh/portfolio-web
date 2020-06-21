@@ -108,7 +108,6 @@ const Container = styled.div`
       height: 100%;
       font-weight: 500;
       // color: white;
-      border-right: 2px solid #000000;  // REMOVE THIS LATER
       // border-radius: 5px;
 
       // background-color: #333333;
@@ -118,7 +117,7 @@ const Container = styled.div`
       display: flex;
       justify-self: flex-start !important;
       height: 100%;
-      background: linear-gradient(239.07deg, #333333 1.07%, #000000 100%);
+      background: linear-gradient(239.07deg, #444444 1.07%, #000000 100%);
     }
     .tech-skill-perc {
       display: flex;
@@ -163,7 +162,7 @@ class Skills extends React.Component {
         ["Node.js", 65],
         ["Express", 65],
         ["SQL", 60],
-        ["NoSQL", 70],
+        ["NoSQL", 75],
         ["REST", 60],
         ["Firebase", 80],
       ],
@@ -265,6 +264,14 @@ class Skills extends React.Component {
         e.target.parentNode.parentNode.parentNode.children[0].children[i]
           .children[0];
       techSkillNameSpan.innerHTML = this.state[skill][i][0];
+      let techSkillFill =
+        e.target.parentNode.parentNode.parentNode.children[0].children[i]
+          .children[1];
+      techSkillFill.style.width = `${this.state[skill][i][1] * 0.7}%`;
+      let techSkillPerc =
+        e.target.parentNode.parentNode.parentNode.children[0].children[i]
+          .children[2];
+      techSkillPerc.innerHTML = `${this.state[skill][i][1]}%`;
     }
   };
 
