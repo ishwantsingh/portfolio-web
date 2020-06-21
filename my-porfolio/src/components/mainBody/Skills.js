@@ -99,6 +99,7 @@ const Container = styled.div`
     width: 75%;
     border: 2px solid #1B1C1D;
     border-radius: 6px;
+    background-color: black;
     .tech-skill-name{
       display: flex;
       align-items: center;
@@ -106,12 +107,10 @@ const Container = styled.div`
       justify-self: flex-start !important;
       width: 22% !important;
       height: 100%;
+      background-color: white;
       font-weight: 500;
-      // color: white;
-      // border-radius: 5px;
-
-      // background-color: #333333;
-      // background: linear-gradient(239.07deg, #333333 1.07%, #000000 100%);
+      border-right: 2px solid #000000;
+      border-radius: 4px;
     }
     .tech-skill-fill {
       display: flex;
@@ -126,6 +125,9 @@ const Container = styled.div`
       align-items: center;
       width: 8%;
       height: 100%;
+      background-color: white;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
     }
   }
 `;
@@ -266,8 +268,8 @@ class Skills extends React.Component {
       techSkillNameSpan.innerHTML = this.state[skill][i][0];
       let techSkillFill =
         e.target.parentNode.parentNode.parentNode.children[0].children[i]
-          .children[1];
-      techSkillFill.style.width = `${this.state[skill][i][1] * 0.7}%`;
+          .children[1].children[0];
+      techSkillFill.style.width = `${this.state[skill][i][1]}%`;
       let techSkillPerc =
         e.target.parentNode.parentNode.parentNode.children[0].children[i]
           .children[2];
@@ -276,7 +278,6 @@ class Skills extends React.Component {
   };
 
   render() {
-    let a = this.state.ui[0][1];
     return (
       <Container>
         <SvgCoolBg className="bgImage" />
@@ -285,49 +286,103 @@ class Skills extends React.Component {
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[0][0]}</span>
               <span
-                className="tech-skill-fill"
-                style={{ width: `${this.state.ui[0][1] * 0.7}%` }}
-              ></span>
+                style={{
+                  display: "flex",
+                  height: "100%",
+                  width: "70%",
+                  backgroundColor: "white",
+                }}
+              >
+                <span
+                  className="tech-skill-fill"
+                  style={{ width: `${this.state.ui[0][1]}%` }}
+                ></span>
+              </span>
               <span className="tech-skill-perc">{this.state.ui[0][1]}%</span>
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[1][0]}</span>
               <span
-                className="tech-skill-fill"
-                style={{ width: `${this.state.ui[1][1] * 0.7}%` }}
-              ></span>
+                style={{
+                  display: "flex",
+                  height: "100%",
+                  width: "70%",
+                  backgroundColor: "white",
+                }}
+              >
+                <span
+                  className="tech-skill-fill"
+                  style={{ width: `${this.state.ui[1][1]}%` }}
+                ></span>
+              </span>
               <span className="tech-skill-perc">{this.state.ui[1][1]}%</span>
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[2][0]}</span>
               <span
-                className="tech-skill-fill"
-                style={{ width: `${this.state.ui[2][1] * 0.7}%` }}
-              ></span>
+                style={{
+                  display: "flex",
+                  height: "100%",
+                  width: "70%",
+                  backgroundColor: "white",
+                }}
+              >
+                <span
+                  className="tech-skill-fill"
+                  style={{ width: `${this.state.ui[2][1]}%` }}
+                ></span>
+              </span>
               <span className="tech-skill-perc">{this.state.ui[2][1]}%</span>
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[3][0]}</span>
               <span
-                className="tech-skill-fill"
-                style={{ width: `${this.state.ui[3][1] * 0.7}%` }}
-              ></span>
+                style={{
+                  display: "flex",
+                  height: "100%",
+                  width: "70%",
+                  backgroundColor: "white",
+                }}
+              >
+                <span
+                  className="tech-skill-fill"
+                  style={{ width: `${this.state.ui[3][1]}%` }}
+                ></span>
+              </span>
               <span className="tech-skill-perc">{this.state.ui[3][1]}%</span>
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[4][0]}</span>
               <span
-                className="tech-skill-fill"
-                style={{ width: `${this.state.ui[4][1] * 0.7}%` }}
-              ></span>
+                style={{
+                  display: "flex",
+                  height: "100%",
+                  width: "70%",
+                  backgroundColor: "white",
+                }}
+              >
+                <span
+                  className="tech-skill-fill"
+                  style={{ width: `${this.state.ui[4][1]}%` }}
+                ></span>
+              </span>
               <span className="tech-skill-perc">{this.state.ui[4][1]}%</span>
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[5][0]}</span>
               <span
-                className="tech-skill-fill"
-                style={{ width: `${this.state.ui[5][1] * 0.7}%` }}
-              ></span>
+                style={{
+                  display: "flex",
+                  height: "100%",
+                  width: "70%",
+                  backgroundColor: "white",
+                }}
+              >
+                <span
+                  className="tech-skill-fill"
+                  style={{ width: `${this.state.ui[5][1]}%` }}
+                ></span>
+              </span>
               <span className="tech-skill-perc">{this.state.ui[5][1]}%</span>
             </div>
           </div>
