@@ -29,7 +29,7 @@ const SubContainer = styled.div`
   a:hover {
     font-weight: bold;
     font-size: 1.4rem;
-    border-left: 1.5px solid black;
+    // border-left: 1.5px solid black;
   }
   .floating-link {
     display: flex;

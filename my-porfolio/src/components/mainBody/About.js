@@ -51,7 +51,7 @@ const Container = styled.div`
   }
   .name-div {
     width: 100%;
-    height: 13rem;
+    height: 12rem;
     display: flex;
     flex-direction: column;
     justify-self: center;
@@ -69,7 +69,7 @@ const Container = styled.div`
     justify-self: flex-start;
     font-size: 1.6rem;
     color: #6e6e6e;
-    margin-top: 0.6rem;
+    margin-top: 0rem;
     letter-spacing: 0;
     font-weight: 200;
     line-height: 1.6;
@@ -105,11 +105,15 @@ const Container = styled.div`
   }
   #texts span:after {
     content: "";
-    height: 22px;
+    height: 17px;
+    width: 757px;
     overflow: hidden;
     background-image: url(${stroke});
     background-repeat: no-repeat;
     background-size: initial;
+    background-position: center;
+    margin-right: 4%;
+    margin-top: -25px;
     display: block;
     z-index: -1;
   }

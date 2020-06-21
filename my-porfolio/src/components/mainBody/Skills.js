@@ -32,7 +32,7 @@ const Container = styled.div`
       width: 25vw;
       display: flex;
       flex-direction: row;
-      font-size: 0.25em;
+      font-size: 0.23em;
       align-items: center;
       justify-content: flex-end;
       text-align: left;
@@ -87,8 +87,8 @@ const Container = styled.div`
     font-size: 1.4rem;
     background-color: white;
     border-left: 4px solid #1B1C1D;
-    border-top: 1px dashed #E1E0E0;
-    border-bottom: 1px dashed #E1E0E0;
+    // border-top: 1px dashed #E1E0E0;
+    // border-bottom: 1px dashed #E1E0E0;
     border-top-left-radius: 6px 1.5px; 
     border-bottom-left-radius: 6px 1.5px;
   }
@@ -127,6 +127,7 @@ const Container = styled.div`
       width: 8%;
       height: 100%;
       background-color: white;
+      border-left: 2px solid #1B1C1D;
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
     }
@@ -214,7 +215,7 @@ class Skills extends React.Component {
       .staggerFrom(
         "#skill-div",
         0.5,
-        { autoAlpha: 0, x: -40, ease: Power1.easeOut, delay: 0.1 },
+        { autoAlpha: 0, x: -40, ease: Power1.easeOut, delay: 0 },
         0.1
       );
     this.timeline.play();
