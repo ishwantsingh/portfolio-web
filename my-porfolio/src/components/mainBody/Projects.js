@@ -147,7 +147,7 @@ class Projects extends React.Component {
 
   changePage = (e, destination) => {
     e.preventDefault();
-    this.timeline.reverse();
+    this.timeline.timeScale(1.5).reverse();
     const timelineDuration = this.timeline.duration() * 1000;
     setTimeout(() => {
       history.push(destination);

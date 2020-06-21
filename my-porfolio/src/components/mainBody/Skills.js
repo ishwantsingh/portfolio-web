@@ -32,15 +32,15 @@ const Container = styled.div`
       width: 25vw;
       display: flex;
       flex-direction: row;
-      font-size: 1.8rem;
+      font-size: 0.25em;
       align-items: center;
       justify-content: flex-end;
       text-align: left;
       .skill-img {
-        // width: 13vw;
-        // height: 6.5vw;
         width: 17vw;
-        height: 13vh;
+        height: 6.5vw;
+        // width: 17vw;
+        // height: 13vh;
       }
       span {
         font-weight: normal;
@@ -99,7 +99,7 @@ const Container = styled.div`
     width: 75%;
     border: 2px solid #1B1C1D;
     border-radius: 6px;
-    background-color: black;
+    // background-color: black;
     .tech-skill-name{
       display: flex;
       align-items: center;
@@ -110,7 +110,8 @@ const Container = styled.div`
       background-color: white;
       font-weight: 500;
       border-right: 2px solid #000000;
-      border-radius: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
     }
     .tech-skill-fill {
       display: flex;
@@ -170,6 +171,7 @@ class Skills extends React.Component {
       ],
     };
     this.timeline = new TimelineMax({ paused: true });
+    this.timeline2 = new TimelineMax({ paused: true });
   }
 
   componentDidMount() {
@@ -186,6 +188,29 @@ class Skills extends React.Component {
         { autoAlpha: 0, x: -40, ease: Power1.easeOut, delay: 0.1 },
         0.1
       )
+      .from(".tech-skill-name", 0.2, {
+        // opacity: 0,
+        autoAlpha: 0,
+        scaleX: 0,
+        transformOrigin: "right",
+        ease: "slow.easeIn",
+      })
+      .from(
+        ".tech-skill-perc",
+        0.2,
+        {
+          autoAlpha: 0,
+          scaleX: 0,
+          transformOrigin: "right",
+          ease: "slow.easeIn",
+        },
+        ">="
+      )
+      .from(".tech-skill-fill", 0.5, {
+        scaleX: 0,
+        transformOrigin: "left",
+        ease: "slow.easeIn",
+      })
       .staggerFrom(
         "#skill-div",
         0.5,
@@ -197,7 +222,13 @@ class Skills extends React.Component {
 
   changePage = (e, destination) => {
     e.preventDefault();
-    this.timeline.reverse();
+    this.timeline2
+      .to(".bgImage", 1.1, {
+        autoAlpha: 0,
+        delay: 2.1,
+      })
+      .play();
+    this.timeline.timeScale(1.5).reverse();
     const timelineDuration = this.timeline.duration() * 1000;
     setTimeout(() => {
       history.push(destination);
