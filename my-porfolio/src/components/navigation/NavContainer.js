@@ -15,7 +15,7 @@ const Container = styled.div`
   justify-content: center;
   border-left: 1.3px dashed #e1e0e0;
 `;
-// #e1e0e0
+
 const SubContainer = styled.div`
   width: 80%;
   flex-direction: column;
@@ -29,7 +29,6 @@ const SubContainer = styled.div`
   a:hover {
     font-weight: bold;
     font-size: 1.4rem;
-    // border-left: 1.5px solid black;
   }
   .floating-link {
     display: flex;
@@ -50,7 +49,6 @@ const SubContainer = styled.div`
     margin: 1.7rem 0;
     height: 40px;
     font-size: 1.4rem; //becuase it is below floating-link class, this font size applies
-    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 10px 24px #e1e0e0;
   }
   .selected-menu:hover {
