@@ -40,8 +40,6 @@ const Container = styled.div`
       .skill-img {
         width: 17vw;
         height: 6.5vw;
-        // width: 17vw;
-        // height: 13vh;
       }
       span {
         font-weight: normal;
@@ -88,8 +86,6 @@ const Container = styled.div`
     font-size: 1.4rem;
     background-color: white;
     border-left: 4px solid #1B1C1D;
-    // border-top: 1px dashed #E1E0E0;
-    // border-bottom: 1px dashed #E1E0E0;
     border-top-left-radius: 6px 1.5px; 
     border-bottom-left-radius: 6px 1.5px;
   }
@@ -100,7 +96,6 @@ const Container = styled.div`
     width: 75%;
     border: 2px solid #1B1C1D;
     border-radius: 6px;
-    // background-color: black;
     .tech-skill-name{
       display: flex;
       align-items: center;
@@ -121,19 +116,6 @@ const Container = styled.div`
       height: 100%;
       background: linear-gradient(239.07deg, #444444 1.07%, #000000 100%);
     }
-    // .tech-skill-perc {
-    //   display: flex;
-    //   justify-self: flex-end !important;
-    //   justify-content: center;
-    //   align-items: center;
-    //   width: 8%;
-    //   height: 100%;
-    //   background-color: white;
-    //   color: #393939;
-    //   border-left: 2px solid #1B1C1D;
-    //   border-top-right-radius: 4px;
-    //   border-bottom-right-radius: 4px;
-    // }
   }
 `;
 
@@ -302,10 +284,6 @@ class Skills extends React.Component {
         e.target.parentNode.parentNode.parentNode.children[0].children[i]
           .children[1].children[0];
       techSkillFill.style.width = `${this.state[skill][i][1]}%`;
-      // let techSkillPerc =
-      //   e.target.parentNode.parentNode.parentNode.children[0].children[i]
-      //     .children[2];
-      // techSkillPerc.innerHTML = `${this.state[skill][i][1]}%`;
     }
   };
 
@@ -332,7 +310,6 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[0][1]}%` }}
                 ></span>
               </span>
-              {/* <span className="tech-skill-perc">{this.state.ui[0][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[1][0]}</span>
@@ -351,7 +328,6 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[1][1]}%` }}
                 ></span>
               </span>
-              {/* <span className="tech-skill-perc">{this.state.ui[1][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[2][0]}</span>
@@ -370,7 +346,6 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[2][1]}%` }}
                 ></span>
               </span>
-              {/* <span className="tech-skill-perc">{this.state.ui[2][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[3][0]}</span>
@@ -389,7 +364,6 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[3][1]}%` }}
                 ></span>
               </span>
-              {/* <span className="tech-skill-perc">{this.state.ui[3][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[4][0]}</span>
@@ -408,7 +382,6 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[4][1]}%` }}
                 ></span>
               </span>
-              {/* <span className="tech-skill-perc">{this.state.ui[4][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[5][0]}</span>
@@ -427,7 +400,6 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[5][1]}%` }}
                 ></span>
               </span>
-              {/* <span className="tech-skill-perc">{this.state.ui[5][1]}%</span> */}
             </div>
           </div>
           <div id="skills">
