@@ -26,7 +26,7 @@ const Container = styled.div`
     height: 5rem;
     text-align: center;
     font-family: "Prata", serif;
-    color: #383838;
+    color: #393939;
     font-weight: 500;
   }
   .project-content {

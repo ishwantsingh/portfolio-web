@@ -59,7 +59,7 @@ const Container = styled.div`
     font-weight: 600;
     font-size: 3.5rem;
     font-family: "Prata", serif;
-    color: #383838;
+    color: #393939;
   }
   .about-div {
     width: 92%;

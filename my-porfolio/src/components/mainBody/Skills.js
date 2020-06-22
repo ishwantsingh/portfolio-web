@@ -28,6 +28,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-end;
+    color: #393939;
     #skill-div {
       width: 25vw;
       display: flex;
@@ -105,13 +106,14 @@ const Container = styled.div`
       align-items: center;
       justify-content: center;
       justify-self: flex-start !important;
-      width: 22% !important;
+      width: 25%;
       height: 100%;
       background-color: white;
       font-weight: 500;
       border-right: 2px solid #000000;
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
+      color: #393939;
     }
     .tech-skill-fill {
       display: flex;
@@ -119,18 +121,19 @@ const Container = styled.div`
       height: 100%;
       background: linear-gradient(239.07deg, #444444 1.07%, #000000 100%);
     }
-    .tech-skill-perc {
-      display: flex;
-      justify-self: flex-end !important;
-      justify-content: center;
-      align-items: center;
-      width: 8%;
-      height: 100%;
-      background-color: white;
-      border-left: 2px solid #1B1C1D;
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-    }
+    // .tech-skill-perc {
+    //   display: flex;
+    //   justify-self: flex-end !important;
+    //   justify-content: center;
+    //   align-items: center;
+    //   width: 8%;
+    //   height: 100%;
+    //   background-color: white;
+    //   color: #393939;
+    //   border-left: 2px solid #1B1C1D;
+    //   border-top-right-radius: 4px;
+    //   border-bottom-right-radius: 4px;
+    // }
   }
 `;
 
@@ -190,28 +193,25 @@ class Skills extends React.Component {
         0.1
       )
       .from(".tech-skill-name", 0.2, {
-        // opacity: 0,
+        autoAlpha: 0,
+        ease: Power1.easeIn,
+      })
+      .from(".tech-skill-perc", 0.3, {
         autoAlpha: 0,
         scaleX: 0,
         transformOrigin: "right",
-        ease: "slow.easeIn",
+        ease: Power1.easeIn,
       })
       .from(
-        ".tech-skill-perc",
-        0.2,
+        ".tech-skill-fill",
+        0.5,
         {
-          autoAlpha: 0,
           scaleX: 0,
-          transformOrigin: "right",
+          transformOrigin: "left",
           ease: "slow.easeIn",
         },
         ">="
       )
-      .from(".tech-skill-fill", 0.5, {
-        scaleX: 0,
-        transformOrigin: "left",
-        ease: "slow.easeIn",
-      })
       .staggerFrom(
         "#skill-div",
         0.5,
@@ -302,10 +302,10 @@ class Skills extends React.Component {
         e.target.parentNode.parentNode.parentNode.children[0].children[i]
           .children[1].children[0];
       techSkillFill.style.width = `${this.state[skill][i][1]}%`;
-      let techSkillPerc =
-        e.target.parentNode.parentNode.parentNode.children[0].children[i]
-          .children[2];
-      techSkillPerc.innerHTML = `${this.state[skill][i][1]}%`;
+      // let techSkillPerc =
+      //   e.target.parentNode.parentNode.parentNode.children[0].children[i]
+      //     .children[2];
+      // techSkillPerc.innerHTML = `${this.state[skill][i][1]}%`;
     }
   };
 
@@ -321,8 +321,10 @@ class Skills extends React.Component {
                 style={{
                   display: "flex",
                   height: "100%",
-                  width: "70%",
+                  width: "75%",
                   backgroundColor: "white",
+                  borderTopRightRadius: "4px",
+                  borderBottomRightRadius: "4px",
                 }}
               >
                 <span
@@ -330,7 +332,7 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[0][1]}%` }}
                 ></span>
               </span>
-              <span className="tech-skill-perc">{this.state.ui[0][1]}%</span>
+              {/* <span className="tech-skill-perc">{this.state.ui[0][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[1][0]}</span>
@@ -338,8 +340,10 @@ class Skills extends React.Component {
                 style={{
                   display: "flex",
                   height: "100%",
-                  width: "70%",
+                  width: "75%",
                   backgroundColor: "white",
+                  borderTopRightRadius: "4px",
+                  borderBottomRightRadius: "4px",
                 }}
               >
                 <span
@@ -347,7 +351,7 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[1][1]}%` }}
                 ></span>
               </span>
-              <span className="tech-skill-perc">{this.state.ui[1][1]}%</span>
+              {/* <span className="tech-skill-perc">{this.state.ui[1][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[2][0]}</span>
@@ -355,8 +359,10 @@ class Skills extends React.Component {
                 style={{
                   display: "flex",
                   height: "100%",
-                  width: "70%",
+                  width: "75%",
                   backgroundColor: "white",
+                  borderTopRightRadius: "4px",
+                  borderBottomRightRadius: "4px",
                 }}
               >
                 <span
@@ -364,7 +370,7 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[2][1]}%` }}
                 ></span>
               </span>
-              <span className="tech-skill-perc">{this.state.ui[2][1]}%</span>
+              {/* <span className="tech-skill-perc">{this.state.ui[2][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[3][0]}</span>
@@ -372,8 +378,10 @@ class Skills extends React.Component {
                 style={{
                   display: "flex",
                   height: "100%",
-                  width: "70%",
+                  width: "75%",
                   backgroundColor: "white",
+                  borderTopRightRadius: "4px",
+                  borderBottomRightRadius: "4px",
                 }}
               >
                 <span
@@ -381,7 +389,7 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[3][1]}%` }}
                 ></span>
               </span>
-              <span className="tech-skill-perc">{this.state.ui[3][1]}%</span>
+              {/* <span className="tech-skill-perc">{this.state.ui[3][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[4][0]}</span>
@@ -389,8 +397,10 @@ class Skills extends React.Component {
                 style={{
                   display: "flex",
                   height: "100%",
-                  width: "70%",
+                  width: "75%",
                   backgroundColor: "white",
+                  borderTopRightRadius: "4px",
+                  borderBottomRightRadius: "4px",
                 }}
               >
                 <span
@@ -398,7 +408,7 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[4][1]}%` }}
                 ></span>
               </span>
-              <span className="tech-skill-perc">{this.state.ui[4][1]}%</span>
+              {/* <span className="tech-skill-perc">{this.state.ui[4][1]}%</span> */}
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[5][0]}</span>
@@ -406,8 +416,10 @@ class Skills extends React.Component {
                 style={{
                   display: "flex",
                   height: "100%",
-                  width: "70%",
+                  width: "75%",
                   backgroundColor: "white",
+                  borderTopRightRadius: "4px",
+                  borderBottomRightRadius: "4px",
                 }}
               >
                 <span
@@ -415,7 +427,7 @@ class Skills extends React.Component {
                   style={{ width: `${this.state.ui[5][1]}%` }}
                 ></span>
               </span>
-              <span className="tech-skill-perc">{this.state.ui[5][1]}%</span>
+              {/* <span className="tech-skill-perc">{this.state.ui[5][1]}%</span> */}
             </div>
           </div>
           <div id="skills">
