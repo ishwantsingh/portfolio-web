@@ -66,11 +66,6 @@ const Container = styled.div`
     width: 100%;
     height: 100%;
   }
-  .info-blob {
-    width: 60vw;
-    height 91vh;
-    filter: drop-shadow(0px 6px 15px #696969) blur(0.5px);;
-  }
   .info-div {
     display: flex;
     flex-direction: column;
