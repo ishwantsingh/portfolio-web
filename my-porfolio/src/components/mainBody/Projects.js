@@ -7,6 +7,7 @@ import history from "../../history";
 import postit from "../../assets/post-it.mp4";
 import treway from "../../assets/treway.mp4";
 import mecon from "../../assets/me-con.mp4";
+import bgImage from "../../assets/line-art-left.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -16,13 +17,16 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
+  background-image: url(${bgImage});
+  background-repeat: no-repeat;
+  background-size: content;
   font-size: 4rem;
   .project-heading {
     width: 100%;
     height: 5rem;
     text-align: center;
     font-family: "Prata", serif;
-    color: #383838;
+    color: #393939;
     font-weight: 500;
   }
   .project-content {
@@ -76,6 +80,9 @@ const Container = styled.div`
   }
   .field {
     margin: 1.5rem 0 0 0 !important ;
+  }
+  .ui.checkbox input.hidden + label {
+    cursor: default !important;
   }
 `;
 
@@ -140,7 +147,7 @@ class Projects extends React.Component {
 
   changePage = (e, destination) => {
     e.preventDefault();
-    this.timeline.reverse();
+    this.timeline.timeScale(1.5).reverse();
     const timelineDuration = this.timeline.duration() * 1000;
     setTimeout(() => {
       history.push(destination);
@@ -154,7 +161,6 @@ class Projects extends React.Component {
       "div.projectVidContainer #video-source"
     );
     let anchorTag = document.querySelector("div.projectVidContainer a");
-    console.log("vidSrc", vid);
     vid.pause();
     if (this.state.currentVideo === postit && butPressed === "next") {
       this.setState({ currentVideo: treway });
@@ -275,6 +281,7 @@ class Projects extends React.Component {
         <Form className="radio-form" id="radio-buts">
           <Form.Field>
             <Checkbox
+              disabled
               radio
               label=""
               name="checkboxRadioGroup"
@@ -284,6 +291,7 @@ class Projects extends React.Component {
           </Form.Field>
           <Form.Field>
             <Checkbox
+              disabled
               radio
               label=""
               name="checkboxRadioGroup"
@@ -293,6 +301,7 @@ class Projects extends React.Component {
           </Form.Field>
           <Form.Field>
             <Checkbox
+              disabled
               radio
               label=""
               name="checkboxRadioGroup"
