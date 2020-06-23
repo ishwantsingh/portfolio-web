@@ -38,18 +38,17 @@ const Container = styled.div`
     width: 20vw;
     height: 50vh;
     margin: 1vw auto;
-    border: 2px solid black;
   }
   .hobby-container {
     display: block;
     width: 22vw;
     height: 55vh;
-    border: 2px solid black;
+    // border: 2px solid black;
     box-sizing: border-box;
     will-change: transform;
-    transform: perspective(300px) rotateX(var(--mouse-vary))
+    transform: perspective(200px) rotateX(var(--mouse-vary))
       rotateY(var(--mouse-varx));
-    // transform: perspective(300) rotateX(var(--mouse-varx))
+    // transform: perspective(200px) rotateX(var(--mouse-varx))
     //   rotateY(var(--mouse-vary));
   }
 `;
@@ -101,7 +100,7 @@ class Hobbies extends React.Component {
 
   enter = (e) => {
     e.preventDefault();
-    let enterX = e.clientX;
+    let enterX = e.clientX; //// PROBLEM WITH COMPARING W ENTER COORDINATES
     let enterY = e.clientY;
     this.setState({ enterX: enterX, enterY: enterY });
     e.target.style.transition =
@@ -115,22 +114,23 @@ class Hobbies extends React.Component {
     let y;
     let picWidth = getComputedStyle(e.target).width;
     let picLength = getComputedStyle(e.target).length;
-    console.log(this.state.enterX, "w", e.clientX, "p", picWidth);
-    if (e.clientY <= this.state.enterY + picLength / 2) {
-      y = (e.clientY / 200) * 0.95;
-    } else if (e.clientY >= this.state.enterY + picLength / 2) {
-      y = -((e.clientY / 200) * 0.95);
-    }
-    if (e.clientX <= this.state.enterX + parseFloat(picWidth) / 2) {
-      x = (e.clientX / 200) * 0.8;
-    } else if (e.clientX >= this.state.enterX + parseFloat(picWidth) / 2) {
-      x = -((e.clientX / 200) * 0.8);
-    }
+    // console.log(this.state.enterX, "w", e.clientX, "p", picWidth);
+    // if (e.clientY < this.state.enterY + picLength / 2) {
+    y = ((e.clientY - this.state.enterY + picLength) / 100) * 1.2;
+    // } else if (e.clientY >= this.state.enterY + picLength / 2) {
+    //   y = -((this.state.enterY + picLength / 100) * 0.95);
+    // }
+    // if (e.clientX <= this.state.enterX + parseFloat(picWidth) / 2) {
+    x = ((e.clientX - this.state.enterX + parseFloat(picWidth)) / 100) * 1.2; // CHANGED SIGNS HERE
+    // } else if (e.clientX >= this.state.enterX + parseFloat(picWidth) / 2) {
+    //   x = -((e.clientX / 200) * 0.8);
+    // }
 
     console.log("x=> ", x, "y=> ", y);
     // this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
     // e.target.style.width = "40rem";
-    e.target.parentNode.style.transform = `perspective(300px) rotateX(var(--mouse-vary)) rotateY(var(--mouse-varx))`;
+    e.target.parentNode.style.transform = `perspective(200px) rotateX(var(--mouse-vary)) rotateY(var(--mouse-varx))`;
+    // e.target.parentNode.style.transform = `perspective(200px) rotateX(var(--mouse-varx)) rotateY(var(--mouse-vary))`;
     e.target.parentNode.style.setProperty("--mouse-vary", y + "deg");
     e.target.parentNode.style.setProperty("--mouse-varx", x + "deg");
   };
