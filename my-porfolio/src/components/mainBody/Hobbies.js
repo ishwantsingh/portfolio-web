@@ -16,6 +16,8 @@ const Container = styled.div`
   background-color: white;
   font-size: 7rem;
   text-align: center;
+  --mouse-varx: 5deg;
+  --mouse-vary: 10deg;
   .bgImage {
     display: flex;
     // position: absolute;
@@ -30,26 +32,40 @@ const Container = styled.div`
     // justify-self: flex-start;
     // align-self: flex-start;
   }
-  // .hobby-container:hover {
-  //   transform: ;
-  //   transition: all400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s;
+  .photography {
+    display: block;
+    width: 25vw;
+    height: 70vh;
+    border: 2px solid black;
+  }
+
+  // .hobby-container {
+  // --mouse-varx: 5deg;
+  // --mouse-vary: 10deg;
+  //   display: block;
+  //   border: 2px solid black;
+  //   box-sizing: border-box;
+  //   will-change: transform;
+  //   transform: perspective(300) rotateX(5deg) rotateY(var(--mouse-vary));
+  //   // transform: perspective(300) rotateX(var(--mouse-varx))
+  //   //   rotateY(var(--mouse-vary));
   // }
 `;
 
-const Image = styled.img`
-  display: block;
-  width: 25vw;
-  height: 70vh;
-`;
-const HobbyDiv = styled.div`
-  display: block;
-  box-sizing: border-box;
-  will-change: transform;
+// const Image = styled.img`
+//   display: block;
+//   width: 25vw;
+//   height: 70vh;
+// `;
+// const HobbyDiv = styled.div`
+//   display: block;
+//   box-sizing: border-box;
+//   will-change: transform;
 
-  // :hover {
-  //   transition: all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s;
-  // }
-`;
+//   // :hover {
+//   //   transition: all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s;
+//   // }
+// `;
 
 // transform: ${(props) => `rotateX(${props.xCoord})``rotateY(${props.yCoord})`};
 
@@ -85,12 +101,12 @@ class Hobbies extends React.Component {
     e.preventDefault();
     let x = (e.clientX / 100) * 0.8;
     let y = (e.clientY / 100) * 1.1;
-    console.log("x=> ", x, "y=> ", y);
-    // this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
+    console.log("x=> ", x, "y=> ", y, e.target);
+    this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
     // e.target.style.width = "40rem";
     // e.target.parentNode.style.transform = `perspective(300) rotateX(var(--mouse-varx)) rotateY(var(--mouse-vary))`;
-    e.target.parentNode.style.setProperty("--mouse-varx", x + "deg");
-    e.target.parentNode.style.setProperty("--mouse-vary", y + "deg");
+    e.target.parentNode.parentNode.style.setProperty("--mouse-varx", x + "deg");
+    e.target.parentNode.parentNode.style.setProperty("--mouse-vary", y + "deg");
   };
   enter = (e) => {
     e.preventDefault();
@@ -99,20 +115,33 @@ class Hobbies extends React.Component {
   };
 
   render() {
+    let trans =
+      "perspective(300)" +
+      "rotateX(" +
+      this.state.x +
+      ")" +
+      " rotateY(" +
+      this.state.y +
+      ")";
+    var hobbyContainer = {
+      display: "block",
+      border: "2px solid black",
+      // willChange: "transform",
+      transform: trans,
+      // transform: perspective(300) rotateX(var(--mouse-varx))
+      //   rotateY(var(--mouse-vary));
+    };
     return (
       <Container id="content-4">
         <div>hobbies</div>
-        <HobbyDiv
-          className="hobby-container"
-          style={{
-            transform:
-              " rotateX(var(--mouse-varx)) perspective(300) rotateY(var(--mouse-vary)) translateY(-50%)",
-          }}
+        <div
+          style={hobbyContainer}
+          // className="hobby-container"
           onMouseMove={this.mouseCoords}
           onMouseEnter={this.enter}
         >
-          <Image src={stairwell} alt="stairwell" className="photography" />
-        </HobbyDiv>
+          <img src={stairwell} alt="stairwell" className="photography" />
+        </div>
       </Container>
     );
   }

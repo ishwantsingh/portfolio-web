@@ -12,11 +12,6 @@ code {
     monospace;
 }
 
-:root {
-  --mouse-varx: 0deg;
-  --mouse-vary: 0deg;
-}
-
 @font-face {
   font-family: "Prata";
   src: local("Prata"), url(./fonts/Prata-Regular.ttf) format("truetype");
