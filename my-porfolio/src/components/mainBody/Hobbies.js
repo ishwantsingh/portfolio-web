@@ -16,8 +16,9 @@ const Container = styled.div`
   background-color: white;
   font-size: 7rem;
   text-align: center;
-  --mouse-varx: 5deg;
-  --mouse-vary: 10deg;
+  --mouse-vary: 0deg;
+  --mouse-varx: 0deg;
+  transform: perspective(0px) rotateX(0deg) rotateY(0deg) !important;
   .bgImage {
     display: flex;
     // position: absolute;
@@ -34,22 +35,23 @@ const Container = styled.div`
   }
   .photography {
     display: block;
-    width: 25vw;
-    height: 70vh;
+    width: 20vw;
+    height: 50vh;
+    margin: 1vw auto;
     border: 2px solid black;
   }
-
-  // .hobby-container {
-  // --mouse-varx: 5deg;
-  // --mouse-vary: 10deg;
-  //   display: block;
-  //   border: 2px solid black;
-  //   box-sizing: border-box;
-  //   will-change: transform;
-  //   transform: perspective(300) rotateX(5deg) rotateY(var(--mouse-vary));
-  //   // transform: perspective(300) rotateX(var(--mouse-varx))
-  //   //   rotateY(var(--mouse-vary));
-  // }
+  .hobby-container {
+    display: block;
+    width: 22vw;
+    height: 55vh;
+    border: 2px solid black;
+    box-sizing: border-box;
+    will-change: transform;
+    transform: perspective(300px) rotateX(var(--mouse-vary))
+      rotateY(var(--mouse-varx));
+    // transform: perspective(300) rotateX(var(--mouse-varx))
+    //   rotateY(var(--mouse-vary));
+  }
 `;
 
 // const Image = styled.img`
@@ -97,48 +99,61 @@ class Hobbies extends React.Component {
     }, timelineDuration);
   };
 
-  mouseCoords = (e) => {
-    e.preventDefault();
-    let x = (e.clientX / 100) * 0.8;
-    let y = (e.clientY / 100) * 1.1;
-    console.log("x=> ", x, "y=> ", y, e.target);
-    this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
-    // e.target.style.width = "40rem";
-    // e.target.parentNode.style.transform = `perspective(300) rotateX(var(--mouse-varx)) rotateY(var(--mouse-vary))`;
-    e.target.parentNode.parentNode.style.setProperty("--mouse-varx", x + "deg");
-    e.target.parentNode.parentNode.style.setProperty("--mouse-vary", y + "deg");
-  };
   enter = (e) => {
     e.preventDefault();
-    e.target.parentNode.style.transition =
+    let enterX = e.clientX;
+    let enterY = e.clientY;
+    this.setState({ enterX: enterX, enterY: enterY });
+    e.target.style.transition =
       " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
   };
 
+  mouseCoords = (e) => {
+    e.preventDefault();
+
+    let x;
+    let y;
+    let picWidth = getComputedStyle(e.target).width;
+    let picLength = getComputedStyle(e.target).length;
+    console.log(this.state.enterX, "w", e.clientX, "p", picWidth);
+    if (e.clientY <= this.state.enterY + picLength / 2) {
+      y = (e.clientY / 200) * 0.95;
+    } else if (e.clientY >= this.state.enterY + picLength / 2) {
+      y = -((e.clientY / 200) * 0.95);
+    }
+    if (e.clientX <= this.state.enterX + parseFloat(picWidth) / 2) {
+      x = (e.clientX / 200) * 0.8;
+    } else if (e.clientX >= this.state.enterX + parseFloat(picWidth) / 2) {
+      x = -((e.clientX / 200) * 0.8);
+    }
+
+    console.log("x=> ", x, "y=> ", y);
+    // this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
+    // e.target.style.width = "40rem";
+    e.target.parentNode.style.transform = `perspective(300px) rotateX(var(--mouse-vary)) rotateY(var(--mouse-varx))`;
+    e.target.parentNode.style.setProperty("--mouse-vary", y + "deg");
+    e.target.parentNode.style.setProperty("--mouse-varx", x + "deg");
+  };
+  // var(--mouse-varx)
+
+  leave = (e) => {
+    e.preventDefault();
+    e.target.parentNode.style.transition =
+      " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
+    e.target.style.setProperty("--mouse-varx", 0 + "deg");
+    e.target.style.setProperty("--mouse-vary", 0 + "deg");
+    // e.target.parentNode.style.transform = `perspective(0px) rotateX(5deg) rotateY(var(--mouse-varx))`;
+  };
+
   render() {
-    let trans =
-      "perspective(300)" +
-      "rotateX(" +
-      this.state.x +
-      ")" +
-      " rotateY(" +
-      this.state.y +
-      ")";
-    var hobbyContainer = {
-      display: "block",
-      border: "2px solid black",
-      // willChange: "transform",
-      transform: trans,
-      // transform: perspective(300) rotateX(var(--mouse-varx))
-      //   rotateY(var(--mouse-vary));
-    };
     return (
       <Container id="content-4">
         <div>hobbies</div>
         <div
-          style={hobbyContainer}
-          // className="hobby-container"
+          className="hobby-container"
           onMouseMove={this.mouseCoords}
           onMouseEnter={this.enter}
+          onMouseLeave={this.leave}
         >
           <img src={stairwell} alt="stairwell" className="photography" />
         </div>
