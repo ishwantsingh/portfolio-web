@@ -115,18 +115,18 @@ class Hobbies extends React.Component {
     let picWidth = getComputedStyle(e.target).width;
     let picLength = getComputedStyle(e.target).length;
     // console.log(this.state.enterX, "w", e.clientX, "p", picWidth);
-    // if (e.clientY < this.state.enterY + picLength / 2) {
-    y = ((e.clientY - this.state.enterY + picLength) / 100) * 1.2;
+    // if ( e.clientY < this.state.enterY + picLength / 2) {
+    y = ((e.clientY - this.state.enterY + picLength) / 150) * 1.1;
     // } else if (e.clientY >= this.state.enterY + picLength / 2) {
     //   y = -((this.state.enterY + picLength / 100) * 0.95);
     // }
-    // if (e.clientX <= this.state.enterX + parseFloat(picWidth) / 2) {
-    x = ((e.clientX - this.state.enterX + parseFloat(picWidth)) / 100) * 1.2; // CHANGED SIGNS HERE
+    // if (e.movementX >=1 && e.clientX <= this.state.enterX + parseFloat(picWidth) / 2) {
+    x = ((e.clientX - this.state.enterX + parseFloat(picWidth)) / 150) * 1.1; // CHANGED SIGNS HERE
     // } else if (e.clientX >= this.state.enterX + parseFloat(picWidth) / 2) {
     //   x = -((e.clientX / 200) * 0.8);
     // }
 
-    console.log("x=> ", x, "y=> ", y);
+    console.log("x=> ", x, "y=> ", y, e.clientX, e.pageX, e.screenX);
     // this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
     // e.target.style.width = "40rem";
     e.target.parentNode.style.transform = `perspective(200px) rotateX(var(--mouse-vary)) rotateY(var(--mouse-varx))`;
