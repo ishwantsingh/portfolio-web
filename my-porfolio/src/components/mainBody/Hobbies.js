@@ -4,6 +4,7 @@ import { TimelineMax, Power1 } from "gsap/all";
 import history from "../../history";
 
 import stairwell from "../../assets/stairwell.jpeg";
+import river from "../../assets/river.jpeg";
 
 const Container = styled.div`
   width: 100%;
@@ -16,8 +17,6 @@ const Container = styled.div`
   background-color: white;
   font-size: 7rem;
   text-align: center;
-  --mouse-vary: 0deg;
-  --mouse-varx: 0deg;
   transform: perspective(0px) rotateX(0deg) rotateY(0deg) !important;
   .bgImage {
     display: flex;
@@ -35,21 +34,39 @@ const Container = styled.div`
   }
   .photography {
     display: block;
-    width: 20vw;
-    height: 50vh;
+    width: 15vw;
+    height: 20vw;
     margin: 1vw auto;
   }
-  .hobby-container {
+  .photography2 {
     display: block;
-    width: 22vw;
-    height: 55vh;
+    width: 30vw;
+    height: 20vw;
+    margin: 1vw auto;
+  }
+  .hobby-container-first {
+    --mouse-vary: 0deg;
+    --mouse-varx: 0deg;
+    display: block;
+    width: 31vw;
+    height: 21vw;
     // border: 2px solid black;
     box-sizing: border-box;
     will-change: transform;
     transform: perspective(200px) rotateX(var(--mouse-vary))
       rotateY(var(--mouse-varx));
-    // transform: perspective(200px) rotateX(var(--mouse-varx))
-    //   rotateY(var(--mouse-vary));
+  }
+  .hobby-container-second {
+    --mouse-vary-sec: 0deg;
+    --mouse-varx-sec: 0deg;
+    display: block;
+    width: 16vw;
+    height: 21vw;
+    // border: 2px solid black;
+    box-sizing: border-box;
+    will-change: transform;
+    transform: perspective(200px) rotateX(var(--mouse-vary-sec))
+      rotateY(var(--mouse-varx-sec));
   }
 `;
 
@@ -100,14 +117,14 @@ class Hobbies extends React.Component {
 
   enter = (e) => {
     e.preventDefault();
-    let enterX = e.clientX; //// PROBLEM WITH COMPARING W ENTER COORDINATES
     let enterY = e.clientY;
-    this.setState({ enterX: enterX, enterY: enterY });
+    let enterX = e.clientX; //// PROBLEM WITH COMPARING W ENTER COORDINATES
+    this.setState({ enterY: enterY, enterX: enterX });
     e.target.style.transition =
       " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
   };
 
-  mouseCoords = (e) => {
+  mouseCoords = (e, mouseYClass, mouseXClass) => {
     e.preventDefault();
 
     let x;
@@ -129,19 +146,19 @@ class Hobbies extends React.Component {
     console.log("x=> ", x, "y=> ", y, e.clientX, e.pageX, e.screenX);
     // this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
     // e.target.style.width = "40rem";
-    e.target.parentNode.style.transform = `perspective(200px) rotateX(var(--mouse-vary)) rotateY(var(--mouse-varx))`;
+    e.target.parentNode.style.transform = `perspective(200px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
     // e.target.parentNode.style.transform = `perspective(200px) rotateX(var(--mouse-varx)) rotateY(var(--mouse-vary))`;
-    e.target.parentNode.style.setProperty("--mouse-vary", y + "deg");
-    e.target.parentNode.style.setProperty("--mouse-varx", x + "deg");
+    e.target.parentNode.style.setProperty(mouseYClass, y + "deg");
+    e.target.parentNode.style.setProperty(mouseXClass, x + "deg");
   };
   // var(--mouse-varx)
 
-  leave = (e) => {
+  leave = (e, mouseYClass, mouseXClass) => {
     e.preventDefault();
     e.target.parentNode.style.transition =
       " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
-    e.target.style.setProperty("--mouse-varx", 0 + "deg");
-    e.target.style.setProperty("--mouse-vary", 0 + "deg");
+    e.target.style.setProperty(mouseYClass, 0 + "deg");
+    e.target.style.setProperty(mouseXClass, 0 + "deg");
     // e.target.parentNode.style.transform = `perspective(0px) rotateX(5deg) rotateY(var(--mouse-varx))`;
   };
 
@@ -149,13 +166,30 @@ class Hobbies extends React.Component {
     return (
       <Container id="content-4">
         <div>hobbies</div>
-        <div
-          className="hobby-container"
-          onMouseMove={this.mouseCoords}
-          onMouseEnter={this.enter}
-          onMouseLeave={this.leave}
-        >
-          <img src={stairwell} alt="stairwell" className="photography" />
+        <div>
+          <div
+            className="hobby-container-first"
+            onMouseMove={(e) =>
+              this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
+            }
+            onMouseEnter={this.enter}
+            onMouseLeave={(e) => this.leave(e, "--mouse-vary", "--mouse-varx")}
+          >
+            <img src={river} alt="river" className="photography2" />
+          </div>
+
+          <div
+            className="hobby-container-second"
+            onMouseMove={(e) =>
+              this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
+            }
+            onMouseEnter={this.enter}
+            onMouseLeave={(e) =>
+              this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
+            }
+          >
+            <img src={stairwell} alt="stairwell" className="photography" />
+          </div>
         </div>
       </Container>
     );
