@@ -5,6 +5,8 @@ import history from "../../history";
 
 import stairwell from "../../assets/stairwell.jpeg";
 import river from "../../assets/river.jpeg";
+import fire from "../../assets/fire.jpeg";
+import road from "../../assets/road.jpeg";
 
 const Container = styled.div`
   width: 100%;
@@ -18,19 +20,14 @@ const Container = styled.div`
   font-size: 7rem;
   text-align: center;
   transform: perspective(0px) rotateX(0deg) rotateY(0deg) !important;
-  .bgImage {
+  .page-container {
     display: flex;
-    // position: absolute;
-    width: 100%;
-    height: 100%;
-    // top: -50%;
-    // left: -50%;
-    // z-index: -1;
-    // width: 25vw;
-    // height: 35vh;
-    // display: flex;
-    // justify-self: flex-start;
-    // align-self: flex-start;
+    flex-direction: row;
+  }
+  .page {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
   }
   .photography {
     display: block;
@@ -166,29 +163,60 @@ class Hobbies extends React.Component {
     return (
       <Container id="content-4">
         <div>hobbies</div>
-        <div>
-          <div
-            className="hobby-container-first"
-            onMouseMove={(e) =>
-              this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
-            }
-            onMouseEnter={this.enter}
-            onMouseLeave={(e) => this.leave(e, "--mouse-vary", "--mouse-varx")}
-          >
-            <img src={river} alt="river" className="photography2" />
-          </div>
+        <div className="page-container">
+          <div className="page">
+            <div
+              className="hobby-container-first"
+              onMouseMove={(e) =>
+                this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
+              }
+              onMouseEnter={this.enter}
+              onMouseLeave={(e) =>
+                this.leave(e, "--mouse-vary", "--mouse-varx")
+              }
+            >
+              <img src={river} alt="river" className="photography2" />
+            </div>
 
-          <div
-            className="hobby-container-second"
-            onMouseMove={(e) =>
-              this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
-            }
-            onMouseEnter={this.enter}
-            onMouseLeave={(e) =>
-              this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
-            }
-          >
-            <img src={stairwell} alt="stairwell" className="photography" />
+            <div
+              className="hobby-container-second"
+              onMouseMove={(e) =>
+                this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              }
+              onMouseEnter={this.enter}
+              onMouseLeave={(e) =>
+                this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              }
+            >
+              <img src={stairwell} alt="stairwell" className="photography" />
+            </div>
+          </div>
+          <div className="page">
+            <div
+              className="hobby-container-first"
+              onMouseMove={(e) =>
+                this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
+              }
+              onMouseEnter={this.enter}
+              onMouseLeave={(e) =>
+                this.leave(e, "--mouse-vary", "--mouse-varx")
+              }
+            >
+              <img src={road} alt="road" className="photography2" />
+            </div>
+
+            <div
+              className="hobby-container-second"
+              onMouseMove={(e) =>
+                this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              }
+              onMouseEnter={this.enter}
+              onMouseLeave={(e) =>
+                this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              }
+            >
+              <img src={fire} alt="fire" className="photography" />
+            </div>
           </div>
         </div>
       </Container>
