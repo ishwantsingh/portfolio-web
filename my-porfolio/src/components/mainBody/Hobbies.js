@@ -36,7 +36,7 @@ const Container = styled.div`
     width: 50%;
     height: 100%;
   }
-  .page + .right {
+  .page.right {
     border-left: 1px solid #f0f0f0;
   }
   #river {
@@ -46,10 +46,12 @@ const Container = styled.div`
   #stairwell {
     width: 12vw;
     height: 15vw;
+    margin-left: 50%;
   }
   #fire {
     width: 13vw;
     height: 16vw;
+    margin-right: 10%;
   }
   .photography {
     display: block;
@@ -68,6 +70,7 @@ const Container = styled.div`
     --mouse-vary: 0deg;
     --mouse-varx: 0deg;
     display: flex;
+    flex-direction: column;
     width: 100%;
     // border: 2px solid black;
     box-sizing: border-box;
@@ -75,10 +78,24 @@ const Container = styled.div`
     transform: perspective(200px) rotateX(var(--mouse-vary))
       rotateY(var(--mouse-varx));
   }
+  .pic-name {
+    font-size: 1rem;
+    font-weight: normal;
+    width: 35vw;
+    margin 0 auto;
+    text-align: left;
+    align-self: flex-start;
+    color: #444;
+    margin-top: -0.5rem !important;
+  }
+  .pic-name.road {
+    width: 27vw;
+    margin: 0 auto;
+  }
   .stairwell {
     align-self: flex-end;
-    margin-right: 15%;
-    margin-top: 4rem;
+    // margin-right: 15%;
+    margin-top: 2rem;
   }
   .fire {
     align-self: flex-end;
@@ -87,14 +104,28 @@ const Container = styled.div`
   .hobby-container-second {
     --mouse-vary-sec: 0deg;
     --mouse-varx-sec: 0deg;
-    display: block;
-    width: 16vw;
-    height: 21vw;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    align-items: flex-end;
+    width: 100%;
     // border: 2px solid black;
     box-sizing: border-box;
     will-change: transform;
     transform: perspective(200px) rotateX(var(--mouse-vary-sec))
       rotateY(var(--mouse-varx-sec));
+  }
+  .pic-name.stairwell {
+    width: 12vw;
+    margin-top: 0;
+    margin-left: 50%;
+    align-self: flex-start;
+  }
+  .pic-name.fire {
+    width: 13vw;
+    margin-top: 0;
+    margin-right: 10%;
+    align-self: flex-start;
   }
 `;
 
@@ -211,6 +242,7 @@ class Hobbies extends React.Component {
                 className="photography2"
                 id="river"
               />
+              <span className="pic-name">- River of Solitude</span>
             </div>
 
             <div
@@ -229,6 +261,7 @@ class Hobbies extends React.Component {
                 className="photography"
                 id="stairwell"
               />
+              <span className="pic-name stairwell">- Plummeting Descent</span>
             </div>
           </div>
           <div className="page right ">
@@ -243,6 +276,7 @@ class Hobbies extends React.Component {
               // }
             >
               <img src={fire} alt="fire" className="photography" id="fire" />
+              <span className="pic-name fire">- Flame of Enlightenment</span>
             </div>
             <div
               className="hobby-container-first road"
@@ -255,6 +289,7 @@ class Hobbies extends React.Component {
               // }
             >
               <img src={road} alt="road" className="photography2" id="road" />
+              <span className="pic-name road">- Boulevard of Fortune</span>
             </div>
           </div>
         </div>
