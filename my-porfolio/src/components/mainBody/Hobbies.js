@@ -270,6 +270,7 @@ class Hobbies extends React.Component {
     return (
       <Container id="content-4">
         <div className="page-container">
+          <Icon name="long arrow alternate left" className="icon back" />
           <div className="page">
             <div
               className="hobby-container-first river"
@@ -337,12 +338,11 @@ class Hobbies extends React.Component {
               <span className="pic-name road">- Boulevard of Fortune</span>
             </div>
           </div>
+          <Icon name="long arrow alternate right" className="icon next" />
         </div>
         <div className="cover-container hidden">
-          <Icon name="long arrow alternate left" className="icon back" />
           <div className="cover"></div>
           <div className="cover"></div>
-          <Icon name="long arrow alternate right" className="icon next" />
         </div>
       </Container>
     );
