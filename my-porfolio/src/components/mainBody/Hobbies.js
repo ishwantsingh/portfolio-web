@@ -72,6 +72,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    opacity: 0.9;
     // border: 2px solid black;
     box-sizing: border-box;
     will-change: transform;
@@ -95,12 +96,11 @@ const Container = styled.div`
   .stairwell {
     align-self: flex-end;
     // margin-right: 15%;
-    //
     margin-top: 2rem;
   }
   .fire {
     align-self: flex-end;
-    margin-bottom: 1rem;
+    margin-bottom: 3.5rem;
   }
   .hobby-container-second {
     --mouse-vary-sec: 0deg;
@@ -110,6 +110,7 @@ const Container = styled.div`
     align-self: flex-end;
     align-items: flex-end;
     width: 100%;
+    opacity: 0.9;
     // border: 2px solid black;
     box-sizing: border-box;
     will-change: transform;
