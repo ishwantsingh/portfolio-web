@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { TimelineMax, Power1 } from "gsap/all";
 import history from "../../history";
+import { Icon } from "semantic-ui-react";
 
 import stairwell from "../../assets/stairwell.jpeg";
 import river from "../../assets/river.jpeg";
@@ -128,6 +129,48 @@ const Container = styled.div`
     margin-top: 0;
     margin-right: 10%;
     align-self: flex-start;
+  }
+  .cover-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .cover {
+    display: block;
+    width: 50%;
+    height: 100%;
+    background-color: #EDE8E4;
+  }
+  .hidden {
+    display: none;
+  }
+  .icon.back {
+    display: flex;
+    top: 50%;
+    left: 1.2%;
+    position: absolute;
+    font-size: 2.33rem;
+    color: #505050;
+  }
+  .icon.next {
+    display: flex;
+    top: 50%;
+    right: 1.2%;
+    position: absolute;
+    font-size: 2.33rem;
+    color: #505050;
+  }
+  i.icon:hover {
+    cursor: pointer;
+    font-size: 2.2rem;
+    text-shadow: 0px 0px 0px #ffffff;
+    color: #101010;
   }
 `;
 
@@ -294,6 +337,12 @@ class Hobbies extends React.Component {
               <span className="pic-name road">- Boulevard of Fortune</span>
             </div>
           </div>
+        </div>
+        <div className="cover-container hidden">
+          <Icon name="long arrow alternate left" className="icon back" />
+          <div className="cover"></div>
+          <div className="cover"></div>
+          <Icon name="long arrow alternate right" className="icon next" />
         </div>
       </Container>
     );
