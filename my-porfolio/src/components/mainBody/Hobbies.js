@@ -95,6 +95,7 @@ const Container = styled.div`
   .stairwell {
     align-self: flex-end;
     // margin-right: 15%;
+    //
     margin-top: 2rem;
   }
   .fire {
