@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { TimelineMax, Power1 } from "gsap/all";
+import { TimelineMax, Power1, Quint } from "gsap/all";
 import history from "../../history";
 import { Icon } from "semantic-ui-react";
 
@@ -153,22 +153,26 @@ const Container = styled.div`
   .icon.back {
     display: flex;
     top: 50%;
-    left: 1.2%;
+    left: 0.7%;
+    margin: 0;
+    z-index: 1;
     position: absolute;
-    font-size: 2.33rem;
+    font-size: 2.2rem;
     color: #505050;
   }
   .icon.next {
     display: flex;
     top: 50%;
-    right: 1.2%;
+    right: 0.7%;
+    margin: 0;
+    z-index: 1;
     position: absolute;
-    font-size: 2.33rem;
+    font-size: 2.2rem;
     color: #505050;
   }
   i.icon:hover {
     cursor: pointer;
-    font-size: 2.2rem;
+    font-size: 2.33rem;
     text-shadow: 0px 0px 0px #ffffff;
     color: #101010;
   }
@@ -199,6 +203,7 @@ class Hobbies extends React.Component {
       y: 600,
     };
     this.timeline = new TimelineMax({ paused: true });
+    this.transitionTimeline = new TimelineMax({ paused: true });
   }
 
   componentDidMount() {
@@ -218,6 +223,54 @@ class Hobbies extends React.Component {
       history.push(destination);
     }, timelineDuration);
   };
+
+  nextPicturePage = (e) => {
+    e.preventDefault();
+    var coverContainer = document.querySelector(".cover-container");
+    coverContainer.classList.remove("hidden");
+    this.transitionTimeline.to(
+      ".cover",
+      1.6,
+      {
+        ease: Quint.easeInOut,
+        startAt: { x: "100%" },
+        x: "-100%",
+      },
+      0.15
+    );
+    this.transitionTimeline.play();
+  };
+
+  backPicturePage = (e) => {
+    e.preventDefault();
+    var coverContainer = document.querySelector(".cover-container");
+    coverContainer.classList.remove("hidden");
+  };
+
+  // changeVideo = (e, butPressed) => {
+  //   e.preventDefault();
+  //   let vid = document.querySelector("div.projectVidContainer #video");
+  //   let vidSrc = document.querySelector(
+  //     "div.projectVidContainer #video-source"
+  //   );
+  //   let anchorTag = document.querySelector("div.projectVidContainer a");
+  //   vid.pause();
+  //   if (this.state.currentVideo === postit && butPressed === "next") {
+  //     this.setState({ currentVideo: treway });
+  //     this.setState({ currentVidName: "Treway" });
+  //     this.videoTimeline.from(vid, 1, {
+  //       autoAlpha: 0,
+  //       x: 80,
+  //       delay: 0.2,
+  //       ease: "power1.easeOut",
+  //     });
+  //     this.setState({ leftArrDisabled: false });
+  //     vidSrc.setAttribute("src", treway);
+  //     vid.setAttribute("title", "Treway demo");
+  //     anchorTag.setAttribute("href", this.state.trewayLink);
+  //     this.videoTimeline.play();
+  //   }
+  // };
 
   enter = (e) => {
     e.preventDefault();
@@ -270,7 +323,11 @@ class Hobbies extends React.Component {
     return (
       <Container id="content-4">
         <div className="page-container">
-          <Icon name="long arrow alternate left" className="icon back" />
+          <Icon
+            name="long arrow alternate left"
+            className="icon back"
+            onClick={this.backPicturePage}
+          />
           <div className="page">
             <div
               className="hobby-container-first river"
@@ -338,11 +395,15 @@ class Hobbies extends React.Component {
               <span className="pic-name road">- Boulevard of Fortune</span>
             </div>
           </div>
-          <Icon name="long arrow alternate right" className="icon next" />
+          <Icon
+            name="long arrow alternate right"
+            className="icon next"
+            onClick={this.nextPicturePage}
+          />
         </div>
         <div className="cover-container hidden">
           <div className="cover"></div>
-          <div className="cover"></div>
+          <div className="cover1 cover"></div>
         </div>
       </Container>
     );
