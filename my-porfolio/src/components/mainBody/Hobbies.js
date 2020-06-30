@@ -9,6 +9,11 @@ import river from "../../assets/river.jpeg";
 import fire from "../../assets/fire.jpeg";
 import road from "../../assets/road.jpeg";
 
+import sky from "../../assets/sky.jpeg";
+import leaf from "../../assets/leaf.jpeg";
+import gate from "../../assets/gate.jpeg";
+import painting1 from "../../assets/painting1.jpeg";
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -227,28 +232,72 @@ class Hobbies extends React.Component {
 
   nextPicturePage = (e) => {
     e.preventDefault();
-    var cover1 = document.querySelector(".cover1");
-    var cover2 = document.querySelector(".cover2");
+    let cover1 = document.querySelector(".cover1");
+    let cover2 = document.querySelector(".cover2");
+
+    let pic1 = document.querySelector(".pic1");
+    let pic2 = document.querySelector(".pic2");
+    let pic3 = document.querySelector(".pic3");
+    let pic4 = document.querySelector(".pic4");
+    console.log(pic1, pic2, pic3, pic4);
+
     let show1 = () => {
       cover1.classList.remove("hidden");
       cover1.style.zIndex = 2;
       cover2.classList.remove("hidden");
       cover2.style.zIndex = 2;
+      setTimeout(() => {
+        pic1.setAttribute("src", sky);
+        pic2.setAttribute("src", leaf);
+        pic3.setAttribute("src", gate);
+        pic4.setAttribute("src", painting1);
+      }, 1.3);
     };
-    this.transitionTimeline.fromTo(
-      ".cover",
-      1.6,
-      {
-        // ease: Quint.easeInOut,
-        // startAt: { x: "100%" },
-        x: "100%",
-      },
-      {
-        x: "0%",
-        ease: Quint.easeInOut,
-      },
-      0
-    );
+
+    this.transitionTimeline
+      .fromTo(
+        ".cover",
+        1.6,
+        {
+          // ease: Quint.easeInOut,
+          // startAt: { x: "100%" },
+          x: "100%",
+        },
+        {
+          x: "0%",
+          ease: Quint.easeInOut,
+        },
+        0
+      )
+      // .fromTo(
+      //   ".page",
+      //   1.6,
+      //   {
+      //     // css: { zIndex: 2 },
+      //     x: "100%",
+      //   },
+      //   {
+      //     // css: { zIndex: 3 },
+      //     x: "0%",
+      //     ease: Quint.easeInOut,
+      //   },
+      //   0
+      // )
+      .fromTo(
+        ".cover",
+        1.6,
+        {
+          x: "0%",
+          // css: { zIndex: 2 },
+        },
+        {
+          x: "-100%",
+          css: { zIndex: 0 },
+          ease: Quint.easeInOut,
+          delay: 0,
+        },
+        0.15
+      );
 
     this.transitionTimeline.play().eventCallback(show1());
     // let hide = () => {
@@ -265,31 +314,6 @@ class Hobbies extends React.Component {
     var coverContainer = document.querySelector(".cover-container");
     coverContainer.classList.remove("hidden");
   };
-
-  // changeVideo = (e, butPressed) => {
-  //   e.preventDefault();
-  //   let vid = document.querySelector("div.projectVidContainer #video");
-  //   let vidSrc = document.querySelector(
-  //     "div.projectVidContainer #video-source"
-  //   );
-  //   let anchorTag = document.querySelector("div.projectVidContainer a");
-  //   vid.pause();
-  //   if (this.state.currentVideo === postit && butPressed === "next") {
-  //     this.setState({ currentVideo: treway });
-  //     this.setState({ currentVidName: "Treway" });
-  //     this.videoTimeline.from(vid, 1, {
-  //       autoAlpha: 0,
-  //       x: 80,
-  //       delay: 0.2,
-  //       ease: "power1.easeOut",
-  //     });
-  //     this.setState({ leftArrDisabled: false });
-  //     vidSrc.setAttribute("src", treway);
-  //     vid.setAttribute("title", "Treway demo");
-  //     anchorTag.setAttribute("href", this.state.trewayLink);
-  //     this.videoTimeline.play();
-  //   }
-  // };
 
   enter = (e) => {
     e.preventDefault();
@@ -356,7 +380,7 @@ class Hobbies extends React.Component {
               <img
                 src={river}
                 alt="river"
-                className="photography2"
+                className="photography2 pic1"
                 id="river"
               />
               <span className="pic-name">- River of Solitude</span>
@@ -375,7 +399,7 @@ class Hobbies extends React.Component {
               <img
                 src={stairwell}
                 alt="stairwell"
-                className="photography"
+                className="photography pic2"
                 id="stairwell"
               />
               <span className="pic-name stairwell">- Plummeting Descent</span>
@@ -398,7 +422,12 @@ class Hobbies extends React.Component {
               //   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
               // }
             >
-              <img src={fire} alt="fire" className="photography" id="fire" />
+              <img
+                src={fire}
+                alt="fire"
+                className="photography pic3"
+                id="fire"
+              />
               <span className="pic-name fire">- Flames of Enlightenment</span>
             </div>
             <div
@@ -411,7 +440,12 @@ class Hobbies extends React.Component {
               //   this.leave(e, "--mouse-vary", "--mouse-varx")
               // }
             >
-              <img src={road} alt="road" className="photography2" id="road" />
+              <img
+                src={road}
+                alt="road"
+                className="photography2 pic4"
+                id="road"
+              />
               <span className="pic-name road">- Boulevard of Fortune</span>
             </div>
           </div>
