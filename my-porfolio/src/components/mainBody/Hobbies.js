@@ -158,6 +158,13 @@ const Container = styled.div`
     left: 0;
     top: 0;
   }
+  .cover2 {
+    width: 50%;
+    z-index: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
   .hidden {
     display: none;
   }
@@ -188,23 +195,6 @@ const Container = styled.div`
     color: #101010;
   }
 `;
-
-// const Image = styled.img`
-//   display: block;
-//   width: 25vw;
-//   height: 70vh;
-// `;
-// const HobbyDiv = styled.div`
-//   display: block;
-//   box-sizing: border-box;
-//   will-change: transform;
-
-//   // :hover {
-//   //   transition: all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s;
-//   // }
-// `;
-
-// transform: ${(props) => `rotateX(${props.xCoord})``rotateY(${props.yCoord})`};
 
 class Hobbies extends React.Component {
   constructor(props) {
@@ -237,13 +227,14 @@ class Hobbies extends React.Component {
 
   nextPicturePage = (e) => {
     e.preventDefault();
-    var coverContainer = document.querySelector(".cover1");
-    let show = () => {
-      coverContainer.classList.remove("hidden");
-      coverContainer.style.zIndex = 2;
-      // coverContainer.parentNode.children[0].style.zIndex = 100;
+    var cover1 = document.querySelector(".cover1");
+    var cover2 = document.querySelector(".cover2");
+    let show1 = () => {
+      cover1.classList.remove("hidden");
+      cover1.style.zIndex = 2;
+      cover2.classList.remove("hidden");
+      cover2.style.zIndex = 2;
     };
-
     this.transitionTimeline.fromTo(
       ".cover",
       1.6,
@@ -253,12 +244,13 @@ class Hobbies extends React.Component {
         x: "100%",
       },
       {
-        x: "-100%",
+        x: "0%",
         ease: Quint.easeInOut,
       },
       0
     );
-    this.transitionTimeline.play().eventCallback(show());
+
+    this.transitionTimeline.play().eventCallback(show1());
     // let hide = () => {
     //   coverContainer.style.zIndex = 0;
     //   coverContainer.classList.add("hidden");
@@ -428,10 +420,10 @@ class Hobbies extends React.Component {
             className="icon next"
             onClick={this.nextPicturePage}
           />
+          <div className="cover2 cover hidden"></div>
         </div>
-        <div className="cover-container">
-          <div className="cover2 cover"></div>
-        </div>
+        {/* <div className="cover-container">
+        </div> */}
       </Container>
     );
   }
