@@ -36,9 +36,14 @@ const Container = styled.div`
     justify-content: center;
     width: 50%;
     height: 100%;
+    z-index: 2;
+  }
+  .page.left {
+    background-color: white;
   }
   .page.right {
     border-left: 1px solid #f0f0f0;
+    background-color: white;
   }
   #river {
     width: 35vw;
@@ -147,6 +152,12 @@ const Container = styled.div`
     height: 100%;
     background-color: #EDE8E4;
   }
+  .cover1 {
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
   .hidden {
     display: none;
   }
@@ -155,7 +166,7 @@ const Container = styled.div`
     top: 50%;
     left: 0.7%;
     margin: 0;
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     font-size: 2.2rem;
     color: #505050;
@@ -165,7 +176,7 @@ const Container = styled.div`
     top: 50%;
     right: 0.7%;
     margin: 0;
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     font-size: 2.2rem;
     color: #505050;
@@ -226,19 +237,35 @@ class Hobbies extends React.Component {
 
   nextPicturePage = (e) => {
     e.preventDefault();
-    var coverContainer = document.querySelector(".cover-container");
-    coverContainer.classList.remove("hidden");
-    this.transitionTimeline.to(
+    var coverContainer = document.querySelector(".cover1");
+    let show = () => {
+      coverContainer.classList.remove("hidden");
+      coverContainer.style.zIndex = 2;
+      // coverContainer.parentNode.children[0].style.zIndex = 100;
+    };
+
+    this.transitionTimeline.fromTo(
       ".cover",
       1.6,
       {
-        ease: Quint.easeInOut,
-        startAt: { x: "100%" },
-        x: "-100%",
+        // ease: Quint.easeInOut,
+        // startAt: { x: "100%" },
+        x: "100%",
       },
-      0.15
+      {
+        x: "-100%",
+        ease: Quint.easeInOut,
+      },
+      0
     );
-    this.transitionTimeline.play();
+    this.transitionTimeline.play().eventCallback(show());
+    // let hide = () => {
+    //   coverContainer.style.zIndex = 0;
+    //   coverContainer.classList.add("hidden");
+
+    //   coverContainer.parentNode.children[0].style.zIndex = 0;
+    // };
+    // hide();
   };
 
   backPicturePage = (e) => {
@@ -323,12 +350,7 @@ class Hobbies extends React.Component {
     return (
       <Container id="content-4">
         <div className="page-container">
-          <Icon
-            name="long arrow alternate left"
-            className="icon back"
-            onClick={this.backPicturePage}
-          />
-          <div className="page">
+          <div className="page left">
             <div
               className="hobby-container-first river"
               // onMouseMove={(e) =>
@@ -367,6 +389,12 @@ class Hobbies extends React.Component {
               <span className="pic-name stairwell">- Plummeting Descent</span>
             </div>
           </div>
+          <Icon
+            name="long arrow alternate left"
+            className="icon back"
+            onClick={this.backPicturePage}
+          />
+          <div className="cover cover1 hidden"></div>
           <div className="page right ">
             <div
               className="hobby-container-second fire"
@@ -379,7 +407,7 @@ class Hobbies extends React.Component {
               // }
             >
               <img src={fire} alt="fire" className="photography" id="fire" />
-              <span className="pic-name fire">- Flame of Enlightenment</span>
+              <span className="pic-name fire">- Flames of Enlightenment</span>
             </div>
             <div
               className="hobby-container-first road"
@@ -401,9 +429,8 @@ class Hobbies extends React.Component {
             onClick={this.nextPicturePage}
           />
         </div>
-        <div className="cover-container hidden">
-          <div className="cover"></div>
-          <div className="cover1 cover"></div>
+        <div className="cover-container">
+          <div className="cover2 cover"></div>
         </div>
       </Container>
     );

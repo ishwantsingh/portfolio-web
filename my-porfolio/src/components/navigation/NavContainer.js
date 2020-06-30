@@ -14,6 +14,8 @@ const Container = styled.div`
   justify-self: flex-end;
   justify-content: center;
   border-left: 1.3px dashed #e1e0e0;
+  z-index: 3;
+  background-color: white;
 `;
 
 const SubContainer = styled.div`
