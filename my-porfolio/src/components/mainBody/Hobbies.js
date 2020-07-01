@@ -143,13 +143,30 @@ const Container = styled.div`
   .cover-container {
     width: 100%;
     height: 100%;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    z-index: 5000;
+  }
+  .revealer {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-left {
+    border-right: 1px solid #f0f0f0;
+  }
+  .cover-inner {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: translate3d(100%,0,0);
   }
   .cover {
     display: block;
@@ -235,8 +252,8 @@ class Hobbies extends React.Component {
 
   nextPicturePage = (e) => {
     e.preventDefault();
-    let cover1 = document.querySelector(".cover1");
-    let cover2 = document.querySelector(".cover2");
+    // let cover1 = document.querySelector(".cover1");
+    // let cover2 = document.querySelector(".cover2");
 
     let pic1 = document.querySelector(".pic1");
     let pic2 = document.querySelector(".pic2");
@@ -245,10 +262,10 @@ class Hobbies extends React.Component {
     console.log(pic1, pic2, pic3, pic4);
 
     let show1 = () => {
-      cover1.classList.remove("hidden");
-      cover1.style.zIndex = 2;
-      cover2.classList.remove("hidden");
-      cover2.style.zIndex = 2;
+      // cover1.classList.remove("hidden");
+      // cover1.style.zIndex = 2;
+      // cover2.classList.remove("hidden");
+      // cover2.style.zIndex = 2;
       setTimeout(() => {
         pic1.setAttribute("src", sky);
         pic2.setAttribute("src", leaf);
@@ -258,54 +275,54 @@ class Hobbies extends React.Component {
     };
 
     this.transitionTimeline
-      .fromTo(
-        ".cover1",
-        1.6,
-        {
-          // ease: Quint.easeInOut,
-          // startAt: { x: "100%" },
-          x: "100%",
-        },
-        {
-          x: "-100%",
-          ease: Quint.easeInOut,
-        },
-        0
-      )
-      // .to(
+      // .fromTo(
       //   ".cover1",
       //   1.6,
       //   {
-      //     ease: Quint.easeInOut,
-      //     startAt: { x: "100%" },
-      //     x: "-100%",
+      //     // ease: Quint.easeInOut,
+      //     // startAt: { x: "100%" },
+      //     x: "100%",
       //   },
-      //   0.15
-      // )
-      // .to(
-      //   ".cover2",
-      //   1.6,
       //   {
-      //     ease: Quint.easeInOut,
-      //     startAt: { x: "100%" },
       //     x: "-100%",
+      //     ease: Quint.easeInOut,
       //   },
-      //   0.15
-      // );
-      .fromTo(
-        ".cover2",
+      //   0
+      // )
+      .to(
+        ".cover-inner",
         1.6,
         {
-          // ease: Quint.easeInOut,
-          // startAt: { x: "100%" },
-          x: "100%",
-        },
-        {
-          x: "-100%",
           ease: Quint.easeInOut,
+          startAt: { x: "100%" },
+          x: "-100%",
         },
-        "<="
+        0.15
       );
+    // .to(
+    //   ".cover2",
+    //   1.6,
+    //   {
+    //     ease: Quint.easeInOut,
+    //     startAt: { x: "100%" },
+    //     x: "-100%",
+    //   },
+    //   0.15
+    // );
+    // .fromTo(
+    //   ".cover2",
+    //   1.6,
+    //   {
+    //     // ease: Quint.easeInOut,
+    //     // startAt: { x: "100%" },
+    //     x: "100%",
+    //   },
+    //   {
+    //     x: "-100%",
+    //     ease: Quint.easeInOut,
+    //   },
+    //   "<="
+    // );
     // .fromTo(
     //   ".page",
     //   1.6,
@@ -339,7 +356,7 @@ class Hobbies extends React.Component {
     this.transitionTimeline.play().eventCallback(show1());
     let hide = () => {
       setTimeout(() => {
-        cover2.style.zIndex = 1;
+        //     cover2.style.zIndex = 1;
       }, 1000);
     };
     hide();
@@ -446,7 +463,7 @@ class Hobbies extends React.Component {
             className="icon back"
             onClick={this.backPicturePage}
           />
-          <div className="cover cover1"></div>
+          {/* <div className="cover cover1"></div> */}
           <div className="page right ">
             <div
               className="hobby-container-second fire"
@@ -490,16 +507,22 @@ class Hobbies extends React.Component {
             className="icon next"
             onClick={this.nextPicturePage}
           />
-          <div className="cover2 cover"></div>
+          {/* <div className="cover2 cover"></div> */}
         </div>
-        {/* <div className="cover-container">
+        <div className="cover-container">
           <div className="revealer cover-left">
-            <div className="cover-inner"></div>
+            <div
+              className="cover-inner"
+              style={{ backgroundColor: "#f6f6f6" }}
+            ></div>
           </div>
           <div className="revealer cover-right">
-            <div className="cover-inner"></div>
+            <div
+              className="cover-inner"
+              style={{ backgroundColor: "#f6f6f6" }}
+            ></div>
           </div>
-        </div> */}
+        </div>
       </Container>
     );
   }
