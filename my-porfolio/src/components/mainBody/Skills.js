@@ -173,12 +173,6 @@ class Skills extends React.Component {
         autoAlpha: 0,
         ease: Power1.easeIn,
       })
-      .from(".tech-skill-perc", 0.3, {
-        autoAlpha: 0,
-        scaleX: 0,
-        transformOrigin: "right",
-        ease: Power1.easeIn,
-      })
       .from(
         ".tech-skill-fill",
         0.5,

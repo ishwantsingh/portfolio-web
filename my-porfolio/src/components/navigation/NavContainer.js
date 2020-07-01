@@ -14,7 +14,7 @@ const Container = styled.div`
   justify-self: flex-end;
   justify-content: center;
   border-left: 1.3px dashed #e1e0e0;
-  z-index: 3;
+  z-index: 10 !important;
   background-color: white;
 `;
 
