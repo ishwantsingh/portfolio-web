@@ -4,8 +4,8 @@ import { TimelineMax, Power1, Quint } from "gsap/all";
 import history from "../../history";
 import { Icon } from "semantic-ui-react";
 
-import stairwell from "../../assets/stairwell.jpeg";
 import river from "../../assets/river.jpeg";
+import stairwell from "../../assets/stairwell.jpeg";
 import fire from "../../assets/fire.jpeg";
 import road from "../../assets/road.jpeg";
 
@@ -47,7 +47,6 @@ const Container = styled.div`
     background-color: white;
   }
   .page.right {
-    border-left: 1px solid #f0f0f0;
     background-color: white;
   }
   #river {
@@ -230,6 +229,12 @@ class Hobbies extends React.Component {
     };
     this.timeline = new TimelineMax({ paused: true });
     this.transitionTimeline = new TimelineMax({ paused: true });
+    this.transitionTimeline2 = new TimelineMax({ paused: true });
+
+    this.pagesWrap = "";
+
+    // All the turning pages.
+    this.pages = {};
   }
 
   componentDidMount() {
@@ -239,6 +244,24 @@ class Hobbies extends React.Component {
       ease: Power1.easeIn,
     });
     this.timeline.play();
+    let left = document.querySelector(".cover-left");
+    let right = document.querySelector(".cover-right");
+    console.log(left);
+    this.pagesWrap = {
+      left: left,
+      right: right,
+    };
+    let pagesHTML = "";
+    const colors = ["#f6f6f6", "#f0f0f0", "#e3e3e3", "#d7d7d7", "#d0d0d0"];
+    for (let i = 0; i <= 4; ++i) {
+      const color = colors[i] || colors[0];
+      pagesHTML += `<div class="cover-inner" style="background-color:${color};"></div>`;
+    }
+    this.pagesWrap.left.innerHTML = this.pagesWrap.right.innerHTML = pagesHTML;
+    this.pages = {
+      left: Array.from(this.pagesWrap.left.querySelectorAll(".cover-inner")),
+      right: Array.from(this.pagesWrap.right.querySelectorAll(".cover-inner")),
+    };
   }
 
   changePage = (e, destination) => {
@@ -252,38 +275,57 @@ class Hobbies extends React.Component {
 
   nextPicturePage = (e) => {
     e.preventDefault();
-    // let cover1 = document.querySelector(".cover1");
-    // let cover2 = document.querySelector(".cover2");
-
     let pic1 = document.querySelector(".pic1");
     let pic2 = document.querySelector(".pic2");
     let pic3 = document.querySelector(".pic3");
     let pic4 = document.querySelector(".pic4");
-    console.log(pic1, pic2, pic3, pic4);
 
     let show1 = () => {
-      // cover1.classList.remove("hidden");
-      // cover1.style.zIndex = 2;
-      // cover2.classList.remove("hidden");
-      // cover2.style.zIndex = 2;
       setTimeout(() => {
         pic1.setAttribute("src", sky);
         pic2.setAttribute("src", leaf);
         pic3.setAttribute("src", gate);
         pic4.setAttribute("src", painting1);
-      }, 1000);
+      }, 800);
     };
-
-    this.transitionTimeline.to(
-      ".cover-inner",
-      1.6,
-      {
-        ease: Quint.easeInOut,
-        startAt: { x: "100%" },
-        x: "-100%",
-      },
-      0.15
-    );
+    const pagesLeft = this.pages["left"];
+    for (let i = 0; i <= 0; i++) {
+      const page = pagesLeft[i];
+      this.transitionTimeline.to(
+        page,
+        1.6,
+        {
+          ease: Quint.easeInOut,
+          startAt: { x: "100%" },
+          x: "-100%",
+        },
+        0.15
+      );
+    }
+    const pagesRight = this.pages["right"];
+    for (let i = 0; i <= 0; i++) {
+      const page = pagesRight[i];
+      this.transitionTimeline.to(
+        page,
+        1.6,
+        {
+          ease: Quint.easeInOut,
+          startAt: { x: "100%" },
+          x: "-100%",
+        },
+        0.15
+      );
+    }
+    // this.transitionTimeline.to(
+    //   ".cover-inner",
+    //   1.6,
+    //   {
+    //     ease: Quint.easeInOut,
+    //     startAt: { x: "100%" },
+    //     x: "-100%",
+    //   },
+    //   0.15
+    // );
 
     this.transitionTimeline.play().eventCallback(show1());
     // let hide = () => {
@@ -296,8 +338,67 @@ class Hobbies extends React.Component {
 
   backPicturePage = (e) => {
     e.preventDefault();
-    var coverContainer = document.querySelector(".cover-container");
-    coverContainer.classList.remove("hidden");
+    let pic1 = document.querySelector(".pic1");
+    let pic2 = document.querySelector(".pic2");
+    let pic3 = document.querySelector(".pic3");
+    let pic4 = document.querySelector(".pic4");
+
+    let show1 = () => {
+      setTimeout(() => {
+        pic1.setAttribute("src", river);
+        pic2.setAttribute("src", stairwell);
+        pic3.setAttribute("src", fire);
+        pic4.setAttribute("src", road);
+      }, 800);
+    };
+
+    const pagesLeft = this.pages["left"];
+    for (let i = 0; i <= 0; i++) {
+      const page = pagesLeft[i];
+      this.transitionTimeline2.to(
+        page,
+        1.6,
+        {
+          ease: Quint.easeInOut,
+          startAt: { x: "-100%" },
+          x: "100%",
+        },
+        0.15
+      );
+    }
+    const pagesRight = this.pages["right"];
+    for (let i = 0; i <= 0; i++) {
+      const page = pagesRight[i];
+      this.transitionTimeline2.to(
+        page,
+        1.6,
+        {
+          ease: Quint.easeInOut,
+          startAt: { x: "-100%" },
+          x: "100%",
+        },
+        0.15
+      );
+    }
+
+    // this.transitionTimeline.to(
+    //   ".cover-inner",
+    //   1.6,
+    //   {
+    //     ease: Quint.easeInOut,
+    //     startAt: { x: "-100%" },
+    //     x: "100%",
+    //   },
+    //   0.15
+    // );
+
+    this.transitionTimeline2.play().eventCallback(show1());
+    // let hide = () => {
+    //   setTimeout(() => {
+    //     //     cover2.style.zIndex = 1;
+    //   }, 1000);
+    // };
+    // hide();
   };
 
   enter = (e) => {
@@ -445,11 +546,35 @@ class Hobbies extends React.Component {
               className="cover-inner"
               style={{ backgroundColor: "#f6f6f6" }}
             ></div>
+            <div
+              className="cover-inner"
+              style={{ backgroundColor: "#f0f0f0" }}
+            ></div>{" "}
+            <div
+              className="cover-inner"
+              style={{ backgroundColor: "#e3e3e3" }}
+            ></div>{" "}
+            <div
+              className="cover-inner"
+              style={{ backgroundColor: "#d7d7d7" }}
+            ></div>
           </div>
           <div className="revealer cover-right">
             <div
               className="cover-inner"
               style={{ backgroundColor: "#f6f6f6" }}
+            ></div>
+            <div
+              className="cover-inner"
+              style={{ backgroundColor: "#f0f0f0" }}
+            ></div>{" "}
+            <div
+              className="cover-inner"
+              style={{ backgroundColor: "#e3e3e3" }}
+            ></div>{" "}
+            <div
+              className="cover-inner"
+              style={{ backgroundColor: "#d7d7d7" }}
             ></div>
           </div>
         </div>
