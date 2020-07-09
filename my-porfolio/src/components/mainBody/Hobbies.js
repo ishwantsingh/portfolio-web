@@ -21,7 +21,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  // border-right: 1.5px solid #e1e0e0;
   background-color: white;
   font-size: 7rem;
   text-align: center;
@@ -83,7 +82,6 @@ const Container = styled.div`
     flex-direction: column;
     width: 100%;
     opacity: 0.9;
-    // border: 2px solid black;
     box-sizing: border-box;
     will-change: transform;
     transform: perspective(200px) rotateX(var(--mouse-vary))
@@ -121,7 +119,6 @@ const Container = styled.div`
     align-items: flex-end;
     width: 100%;
     opacity: 0.9;
-    // border: 2px solid black;
     box-sizing: border-box;
     will-change: transform;
     transform: perspective(200px) rotateX(var(--mouse-vary-sec))
@@ -156,7 +153,7 @@ const Container = styled.div`
     overflow: hidden;
   }
   .cover-left {
-    border-right: 1px solid #f0f0f0;
+    // border-right: 0px solid #f0f0f0;
   }
   .cover-inner {
     position: absolute;
@@ -218,6 +215,11 @@ const Container = styled.div`
     text-shadow: 0px 0px 0px #ffffff;
     color: #101010;
   }
+  i.icon.disabled:hover {
+    font-size: 2.2rem ;
+    color: #505050;
+    cursor: default;
+  }
 `;
 
 class Hobbies extends React.Component {
@@ -226,10 +228,9 @@ class Hobbies extends React.Component {
     this.state = {
       x: 600,
       y: 600,
+      currentPage: 1,
     };
     this.timeline = new TimelineMax({ paused: true });
-    this.transitionTimeline = new TimelineMax({ paused: true });
-    this.transitionTimeline2 = new TimelineMax({ paused: true });
 
     this.pagesWrap = "";
 
@@ -286,48 +287,53 @@ class Hobbies extends React.Component {
         pic2.setAttribute("src", leaf);
         pic3.setAttribute("src", gate);
         pic4.setAttribute("src", painting1);
-      }, 800);
+        this.setState({ currentPage: 2 });
+      }, 1000);
     };
-    const pagesLeft = this.pages["left"];
-    for (let i = 0; i <= 0; i++) {
-      const page = pagesLeft[i];
-      this.transitionTimeline.to(
-        page,
-        1.6,
-        {
-          ease: Quint.easeInOut,
-          startAt: { x: "100%" },
-          x: "-100%",
-        },
-        0.15
-      );
-    }
-    const pagesRight = this.pages["right"];
-    for (let i = 0; i <= 0; i++) {
-      const page = pagesRight[i];
-      this.transitionTimeline.to(
-        page,
-        1.6,
-        {
-          ease: Quint.easeInOut,
-          startAt: { x: "100%" },
-          x: "-100%",
-        },
-        0.15
-      );
-    }
-    // this.transitionTimeline.to(
-    //   ".cover-inner",
-    //   1.6,
-    //   {
-    //     ease: Quint.easeInOut,
-    //     startAt: { x: "100%" },
-    //     x: "-100%",
-    //   },
-    //   0.15
-    // );
 
-    this.transitionTimeline.play().eventCallback(show1());
+    return new Promise((resolve, reject) => {
+      const pagesLeft = this.pages["left"];
+      this.transitionTimeline = new TimelineMax({ onComplete: resolve });
+
+      for (let i = 0; i <= 0; i++) {
+        const page = pagesLeft[i];
+        this.transitionTimeline.to(
+          page,
+          1.8,
+          {
+            ease: Quint.easeInOut,
+            startAt: { x: "100%" },
+            x: "-100%",
+          },
+          0.15
+        );
+      }
+      const pagesRight = this.pages["right"];
+      for (let i = 0; i <= 0; i++) {
+        const page = pagesRight[i];
+        this.transitionTimeline.to(
+          page,
+          1.8,
+          {
+            ease: Quint.easeInOut,
+            startAt: { x: "100%" },
+            x: "-100%",
+          },
+          0.15
+        );
+      }
+      // this.transitionTimeline.to(
+      //   ".cover-inner",
+      //   1.6,
+      //   {
+      //     ease: Quint.easeInOut,
+      //     startAt: { x: "100%" },
+      //     x: "-100%",
+      //   },
+      //   0.15
+      // );
+      this.transitionTimeline.play().eventCallback(show1());
+    });
     // let hide = () => {
     //   setTimeout(() => {
     //     //     cover2.style.zIndex = 1;
@@ -349,50 +355,52 @@ class Hobbies extends React.Component {
         pic2.setAttribute("src", stairwell);
         pic3.setAttribute("src", fire);
         pic4.setAttribute("src", road);
-      }, 800);
+        this.setState({ currentPage: 1 });
+      }, 1000);
     };
+    return new Promise((resolve, reject) => {
+      const pagesLeft = this.pages["left"];
+      this.transitionTimeline2 = new TimelineMax({ onComplete: resolve });
+      for (let i = 0; i <= 0; i++) {
+        const page = pagesLeft[i];
+        this.transitionTimeline2.to(
+          page,
+          1.8,
+          {
+            ease: Quint.easeInOut,
+            startAt: { x: "-100%" },
+            x: "100%",
+          },
+          0.15
+        );
+      }
+      const pagesRight = this.pages["right"];
+      for (let i = 0; i <= 0; i++) {
+        const page = pagesRight[i];
+        this.transitionTimeline2.to(
+          page,
+          1.8,
+          {
+            ease: Quint.easeInOut,
+            startAt: { x: "-100%" },
+            x: "100%",
+          },
+          0.15
+        );
+      }
 
-    const pagesLeft = this.pages["left"];
-    for (let i = 0; i <= 0; i++) {
-      const page = pagesLeft[i];
-      this.transitionTimeline2.to(
-        page,
-        1.6,
-        {
-          ease: Quint.easeInOut,
-          startAt: { x: "-100%" },
-          x: "100%",
-        },
-        0.15
-      );
-    }
-    const pagesRight = this.pages["right"];
-    for (let i = 0; i <= 0; i++) {
-      const page = pagesRight[i];
-      this.transitionTimeline2.to(
-        page,
-        1.6,
-        {
-          ease: Quint.easeInOut,
-          startAt: { x: "-100%" },
-          x: "100%",
-        },
-        0.15
-      );
-    }
-
-    // this.transitionTimeline.to(
-    //   ".cover-inner",
-    //   1.6,
-    //   {
-    //     ease: Quint.easeInOut,
-    //     startAt: { x: "-100%" },
-    //     x: "100%",
-    //   },
-    //   0.15
-    // );
-
-    this.transitionTimeline2.play().eventCallback(show1());
+      // this.transitionTimeline.to(
+      //   ".cover-inner",
+      //   1.6,
+      //   {
+      //     ease: Quint.easeInOut,
+      //     startAt: { x: "-100%" },
+      //     x: "100%",
+      //   },
+      //   0.15
+      // );
+      this.transitionTimeline2.play().eventCallback(show1());
+    });
     // let hide = () => {
     //   setTimeout(() => {
     //     //     cover2.style.zIndex = 1;
@@ -495,6 +503,7 @@ class Hobbies extends React.Component {
             name="long arrow alternate left"
             className="icon back"
             onClick={this.backPicturePage}
+            disabled={this.state.currentPage === 1 ? true : false}
           />
           <div className="page right ">
             <div
@@ -538,6 +547,7 @@ class Hobbies extends React.Component {
             name="long arrow alternate right"
             className="icon next"
             onClick={this.nextPicturePage}
+            disabled={this.state.currentPage === 2 ? true : false}
           />
         </div>
         <div className="cover-container">
