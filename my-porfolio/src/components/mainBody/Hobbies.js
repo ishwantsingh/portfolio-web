@@ -281,12 +281,22 @@ class Hobbies extends React.Component {
     let pic3 = document.querySelector(".pic3");
     let pic4 = document.querySelector(".pic4");
 
+    let picName1 = document.querySelector(".pic-name-1");
+    let picName2 = document.querySelector(".pic-name-2");
+    let picName3 = document.querySelector(".pic-name-3");
+    let picName4 = document.querySelector(".pic-name-4");
+
     let show1 = () => {
       setTimeout(() => {
         pic1.setAttribute("src", sky);
         pic2.setAttribute("src", leaf);
         pic3.setAttribute("src", gate);
         pic4.setAttribute("src", painting1);
+
+        picName1.innerHTML = "- Blue over Green";
+        picName2.innerHTML = "- Aging Leaves";
+        picName3.innerHTML = "- Majestic Gate";
+        picName4.innerHTML = "- Calm and Chaos";
         this.setState({ currentPage: 2 });
       }, 1000);
     };
@@ -349,12 +359,22 @@ class Hobbies extends React.Component {
     let pic3 = document.querySelector(".pic3");
     let pic4 = document.querySelector(".pic4");
 
+    let picName1 = document.querySelector(".pic-name-1");
+    let picName2 = document.querySelector(".pic-name-2");
+    let picName3 = document.querySelector(".pic-name-3");
+    let picName4 = document.querySelector(".pic-name-4");
+
     let show1 = () => {
       setTimeout(() => {
         pic1.setAttribute("src", river);
         pic2.setAttribute("src", stairwell);
         pic3.setAttribute("src", fire);
         pic4.setAttribute("src", road);
+
+        picName1.innerHTML = "- River of Solitude";
+        picName2.innerHTML = "- Plummeting Descent";
+        picName3.innerHTML = "- Flames of Enlightenment";
+        picName4.innerHTML = "- Boulevard of Fortune";
         this.setState({ currentPage: 1 });
       }, 1000);
     };
@@ -477,7 +497,7 @@ class Hobbies extends React.Component {
                 className="photography2 pic1"
                 id="river"
               />
-              <span className="pic-name">- River of Solitude</span>
+              <span className="pic-name pic-name-1">- River of Solitude</span>
             </div>
 
             <div
@@ -496,7 +516,9 @@ class Hobbies extends React.Component {
                 className="photography pic2"
                 id="stairwell"
               />
-              <span className="pic-name stairwell">- Plummeting Descent</span>
+              <span className="pic-name stairwell pic-name-2">
+                - Plummeting Descent
+              </span>
             </div>
           </div>
           <Icon
@@ -522,7 +544,9 @@ class Hobbies extends React.Component {
                 className="photography pic3"
                 id="fire"
               />
-              <span className="pic-name fire">- Flames of Enlightenment</span>
+              <span className="pic-name fire pic-name-3">
+                - Flames of Enlightenment
+              </span>
             </div>
             <div
               className="hobby-container-first road"
@@ -540,7 +564,9 @@ class Hobbies extends React.Component {
                 className="photography2 pic4"
                 id="road"
               />
-              <span className="pic-name road">- Boulevard of Fortune</span>
+              <span className="pic-name road pic-name-4">
+                - Boulevard of Fortune
+              </span>
             </div>
           </div>
           <Icon
