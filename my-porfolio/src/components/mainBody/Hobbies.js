@@ -11,7 +11,7 @@ import road from "../../assets/road.jpeg";
 
 import sky from "../../assets/sky.jpeg";
 import leaf from "../../assets/leaf.jpeg";
-import gate from "../../assets/gate.jpeg";
+import painting2 from "../../assets/painting2.jpeg";
 import painting1 from "../../assets/painting1.jpeg";
 
 const Container = styled.div`
@@ -290,12 +290,14 @@ class Hobbies extends React.Component {
       setTimeout(() => {
         pic1.setAttribute("src", sky);
         pic2.setAttribute("src", leaf);
-        pic3.setAttribute("src", gate);
+        pic3.setAttribute("src", painting2);
+        pic3.style.width = "23vw";
         pic4.setAttribute("src", painting1);
 
         picName1.innerHTML = "- Blue over Green";
         picName2.innerHTML = "- Aging Leaves";
-        picName3.innerHTML = "- Majestic Gate";
+        picName3.innerHTML = "- World in Pink";
+        picName3.style.width = "23vw";
         picName4.innerHTML = "- Calm and Chaos";
         this.setState({ currentPage: 2 });
       }, 1000);
@@ -369,6 +371,7 @@ class Hobbies extends React.Component {
         pic1.setAttribute("src", river);
         pic2.setAttribute("src", stairwell);
         pic3.setAttribute("src", fire);
+        pic3.style.width = "13vw";
         pic4.setAttribute("src", road);
 
         picName1.innerHTML = "- River of Solitude";
