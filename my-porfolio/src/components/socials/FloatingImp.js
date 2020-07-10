@@ -11,7 +11,7 @@ const SubContainer = styled.div`
   align-items: flex-end;
   align-self: flex-end;
   margin-right: 0.5rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.25rem;
   i.huge.icons {
     height: 4rem;
     font-size: 3.5em;

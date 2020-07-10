@@ -30,7 +30,7 @@ const SubContainer = styled.div`
   }
   a:hover {
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
   .floating-link {
     display: flex;
@@ -50,11 +50,11 @@ const SubContainer = styled.div`
     font-weight: 600;
     margin: 1.7rem 0;
     height: 40px;
-    font-size: 1.4rem; //becuase it is below floating-link class, this font size applies
+    font-size: 1.3rem; //becuase it is below floating-link class, this font size applies
     box-shadow: 0px 10px 24px #e1e0e0;
   }
   .selected-menu:hover {
-    font-size: 1.45rem;
+    font-size: 1.3rem;
   }
 `;
 
