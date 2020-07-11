@@ -153,7 +153,7 @@ const Container = styled.div`
     overflow: hidden;
   }
   .cover-left {
-    // border-right: 0px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
   }
   .cover-inner {
     position: absolute;
@@ -220,6 +220,34 @@ const Container = styled.div`
     color: #505050;
     cursor: default;
   }
+  .hobby-name {
+    width: 10rem;
+    font-size: 1.35rem;
+    height: 2rem;
+    display: block;
+    box-sizing: border-box;
+    color: #505050;
+    font-weight: bold;
+  }
+  .hobby-name-left {
+    position: relative;
+    top: -15.25%;
+    left: 48.3% !important;
+    z-index: 2;
+    transform: rotate(270deg);
+  }
+  .hobby-name-right {
+    position: relative;
+    top: -5.2%;
+    right: 48.5% !important;
+    z-index: 3;
+    transform: rotate(90deg);
+  }
+
+  // box-shadow: rgba(0, 0, 0, 0.3) 7px 8px 10px 2px;
+ // box-shadow: rgba(0, 0, 0, 0.3) 2px 5px 11px 4px;
+}
+}
 `;
 
 class Hobbies extends React.Component {
@@ -286,6 +314,9 @@ class Hobbies extends React.Component {
     let picName3 = document.querySelector(".pic-name-3");
     let picName4 = document.querySelector(".pic-name-4");
 
+    let hobbyNameRight = document.querySelector(".hobby-name-right");
+    let hobbyNameLeft = document.querySelector(".hobby-name-left");
+
     let show1 = () => {
       setTimeout(() => {
         pic1.setAttribute("src", sky);
@@ -294,13 +325,19 @@ class Hobbies extends React.Component {
         pic3.style.width = "23vw";
         pic4.setAttribute("src", painting1);
 
+        hobbyNameRight.style.top = "-7%";
+
         picName1.innerHTML = "- Blue over Green";
         picName2.innerHTML = "- Aging Leaves";
         picName3.innerHTML = "- World in Pink";
         picName3.style.width = "23vw";
         picName4.innerHTML = "- Calm and Chaos";
+
+        hobbyNameRight.innerHTML = "__painting";
+        hobbyNameLeft.innerHTML = "";
+
         this.setState({ currentPage: 2 });
-      }, 1000);
+      }, 1050);
     };
 
     return new Promise((resolve, reject) => {
@@ -366,6 +403,9 @@ class Hobbies extends React.Component {
     let picName3 = document.querySelector(".pic-name-3");
     let picName4 = document.querySelector(".pic-name-4");
 
+    let hobbyNameRight = document.querySelector(".hobby-name-right");
+    let hobbyNameLeft = document.querySelector(".hobby-name-left");
+
     let show1 = () => {
       setTimeout(() => {
         pic1.setAttribute("src", river);
@@ -374,12 +414,18 @@ class Hobbies extends React.Component {
         pic3.style.width = "13vw";
         pic4.setAttribute("src", road);
 
+        hobbyNameRight.style.top = "-5.2%";
+
         picName1.innerHTML = "- River of Solitude";
         picName2.innerHTML = "- Plummeting Descent";
         picName3.innerHTML = "- Flames of Enlightenment";
         picName4.innerHTML = "- Boulevard of Fortune";
+
+        hobbyNameRight.innerHTML = "";
+        hobbyNameLeft.innerHTML = "__photography";
+
         this.setState({ currentPage: 1 });
-      }, 1000);
+      }, 1050);
     };
     return new Promise((resolve, reject) => {
       const pagesLeft = this.pages["left"];
@@ -523,6 +569,7 @@ class Hobbies extends React.Component {
                 - Plummeting Descent
               </span>
             </div>
+            <span className="hobby-name hobby-name-left">__photography</span>
           </div>
           <Icon
             name="long arrow alternate left"
@@ -571,6 +618,7 @@ class Hobbies extends React.Component {
                 - Boulevard of Fortune
               </span>
             </div>
+            <span className="hobby-name hobby-name-right"></span>
           </div>
           <Icon
             name="long arrow alternate right"
