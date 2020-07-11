@@ -226,7 +226,7 @@ const Container = styled.div`
     height: 2rem;
     display: block;
     box-sizing: border-box;
-    color: #505050;
+    color: #999999;
     font-weight: bold;
   }
   .hobby-name-left {
