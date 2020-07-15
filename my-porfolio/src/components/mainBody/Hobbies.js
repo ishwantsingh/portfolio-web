@@ -67,12 +67,14 @@ const Container = styled.div`
     width: 15vw;
     height: 20vw;
     margin: 1vw auto;
+    box-shadow: 10px 10px 24px #e1e0e0;
   }
   .photography2 {
     display: block;
     width: 27vw;
     height: 20vw;
     margin: 1vw auto;
+    box-shadow: 6px 10px 24px #e1e0e0;
   }
 
   .hobby-container-first {
@@ -518,8 +520,8 @@ class Hobbies extends React.Component {
 
   leave = (e, mouseYClass, mouseXClass) => {
     e.preventDefault();
-    e.target.parentNode.style.transition =
-      " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
+    // e.target.parentNode.style.transition =
+    //   " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
     e.target.style.setProperty(mouseYClass, 0 + "deg");
     e.target.style.setProperty(mouseXClass, 0 + "deg");
     // e.target.parentNode.style.transform = `perspective(0px) rotateX(5deg) rotateY(var(--mouse-varx))`;
