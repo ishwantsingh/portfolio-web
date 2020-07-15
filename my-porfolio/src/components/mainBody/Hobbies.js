@@ -222,7 +222,7 @@ const Container = styled.div`
   }
   .hobby-name {
     width: 10rem;
-    font-size: 1.35rem;
+    font-size: 1.28rem;
     height: 2rem;
     display: block;
     box-sizing: border-box;
