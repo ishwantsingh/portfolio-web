@@ -421,6 +421,7 @@ class Hobbies extends React.Component {
         picName1.innerHTML = "- River of Solitude";
         picName2.innerHTML = "- Plummeting Descent";
         picName3.innerHTML = "- Flames of Enlightenment";
+        picName3.style.width = "13vw";
         picName4.innerHTML = "- Boulevard of Fortune";
 
         hobbyNameRight.innerHTML = "";
@@ -485,8 +486,8 @@ class Hobbies extends React.Component {
     let enterY = e.clientY;
     let enterX = e.clientX; //// PROBLEM WITH COMPARING W ENTER COORDINATES
     this.setState({ enterY: enterY, enterX: enterX });
-    e.target.style.transition =
-      " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
+    // e.target.style.transition =
+    //   " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
   };
 
   mouseCoords = (e, mouseYClass, mouseXClass) => {
@@ -534,13 +535,13 @@ class Hobbies extends React.Component {
           <div className="page left">
             <div
               className="hobby-container-first river"
-              // onMouseMove={(e) =>
-              //   this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
-              // }
-              // onMouseEnter={this.enter}
-              // onMouseLeave={(e) =>
-              //   this.leave(e, "--mouse-vary", "--mouse-varx")
-              // }
+              onMouseMove={(e) =>
+                this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
+              }
+              onMouseEnter={this.enter}
+              onMouseLeave={(e) =>
+                this.leave(e, "--mouse-vary", "--mouse-varx")
+              }
             >
               <img
                 src={river}
@@ -553,13 +554,13 @@ class Hobbies extends React.Component {
 
             <div
               className="hobby-container-second stairwell"
-              // onMouseMove={(e) =>
-              //   this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              // }
-              // onMouseEnter={this.enter}
-              // onMouseLeave={(e) =>
-              //   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              // }
+              onMouseMove={(e) =>
+                this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              }
+              onMouseEnter={this.enter}
+              onMouseLeave={(e) =>
+                this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              }
             >
               <img
                 src={stairwell}
@@ -582,13 +583,13 @@ class Hobbies extends React.Component {
           <div className="page right ">
             <div
               className="hobby-container-second fire"
-              // onMouseMove={(e) =>
-              //   this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              // }
-              // onMouseEnter={this.enter}
-              // onMouseLeave={(e) =>
-              //   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              // }
+              onMouseMove={(e) =>
+                this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              }
+              onMouseEnter={this.enter}
+              onMouseLeave={(e) =>
+                this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              }
             >
               <img
                 src={fire}
@@ -602,13 +603,13 @@ class Hobbies extends React.Component {
             </div>
             <div
               className="hobby-container-first road"
-              // onMouseMove={(e) =>
-              //   this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
-              // }
-              // onMouseEnter={this.enter}
-              // onMouseLeave={(e) =>
-              //   this.leave(e, "--mouse-vary", "--mouse-varx")
-              // }
+              onMouseMove={(e) =>
+                this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
+              }
+              onMouseEnter={this.enter}
+              onMouseLeave={(e) =>
+                this.leave(e, "--mouse-vary", "--mouse-varx")
+              }
             >
               <img
                 src={road}
