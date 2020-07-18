@@ -64,6 +64,7 @@ const Container = styled.div`
   }
   .photography {
     display: block;
+    box-sizing: border-box;
     width: 15vw;
     height: 20vw;
     margin: 1vw auto;
@@ -71,6 +72,7 @@ const Container = styled.div`
   }
   .photography2 {
     display: block;
+    box-sizing: border-box;
     width: 27vw;
     height: 20vw;
     margin: 1vw auto;
