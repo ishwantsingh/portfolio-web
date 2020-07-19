@@ -279,7 +279,6 @@ class Hobbies extends React.Component {
     this.timeline.play();
     let left = document.querySelector(".cover-left");
     let right = document.querySelector(".cover-right");
-    console.log(left);
     this.pagesWrap = {
       left: left,
       right: right,
@@ -487,7 +486,16 @@ class Hobbies extends React.Component {
     e.preventDefault();
     let enterY = e.clientY;
     let enterX = e.clientX; //// PROBLEM WITH COMPARING W ENTER COORDINATES
-    this.setState({ enterY: enterY, enterX: enterX });
+    let rect = e.target.getBoundingClientRect();
+    console.log("rect left", rect.left, "enter", enterY);
+    this.setState({
+      enterY: enterY,
+      enterX: enterX,
+      rectTop: rect.top,
+      rectLeft: rect.left,
+      rectWidth: rect.width,
+      rectHeight: rect.height,
+    });
     // e.target.style.transition =
     //   " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
   };
@@ -499,19 +507,67 @@ class Hobbies extends React.Component {
     let y;
     let picWidth = getComputedStyle(e.target).width;
     let picLength = getComputedStyle(e.target).length;
+    let picLeftMargin = getComputedStyle(e.target).marginLeft;
+    let picTopMargin = getComputedStyle(e.target).marginTop;
+    let picRightMargin = getComputedStyle(e.target).marginRight;
+    let picBottomMargin = getComputedStyle(e.target).marginBottom;
+
+    let picLeftSideCoords = this.state.rectLeft + picLeftMargin;
+    let picTopSideCoords = this.state.rectTop + picTopMargin;
+    // let picRectWidth = this.state.rectWidth - picLeftMargin - picRightMargin;
+    console.log(
+      "LM",
+      picLeftMargin,
+      "RL",
+      this.state.rectLeft,
+      "LC",
+      picLeftSideCoords
+      // picRectWidth,
+    );
     // console.log(this.state.enterX, "w", e.clientX, "p", picWidth);
     // if ( e.clientY < this.state.enterY + picLength / 2) {
-    y = ((e.clientY - this.state.enterY + picLength) / 150) * 1.1;
+
+    //OLD
+    // y = ((e.clientY - this.state.enterY + picLength) / 150) * 1.1;
+    //OLD
+
     // } else if (e.clientY >= this.state.enterY + picLength / 2) {
     //   y = -((this.state.enterY + picLength / 100) * 0.95);
     // }
     // if (e.movementX >=1 && e.clientX <= this.state.enterX + parseFloat(picWidth) / 2) {
-    x = ((e.clientX - this.state.enterX + parseFloat(picWidth)) / 150) * 1.1; // CHANGED SIGNS HERE
+
+    //OLD
+    // x = ((e.clientX - this.state.enterX + parseFloat(picWidth)) / 150) * 1.1; // CHANGED SIGNS HERE
+    //OLD
+
+    //TEST
+    y = ((e.clientY - parseFloat(picTopSideCoords) + picLength) / 150) * 1.1;
+
+    x =
+      ((e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth))) /
+        150) *
+      1.1; // CHANGED SIGNS HERE
+
+    //TEST
+
     // } else if (e.clientX >= this.state.enterX + parseFloat(picWidth) / 2) {
     //   x = -((e.clientX / 200) * 0.8);
     // }
 
-    console.log("x=> ", x, "y=> ", y, e.clientX, e.pageX, e.screenX);
+    console.log(
+      // this.state,
+      e.clientX,
+      parseFloat(picLeftSideCoords) + parseFloat(picWidth),
+      e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth) / 2),
+      "x=> ",
+      x
+      // "y=> ",
+      // y,
+
+      // this.state.enterX,
+      // e.pageX,
+      // e.screenX
+    );
     // this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
     // e.target.style.width = "40rem";
     e.target.parentNode.style.transform = `perspective(200px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
