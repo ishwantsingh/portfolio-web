@@ -88,7 +88,7 @@ const Container = styled.div`
     opacity: 0.9;
     box-sizing: border-box;
     will-change: transform;
-    transform: perspective(200px) rotateX(var(--mouse-vary))
+    transform: perspective(300px) rotateX(var(--mouse-vary))
       rotateY(var(--mouse-varx));
   }
   .pic-name {
@@ -125,7 +125,7 @@ const Container = styled.div`
     opacity: 0.9;
     box-sizing: border-box;
     will-change: transform;
-    transform: perspective(200px) rotateX(var(--mouse-vary-sec))
+    transform: perspective(300px) rotateX(var(--mouse-vary-sec))
       rotateY(var(--mouse-varx-sec));
   }
   .pic-name.stairwell {
@@ -541,12 +541,11 @@ class Hobbies extends React.Component {
     //OLD
 
     //TEST
-    y = ((e.clientY - parseFloat(picTopSideCoords) + picLength) / 150) * 1.1;
+    y = (e.clientY - (parseFloat(picTopSideCoords) + picLength / 2)) / 60;
 
     x =
-      ((e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth))) /
-        150) *
-      1.1; // CHANGED SIGNS HERE
+      (e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth) / 2)) /
+      60; // CHANGED SIGNS HERE
 
     //TEST
 
@@ -570,8 +569,8 @@ class Hobbies extends React.Component {
     );
     // this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
     // e.target.style.width = "40rem";
-    e.target.parentNode.style.transform = `perspective(200px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
-    // e.target.parentNode.style.transform = `perspective(200px) rotateX(var(--mouse-varx)) rotateY(var(--mouse-vary))`;
+    e.target.parentNode.style.transform = `perspective(300px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
+    // e.target.parentNode.style.transform = `perspective(300px) rotateX(var(--mouse-varx)) rotateY(var(--mouse-vary))`;
     e.target.parentNode.style.setProperty(mouseYClass, y + "deg");
     e.target.parentNode.style.setProperty(mouseXClass, x + "deg");
   };
@@ -583,6 +582,14 @@ class Hobbies extends React.Component {
     //   " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
     e.target.style.setProperty(mouseYClass, 0 + "deg");
     e.target.style.setProperty(mouseXClass, 0 + "deg");
+    this.setState({
+      enterY: 0,
+      enterX: 0,
+      rectTop: 0,
+      rectLeft: 0,
+      rectWidth: 0,
+      rectHeight: 0,
+    });
     // e.target.parentNode.style.transform = `perspective(0px) rotateX(5deg) rotateY(var(--mouse-varx))`;
   };
 
