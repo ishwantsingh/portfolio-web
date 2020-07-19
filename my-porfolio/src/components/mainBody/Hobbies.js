@@ -63,33 +63,45 @@ const Container = styled.div`
     margin-right: 10%;
   }
   .photography {
+    --mouse-vary-sec: 0deg;
+    --mouse-varx-sec: 0deg;
     display: block;
     box-sizing: border-box;
     width: 15vw;
     height: 20vw;
     margin: 1vw auto;
     box-shadow: 10px 10px 24px #e1e0e0;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transform: perspective(300px) rotateX(var(--mouse-vary-sec))
+      rotateY(var(--mouse-varx-sec));
   }
   .photography2 {
+    --mouse-vary: 0deg;
+    --mouse-varx: 0deg;
     display: block;
     box-sizing: border-box;
     width: 23vw;
     height: 17vw;
     margin: 1vw auto;
     box-shadow: 6px 10px 24px #e1e0e0;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transform: perspective(300px) rotateX(var(--mouse-vary))
+      rotateY(var(--mouse-varx));
   }
 
   .hobby-container-first {
-    --mouse-vary: 0deg;
-    --mouse-varx: 0deg;
+    // --mouse-vary: 0deg;
+    // --mouse-varx: 0deg;
     display: flex;
     flex-direction: column;
     width: 100%;
     opacity: 0.9;
     box-sizing: border-box;
-    will-change: transform;
-    transform: perspective(300px) rotateX(var(--mouse-vary))
-      rotateY(var(--mouse-varx));
+    // will-change: transform;
+    // transform: perspective(300px) rotateX(var(--mouse-vary))
+    //   rotateY(var(--mouse-varx));
   }
   .pic-name {
     font-size: 1rem;
@@ -115,8 +127,8 @@ const Container = styled.div`
     margin-bottom: 3.5rem;
   }
   .hobby-container-second {
-    --mouse-vary-sec: 0deg;
-    --mouse-varx-sec: 0deg;
+    // --mouse-vary-sec: 0deg;
+    // --mouse-varx-sec: 0deg;
     display: flex;
     flex-direction: column;
     align-self: flex-end;
@@ -124,9 +136,9 @@ const Container = styled.div`
     width: 100%;
     opacity: 0.9;
     box-sizing: border-box;
-    will-change: transform;
-    transform: perspective(300px) rotateX(var(--mouse-vary-sec))
-      rotateY(var(--mouse-varx-sec));
+    // will-change: transform;
+    // transform: perspective(300px) rotateX(var(--mouse-vary-sec))
+    //   rotateY(var(--mouse-varx-sec));
   }
   .pic-name.stairwell {
     width: 12vw;
@@ -524,7 +536,6 @@ class Hobbies extends React.Component {
       picLeftSideCoords
       // picRectWidth,
     );
-    // console.log(this.state.enterX, "w", e.clientX, "p", picWidth);
     // if ( e.clientY < this.state.enterY + picLength / 2) {
 
     //OLD
@@ -541,11 +552,11 @@ class Hobbies extends React.Component {
     //OLD
 
     //TEST
-    y = (e.clientY - (parseFloat(picTopSideCoords) + picLength / 2)) / 85;
+    y = (e.clientY - (parseFloat(picTopSideCoords) + picLength / 2)) / 60;
 
     x = -(
       (e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth) / 2)) /
-      70
+      60
     ); // CHANGED SIGNS HERE
 
     //TEST
@@ -554,37 +565,39 @@ class Hobbies extends React.Component {
     //   x = -((e.clientX / 200) * 0.8);
     // }
 
-    console.log(
-      // this.state,
-      e.clientX,
-      parseFloat(picLeftSideCoords) + parseFloat(picWidth),
-      e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth) / 2),
-      "x=> ",
-      x
-      // "y=> ",
-      // y,
+    // console.log(
+    //   // this.state,
+    //   e.clientX,
+    //   parseFloat(picLeftSideCoords) + parseFloat(picWidth),
+    //   e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth) / 2),
+    //   "x=> ",
+    //   x
+    //   // "y=> ",
+    //   // y,
 
-      // this.state.enterX,
-      // e.pageX,
-      // e.screenX
-    );
-    // this.setState({ x: (x / 100) * 0.8, y: (y / 100) * 1.1 });
-    // e.target.style.width = "40rem";
-    e.target.parentNode.style.transform = `perspective(300px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
-    // e.target.parentNode.style.transform = `perspective(300px) rotateX(var(--mouse-varx)) rotateY(var(--mouse-vary))`;
-    e.target.parentNode.style.setProperty(mouseYClass, y + "deg");
-    e.target.parentNode.style.setProperty(mouseXClass, x + "deg");
+    //   // this.state.enterX,
+    //   // e.pageX,
+    //   // e.screenX
+    // );
+
+    // UNCOMMENT THIS v, IMP WORKING CODE
+    // e.target.parentNode.style.transform = `perspective(300px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
+    // e.target.parentNode.style.setProperty(mouseYClass, y + "deg");
+    // e.target.parentNode.style.setProperty(mouseXClass, x + "deg");
+    //UNCOMMENT THIS ^
+    e.target.style.transform = `perspective(300px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
+    e.target.style.setProperty(mouseYClass, y + "deg");
+    e.target.style.setProperty(mouseXClass, x + "deg");
   };
-  // var(--mouse-varx)
 
   leave = (e, mouseYClass, mouseXClass) => {
     e.preventDefault();
-    e.target.parentNode.style.transition =
+    e.target.style.transition =
       " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
     // e.target.style.setProperty(mouseYClass, 0 + "deg");
     // e.target.style.setProperty(mouseXClass, 0 + "deg");
-    e.target.parentNode.style.setProperty(mouseYClass, 0 + "deg");
-    e.target.parentNode.style.setProperty(mouseXClass, 0 + "deg");
+    e.target.style.setProperty(mouseYClass, 0 + "deg");
+    e.target.style.setProperty(mouseXClass, 0 + "deg");
     this.setState({
       enterY: 0,
       enterX: 0,
@@ -603,10 +616,10 @@ class Hobbies extends React.Component {
           <div className="page left">
             <div
               className="hobby-container-first river"
-              onMouseMove={(e) =>
-                this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
-              }
-              onMouseEnter={this.enter}
+              // onMouseMove={(e) =>
+              //   this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
+              // }
+              // onMouseEnter={this.enter}
               // onMouseLeave={(e) =>
               //   this.leave(e, "--mouse-vary", "--mouse-varx")
               // }
@@ -616,6 +629,10 @@ class Hobbies extends React.Component {
                 alt="river"
                 className="photography2 pic1"
                 id="river"
+                onMouseEnter={this.enter}
+                onMouseMove={(e) =>
+                  this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
+                }
                 onMouseLeave={(e) =>
                   this.leave(e, "--mouse-vary", "--mouse-varx")
                 }
@@ -625,10 +642,10 @@ class Hobbies extends React.Component {
 
             <div
               className="hobby-container-second stairwell"
-              onMouseMove={(e) =>
-                this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              }
-              onMouseEnter={this.enter}
+              // onMouseMove={(e) =>
+              //   this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              // }
+              // onMouseEnter={this.enter}
               // onMouseLeave={(e) =>
               //   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
               // }
@@ -638,6 +655,10 @@ class Hobbies extends React.Component {
                 alt="stairwell"
                 className="photography pic2"
                 id="stairwell"
+                onMouseEnter={this.enter}
+                onMouseMove={(e) =>
+                  this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
+                }
                 onMouseLeave={(e) =>
                   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
                 }
@@ -657,10 +678,10 @@ class Hobbies extends React.Component {
           <div className="page right ">
             <div
               className="hobby-container-second fire"
-              onMouseMove={(e) =>
-                this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              }
-              onMouseEnter={this.enter}
+              // onMouseMove={(e) =>
+              //   this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              // }
+              // onMouseEnter={this.enter}
               // onMouseLeave={(e) =>
               //   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
               // }
@@ -670,6 +691,10 @@ class Hobbies extends React.Component {
                 alt="fire"
                 className="photography pic3"
                 id="fire"
+                onMouseEnter={this.enter}
+                onMouseMove={(e) =>
+                  this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
+                }
                 onMouseLeave={(e) =>
                   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
                 }
@@ -680,10 +705,10 @@ class Hobbies extends React.Component {
             </div>
             <div
               className="hobby-container-first road"
-              onMouseMove={(e) =>
-                this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
-              }
-              onMouseEnter={this.enter}
+              // onMouseMove={(e) =>
+              //   this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
+              // }
+              // onMouseEnter={this.enter}
               // onMouseLeave={(e) =>
               //   this.leave(e, "--mouse-vary", "--mouse-varx")
               // }
@@ -693,6 +718,10 @@ class Hobbies extends React.Component {
                 alt="road"
                 className="photography2 pic4"
                 id="road"
+                onMouseEnter={this.enter}
+                onMouseMove={(e) =>
+                  this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
+                }
                 onMouseLeave={(e) =>
                   this.leave(e, "--mouse-vary", "--mouse-varx")
                 }
