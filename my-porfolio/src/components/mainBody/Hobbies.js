@@ -49,8 +49,8 @@ const Container = styled.div`
     background-color: white;
   }
   #river {
-    width: 35vw;
-    height: 24vw;
+    width: 28vw;
+    height: 20vw;
   }
   #stairwell {
     width: 12vw;
@@ -73,8 +73,8 @@ const Container = styled.div`
   .photography2 {
     display: block;
     box-sizing: border-box;
-    width: 27vw;
-    height: 20vw;
+    width: 23vw;
+    height: 17vw;
     margin: 1vw auto;
     box-shadow: 6px 10px 24px #e1e0e0;
   }
@@ -94,7 +94,7 @@ const Container = styled.div`
   .pic-name {
     font-size: 1rem;
     font-weight: normal;
-    width: 35vw;
+    width: 28vw;
     margin 0 auto;
     text-align: left;
     align-self: flex-start;
@@ -102,7 +102,7 @@ const Container = styled.div`
     margin-top: -0.5rem !important;
   }
   .pic-name.road {
-    width: 27vw;
+    width: 23vw;
     margin: 0 auto;
   }
   .stairwell {
@@ -541,11 +541,12 @@ class Hobbies extends React.Component {
     //OLD
 
     //TEST
-    y = (e.clientY - (parseFloat(picTopSideCoords) + picLength / 2)) / 60;
+    y = (e.clientY - (parseFloat(picTopSideCoords) + picLength / 2)) / 85;
 
-    x =
+    x = -(
       (e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth) / 2)) /
-      60; // CHANGED SIGNS HERE
+      70
+    ); // CHANGED SIGNS HERE
 
     //TEST
 
@@ -578,10 +579,12 @@ class Hobbies extends React.Component {
 
   leave = (e, mouseYClass, mouseXClass) => {
     e.preventDefault();
-    // e.target.parentNode.style.transition =
-    //   " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
-    e.target.style.setProperty(mouseYClass, 0 + "deg");
-    e.target.style.setProperty(mouseXClass, 0 + "deg");
+    e.target.parentNode.style.transition =
+      " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
+    // e.target.style.setProperty(mouseYClass, 0 + "deg");
+    // e.target.style.setProperty(mouseXClass, 0 + "deg");
+    e.target.parentNode.style.setProperty(mouseYClass, 0 + "deg");
+    e.target.parentNode.style.setProperty(mouseXClass, 0 + "deg");
     this.setState({
       enterY: 0,
       enterX: 0,
@@ -604,15 +607,18 @@ class Hobbies extends React.Component {
                 this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
               }
               onMouseEnter={this.enter}
-              onMouseLeave={(e) =>
-                this.leave(e, "--mouse-vary", "--mouse-varx")
-              }
+              // onMouseLeave={(e) =>
+              //   this.leave(e, "--mouse-vary", "--mouse-varx")
+              // }
             >
               <img
                 src={river}
                 alt="river"
                 className="photography2 pic1"
                 id="river"
+                onMouseLeave={(e) =>
+                  this.leave(e, "--mouse-vary", "--mouse-varx")
+                }
               />
               <span className="pic-name pic-name-1">- River of Solitude</span>
             </div>
@@ -623,15 +629,18 @@ class Hobbies extends React.Component {
                 this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
               }
               onMouseEnter={this.enter}
-              onMouseLeave={(e) =>
-                this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              }
+              // onMouseLeave={(e) =>
+              //   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              // }
             >
               <img
                 src={stairwell}
                 alt="stairwell"
                 className="photography pic2"
                 id="stairwell"
+                onMouseLeave={(e) =>
+                  this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
+                }
               />
               <span className="pic-name stairwell pic-name-2">
                 - Plummeting Descent
@@ -652,15 +661,18 @@ class Hobbies extends React.Component {
                 this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
               }
               onMouseEnter={this.enter}
-              onMouseLeave={(e) =>
-                this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              }
+              // onMouseLeave={(e) =>
+              //   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
+              // }
             >
               <img
                 src={fire}
                 alt="fire"
                 className="photography pic3"
                 id="fire"
+                onMouseLeave={(e) =>
+                  this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
+                }
               />
               <span className="pic-name fire pic-name-3">
                 - Flames of Enlightenment
@@ -672,15 +684,18 @@ class Hobbies extends React.Component {
                 this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
               }
               onMouseEnter={this.enter}
-              onMouseLeave={(e) =>
-                this.leave(e, "--mouse-vary", "--mouse-varx")
-              }
+              // onMouseLeave={(e) =>
+              //   this.leave(e, "--mouse-vary", "--mouse-varx")
+              // }
             >
               <img
                 src={road}
                 alt="road"
                 className="photography2 pic4"
                 id="road"
+                onMouseLeave={(e) =>
+                  this.leave(e, "--mouse-vary", "--mouse-varx")
+                }
               />
               <span className="pic-name road pic-name-4">
                 - Boulevard of Fortune
