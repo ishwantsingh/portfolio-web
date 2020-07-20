@@ -499,7 +499,7 @@ class Hobbies extends React.Component {
     let enterY = e.clientY;
     let enterX = e.clientX; //// PROBLEM WITH COMPARING W ENTER COORDINATES
     let rect = e.target.getBoundingClientRect();
-    console.log("rect left", rect.left, "enter", enterY);
+
     this.setState({
       enterY: enterY,
       enterX: enterX,
@@ -508,8 +508,6 @@ class Hobbies extends React.Component {
       rectWidth: rect.width,
       rectHeight: rect.height,
     });
-    // e.target.style.transition =
-    //   " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
   };
 
   mouseCoords = (e, mouseYClass, mouseXClass) => {
@@ -519,23 +517,10 @@ class Hobbies extends React.Component {
     let y;
     let picWidth = getComputedStyle(e.target).width;
     let picLength = getComputedStyle(e.target).length;
-    let picLeftMargin = getComputedStyle(e.target).marginLeft;
-    let picTopMargin = getComputedStyle(e.target).marginTop;
-    let picRightMargin = getComputedStyle(e.target).marginRight;
-    let picBottomMargin = getComputedStyle(e.target).marginBottom;
 
-    let picLeftSideCoords = this.state.rectLeft + picLeftMargin;
-    let picTopSideCoords = this.state.rectTop + picTopMargin;
-    // let picRectWidth = this.state.rectWidth - picLeftMargin - picRightMargin;
-    console.log(
-      "LM",
-      picLeftMargin,
-      "RL",
-      this.state.rectLeft,
-      "LC",
-      picLeftSideCoords
-      // picRectWidth,
-    );
+    let picLeftSideCoords = this.state.rectLeft;
+    let picTopSideCoords = this.state.rectTop;
+
     // if ( e.clientY < this.state.enterY + picLength / 2) {
 
     //OLD
@@ -565,21 +550,6 @@ class Hobbies extends React.Component {
     //   x = -((e.clientX / 200) * 0.8);
     // }
 
-    // console.log(
-    //   // this.state,
-    //   e.clientX,
-    //   parseFloat(picLeftSideCoords) + parseFloat(picWidth),
-    //   e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth) / 2),
-    //   "x=> ",
-    //   x
-    //   // "y=> ",
-    //   // y,
-
-    //   // this.state.enterX,
-    //   // e.pageX,
-    //   // e.screenX
-    // );
-
     // UNCOMMENT THIS v, IMP WORKING CODE
     // e.target.parentNode.style.transform = `perspective(300px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
     // e.target.parentNode.style.setProperty(mouseYClass, y + "deg");
@@ -592,10 +562,6 @@ class Hobbies extends React.Component {
 
   leave = (e, mouseYClass, mouseXClass) => {
     e.preventDefault();
-    e.target.style.transition =
-      " all 400ms cubic-bezire(0.03, 0.98, 0.52, 0.99) 0s";
-    // e.target.style.setProperty(mouseYClass, 0 + "deg");
-    // e.target.style.setProperty(mouseXClass, 0 + "deg");
     e.target.style.setProperty(mouseYClass, 0 + "deg");
     e.target.style.setProperty(mouseXClass, 0 + "deg");
     this.setState({
@@ -606,7 +572,6 @@ class Hobbies extends React.Component {
       rectWidth: 0,
       rectHeight: 0,
     });
-    // e.target.parentNode.style.transform = `perspective(0px) rotateX(5deg) rotateY(var(--mouse-varx))`;
   };
 
   render() {
@@ -614,16 +579,7 @@ class Hobbies extends React.Component {
       <Container id="content-4">
         <div className="page-container">
           <div className="page left">
-            <div
-              className="hobby-container-first river"
-              // onMouseMove={(e) =>
-              //   this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
-              // }
-              // onMouseEnter={this.enter}
-              // onMouseLeave={(e) =>
-              //   this.leave(e, "--mouse-vary", "--mouse-varx")
-              // }
-            >
+            <div className="hobby-container-first river">
               <img
                 src={river}
                 alt="river"
@@ -640,16 +596,7 @@ class Hobbies extends React.Component {
               <span className="pic-name pic-name-1">- River of Solitude</span>
             </div>
 
-            <div
-              className="hobby-container-second stairwell"
-              // onMouseMove={(e) =>
-              //   this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              // }
-              // onMouseEnter={this.enter}
-              // onMouseLeave={(e) =>
-              //   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              // }
-            >
+            <div className="hobby-container-second stairwell">
               <img
                 src={stairwell}
                 alt="stairwell"
@@ -676,16 +623,7 @@ class Hobbies extends React.Component {
             disabled={this.state.currentPage === 1 ? true : false}
           />
           <div className="page right ">
-            <div
-              className="hobby-container-second fire"
-              // onMouseMove={(e) =>
-              //   this.mouseCoords(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              // }
-              // onMouseEnter={this.enter}
-              // onMouseLeave={(e) =>
-              //   this.leave(e, "--mouse-vary-sec", "--mouse-varx-sec")
-              // }
-            >
+            <div className="hobby-container-second fire">
               <img
                 src={fire}
                 alt="fire"
@@ -703,16 +641,7 @@ class Hobbies extends React.Component {
                 - Flames of Enlightenment
               </span>
             </div>
-            <div
-              className="hobby-container-first road"
-              // onMouseMove={(e) =>
-              //   this.mouseCoords(e, "--mouse-vary", "--mouse-varx")
-              // }
-              // onMouseEnter={this.enter}
-              // onMouseLeave={(e) =>
-              //   this.leave(e, "--mouse-vary", "--mouse-varx")
-              // }
-            >
+            <div className="hobby-container-first road">
               <img
                 src={road}
                 alt="road"
