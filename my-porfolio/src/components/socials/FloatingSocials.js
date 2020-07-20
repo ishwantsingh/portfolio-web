@@ -10,8 +10,8 @@ const SubContainer = styled.div`
   justify-content: space-around;
   align-items: flex-end;
   align-self: flex-end;
-  margin-right: 0.5rem;
-  margin-top: 0.6rem;
+  margin-right: 0.4rem;
+  margin-top: 0.4rem;
   i.huge.icons {
     height: 4rem;
     font-size: 3.6em;
