@@ -9,6 +9,9 @@ import Skills from "./components/mainBody/Skills";
 import Hobbies from "./components/mainBody/Hobbies";
 import NavContainer from "./components/navigation/NavContainer";
 
+import { CSSPlugin } from "gsap/all";
+const plugins = [CSSPlugin];
+
 const Container = styled.div`
   width: 100%;
   height: 100%;
