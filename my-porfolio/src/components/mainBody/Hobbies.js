@@ -92,16 +92,11 @@ const Container = styled.div`
   }
 
   .hobby-container-first {
-    // --mouse-vary: 0deg;
-    // --mouse-varx: 0deg;
     display: flex;
     flex-direction: column;
     width: 100%;
     opacity: 0.9;
     box-sizing: border-box;
-    // will-change: transform;
-    // transform: perspective(300px) rotateX(var(--mouse-vary))
-    //   rotateY(var(--mouse-varx));
   }
   .pic-name {
     font-size: 1rem;
@@ -119,7 +114,6 @@ const Container = styled.div`
   }
   .stairwell {
     align-self: flex-end;
-    // margin-right: 15%;
     margin-top: 2rem;
   }
   .fire {
@@ -127,8 +121,6 @@ const Container = styled.div`
     margin-bottom: 3.5rem;
   }
   .hobby-container-second {
-    // --mouse-vary-sec: 0deg;
-    // --mouse-varx-sec: 0deg;
     display: flex;
     flex-direction: column;
     align-self: flex-end;
@@ -136,9 +128,6 @@ const Container = styled.div`
     width: 100%;
     opacity: 0.9;
     box-sizing: border-box;
-    // will-change: transform;
-    // transform: perspective(300px) rotateX(var(--mouse-vary-sec))
-    //   rotateY(var(--mouse-varx-sec));
   }
   .pic-name.stairwell {
     width: 12vw;
@@ -261,9 +250,6 @@ const Container = styled.div`
     z-index: 3;
     transform: rotate(90deg);
   }
-
-}
-}
 `;
 
 class Hobbies extends React.Component {
