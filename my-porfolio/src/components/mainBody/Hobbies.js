@@ -284,6 +284,23 @@ class Hobbies extends React.Component {
 
   componentDidMount() {
     this.timeline
+      .to(".back", 0.4, {
+        startAt: { x: "-50" },
+        opacity: 1,
+        x: 0,
+        ease: "power1.easeOut",
+      })
+      .to(
+        ".next",
+        0.4,
+        {
+          startAt: { x: "50" },
+          opacity: 1,
+          x: 0,
+          ease: "power1.easeOut",
+        },
+        "<"
+      )
       .staggerFrom(
         ".page > div",
         0.5,
@@ -294,25 +311,6 @@ class Hobbies extends React.Component {
           delay: 0.1,
         },
         0.2
-      )
-      .to(".back", 0.4, {
-        startAt: { x: "-50" },
-        opacity: 1,
-        x: 0,
-        ease: "power1.easeOut",
-        delay: 0.2,
-      })
-      .to(
-        ".next",
-        0.4,
-        {
-          startAt: { x: "50" },
-          opacity: 1,
-          x: 0,
-          ease: "power1.easeOut",
-          delay: 0.2,
-        },
-        "<"
       );
 
     this.timeline.play();
@@ -379,7 +377,7 @@ class Hobbies extends React.Component {
         hobbyNameLeft.innerHTML = "";
 
         this.setState({ currentPage: 2 });
-      }, 1050);
+      }, 1150);
     };
 
     return new Promise((resolve, reject) => {
@@ -390,7 +388,7 @@ class Hobbies extends React.Component {
         const page = pagesLeft[i];
         this.transitionTimeline.to(
           page,
-          1.8,
+          2,
           {
             ease: Quint.easeInOut,
             startAt: { x: "100%" },
@@ -404,7 +402,7 @@ class Hobbies extends React.Component {
         const page = pagesRight[i];
         this.transitionTimeline.to(
           page,
-          1.8,
+          2,
           {
             ease: Quint.easeInOut,
             startAt: { x: "100%" },
@@ -413,24 +411,8 @@ class Hobbies extends React.Component {
           0.15
         );
       }
-      // this.transitionTimeline.to(
-      //   ".cover-inner",
-      //   1.6,
-      //   {
-      //     ease: Quint.easeInOut,
-      //     startAt: { x: "100%" },
-      //     x: "-100%",
-      //   },
-      //   0.15
-      // );
       this.transitionTimeline.play().eventCallback(show1());
     });
-    // let hide = () => {
-    //   setTimeout(() => {
-    //     //     cover2.style.zIndex = 1;
-    //   }, 1000);
-    // };
-    // hide();
   };
 
   backPicturePage = (e) => {
@@ -468,7 +450,7 @@ class Hobbies extends React.Component {
         hobbyNameLeft.innerHTML = "__photography";
 
         this.setState({ currentPage: 1 });
-      }, 1050);
+      }, 1150);
     };
     return new Promise((resolve, reject) => {
       const pagesLeft = this.pages["left"];
@@ -477,7 +459,7 @@ class Hobbies extends React.Component {
         const page = pagesLeft[i];
         this.transitionTimeline2.to(
           page,
-          1.8,
+          2,
           {
             ease: Quint.easeInOut,
             startAt: { x: "-100%" },
@@ -491,7 +473,7 @@ class Hobbies extends React.Component {
         const page = pagesRight[i];
         this.transitionTimeline2.to(
           page,
-          1.8,
+          2,
           {
             ease: Quint.easeInOut,
             startAt: { x: "-100%" },
@@ -500,31 +482,14 @@ class Hobbies extends React.Component {
           0.15
         );
       }
-
-      // this.transitionTimeline.to(
-      //   ".cover-inner",
-      //   1.6,
-      //   {
-      //     ease: Quint.easeInOut,
-      //     startAt: { x: "-100%" },
-      //     x: "100%",
-      //   },
-      //   0.15
-      // );
       this.transitionTimeline2.play().eventCallback(show1());
     });
-    // let hide = () => {
-    //   setTimeout(() => {
-    //     //     cover2.style.zIndex = 1;
-    //   }, 1000);
-    // };
-    // hide();
   };
 
   enter = (e) => {
     e.preventDefault();
     let enterY = e.clientY;
-    let enterX = e.clientX; //// PROBLEM WITH COMPARING W ENTER COORDINATES
+    let enterX = e.clientX;
     let rect = e.target.getBoundingClientRect();
 
     this.setState({
@@ -548,40 +513,13 @@ class Hobbies extends React.Component {
     let picLeftSideCoords = this.state.rectLeft;
     let picTopSideCoords = this.state.rectTop;
 
-    // if ( e.clientY < this.state.enterY + picLength / 2) {
-
-    //OLD
-    // y = ((e.clientY - this.state.enterY + picLength) / 150) * 1.1;
-    //OLD
-
-    // } else if (e.clientY >= this.state.enterY + picLength / 2) {
-    //   y = -((this.state.enterY + picLength / 100) * 0.95);
-    // }
-    // if (e.movementX >=1 && e.clientX <= this.state.enterX + parseFloat(picWidth) / 2) {
-
-    //OLD
-    // x = ((e.clientX - this.state.enterX + parseFloat(picWidth)) / 150) * 1.1; // CHANGED SIGNS HERE
-    //OLD
-
-    //TEST
     y = (e.clientY - (parseFloat(picTopSideCoords) + picLength / 2)) / 60;
 
     x = -(
       (e.clientX - (parseFloat(picLeftSideCoords) + parseFloat(picWidth) / 2)) /
       60
-    ); // CHANGED SIGNS HERE
+    );
 
-    //TEST
-
-    // } else if (e.clientX >= this.state.enterX + parseFloat(picWidth) / 2) {
-    //   x = -((e.clientX / 200) * 0.8);
-    // }
-
-    // UNCOMMENT THIS v, IMP WORKING CODE
-    // e.target.parentNode.style.transform = `perspective(300px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
-    // e.target.parentNode.style.setProperty(mouseYClass, y + "deg");
-    // e.target.parentNode.style.setProperty(mouseXClass, x + "deg");
-    //UNCOMMENT THIS ^
     e.target.style.transform = `perspective(300px) rotateX(${mouseYClass}) rotateY(${mouseXClass})`;
     e.target.style.setProperty(mouseYClass, y + "deg");
     e.target.style.setProperty(mouseXClass, x + "deg");
