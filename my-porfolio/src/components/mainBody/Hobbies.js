@@ -214,6 +214,7 @@ const Container = styled.div`
     position: absolute;
     font-size: 2.2rem;
     color: #505050;
+    opacity: 1;
   }
   .icon.next {
     display: flex;
@@ -224,6 +225,7 @@ const Container = styled.div`
     position: absolute;
     font-size: 2.2rem;
     color: #505050;
+    opacity: 1;
   }
   i.icon:hover {
     cursor: pointer;
@@ -260,8 +262,6 @@ const Container = styled.div`
     transform: rotate(90deg);
   }
 
-  // box-shadow: rgba(0, 0, 0, 0.3) 7px 8px 10px 2px;
- // box-shadow: rgba(0, 0, 0, 0.3) 2px 5px 11px 4px;
 }
 }
 `;
@@ -283,11 +283,38 @@ class Hobbies extends React.Component {
   }
 
   componentDidMount() {
-    this.timeline.from("#content-4", 1.5, {
-      autoAlpha: 0,
-      delay: 0,
-      ease: Power1.easeIn,
-    });
+    this.timeline
+      .staggerFrom(
+        ".page > div",
+        0.5,
+        {
+          autoAlpha: 0,
+          x: -50,
+          ease: "power1.easeOut",
+          delay: 0.1,
+        },
+        0.2
+      )
+      .to(".back", 0.4, {
+        startAt: { x: "-50" },
+        opacity: 1,
+        x: 0,
+        ease: "power1.easeOut",
+        delay: 0.2,
+      })
+      .to(
+        ".next",
+        0.4,
+        {
+          startAt: { x: "50" },
+          opacity: 1,
+          x: 0,
+          ease: "power1.easeOut",
+          delay: 0.2,
+        },
+        "<"
+      );
+
     this.timeline.play();
     let left = document.querySelector(".cover-left");
     let right = document.querySelector(".cover-right");
