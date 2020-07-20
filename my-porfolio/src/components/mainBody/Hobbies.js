@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { TimelineMax, Power1, Quint } from "gsap/all";
+import { TimelineMax, Quint } from "gsap/all";
 import history from "../../history";
 import { Icon } from "semantic-ui-react";
 
@@ -321,7 +321,7 @@ class Hobbies extends React.Component {
 
   changePage = (e, destination) => {
     e.preventDefault();
-    this.timeline.reverse();
+    this.timeline.timeScale(1.5).reverse();
     const timelineDuration = this.timeline.duration() * 1000;
     setTimeout(() => {
       history.push(destination);
