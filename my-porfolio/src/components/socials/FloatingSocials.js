@@ -22,6 +22,15 @@ const SubContainer = styled.div`
     font-size: 3.8em;
     text-shadow: 0px 0px 0px #ffffff;
   }
+  @media (max-height: 750px) {
+    i.huge.icons {
+      height: 3.2rem;
+      font-size: 2.8em;
+    }
+    i.huge.icons:hover {
+      font-size: 3.1em;
+    }
+  }
 `;
 
 const FloatingSocials = () => {

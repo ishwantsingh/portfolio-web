@@ -16,6 +16,9 @@ const Container = styled.div`
   border-left: 1.3px dashed #e1e0e0;
   z-index: 10 !important;
   background-color: white;
+  @media (max-height: 875px) {
+    padding: 1rem 0 1rem 0;
+  }
 `;
 
 const SubContainer = styled.div`
@@ -55,6 +58,20 @@ const SubContainer = styled.div`
   }
   .selected-menu:hover {
     font-size: 1.3rem;
+  }
+  @media (max-height: 750px) {
+    width: 70%;
+    .floating-link {
+      height: 1.5rem;
+      font-size: 1.05rem;
+    }
+    .selected-menu {
+      height: 30px;
+      font-size: 1.15rem;
+    }
+    .selected-menu:hover {
+      font-size: 1.15rem;
+    }
   }
 `;
 

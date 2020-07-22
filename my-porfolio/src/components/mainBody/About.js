@@ -34,7 +34,7 @@ const Container = styled.div`
   }
   .text {
     width: 50%;
-    height: 50rem;
+    height: 69vh;
     display: flex;
     justify-self: center;
     justify-content: center;
@@ -82,7 +82,6 @@ const Container = styled.div`
     border-radius: 8px;
     font-family: "Nunito", sans-serif;
     box-shadow: 0px 10px 24px #e5f4f5;
-    font-size: 1.4rem;
     line-height: 35px;
     background-color: #daf8ff;
     color: #00b1da;
@@ -116,6 +115,22 @@ const Container = styled.div`
     margin-top: -25px;
     display: block;
     z-index: -1;
+  }
+  @media (max-width: 1280px) {
+    // background-size: 100% 100%;
+  }
+  @media (max-height: 701px) {
+    // font-size: 4rem;
+    h1 {
+      // font-size: 2.5rem;
+    }
+    .about-div {
+      // font-size: 1.2rem;
+    }
+    .name-div {
+      // height: 8rem;
+      // font-size: 2.5rem;
+    }
   }
 `;
 
