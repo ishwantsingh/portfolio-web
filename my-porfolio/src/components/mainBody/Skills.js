@@ -71,11 +71,11 @@ const Container = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    width: 52vw;
+    width: 58vw;
     height 78vh;
     position: absolute;
     top: 11vh;
-    right: 35vw;
+    right: 29vw;
     padding: 0 0 0 5%;
     font-family: "Roboto", serif;
     font-size: 1.4rem;
@@ -109,7 +109,7 @@ const Container = styled.div`
       display: flex;
       justify-self: flex-start !important;
       height: 100%;
-      background: linear-gradient(239.07deg, #444444 1.07%, #000000 100%);
+      background: linear-gradient(239.07deg, #454545 1.07%, #222222 100%);
     }
   }
 `;
