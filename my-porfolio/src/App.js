@@ -8,6 +8,7 @@ import Projects from "./components/mainBody/Projects";
 import Skills from "./components/mainBody/Skills";
 import Hobbies from "./components/mainBody/Hobbies";
 import NavContainer from "./components/navigation/NavContainer";
+import MobileNavContainer from "./components/navigation/MobileNavContainer";
 
 import { CSSPlugin } from "gsap/all";
 const plugins = [CSSPlugin];
@@ -17,6 +18,9 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 950px) {
+    flex-direction: column;
+  }
 `;
 
 class App extends React.Component {
@@ -80,6 +84,7 @@ class App extends React.Component {
   render() {
     return (
       <Container>
+        <MobileNavContainer />
         <Switch>
           <Route exact path="/">
             <About ref={this.aboutChild} />

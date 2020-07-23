@@ -19,6 +19,9 @@ const Container = styled.div`
   @media (max-height: 875px) {
     padding: 1rem 0 1rem 0;
   }
+  @media (max-width: 950px) {
+    display: none !important;
+  }
 `;
 
 const SubContainer = styled.div`
