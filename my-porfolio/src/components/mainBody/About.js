@@ -118,6 +118,9 @@ const Container = styled.div`
   }
   @media (max-width: 1500px) {
     font-size: 5.5rem;
+    .text {
+      margin-bottom: 1.5rem;
+    }
     h1 {
       font-size: 3rem;
     }
@@ -140,8 +143,19 @@ const Container = styled.div`
       font-size: 12.5px;
     }
   }
-  @media (max-width: 1280px) {
+  @media (max-width: 1280px) and (max-height: 650px) {
+    .scroll-down-but {
+      display: none;
+    }
+    .name-div {
+      height: 8rem;
+    }
+  }
+  @media (max-width: 1330px) {
     font-size: 5rem;
+    .text {
+      margin-bottom: 4.2rem;
+    }
     h1 {
       font-size: 2.6rem;
     }
@@ -165,7 +179,7 @@ const Container = styled.div`
       margin-top: 1.75rem;
     }
   }
-  @media (max-width: 1050px) {
+  @media (max-width: 1110px) {
     .scroll-down-but {
       display: none;
     }

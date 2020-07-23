@@ -245,7 +245,7 @@ const Container = styled.div`
   }
   .hobby-name-right {
     position: relative;
-    top: -5.2%;
+    top: -15.25%;
     right: 48.5% !important;
     z-index: 3;
     transform: rotate(90deg);
@@ -351,7 +351,7 @@ class Hobbies extends React.Component {
         pic3.style.width = "23vw";
         pic4.setAttribute("src", painting1);
 
-        hobbyNameRight.style.top = "-7%";
+        hobbyNameRight.style.top = "-15.25%";
 
         picName1.innerHTML = "- Blue over Green";
         picName2.innerHTML = "- Aging Leaves";
@@ -424,7 +424,7 @@ class Hobbies extends React.Component {
         pic3.style.width = "13vw";
         pic4.setAttribute("src", road);
 
-        hobbyNameRight.style.top = "-5.2%";
+        hobbyNameRight.style.top = "-15.25%";
 
         picName1.innerHTML = "- River of Solitude";
         picName2.innerHTML = "- Plummeting Descent";

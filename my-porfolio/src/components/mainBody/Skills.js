@@ -112,6 +112,18 @@ const Container = styled.div`
       background: linear-gradient(239.07deg, #454545 1.07%, #222222 100%);
     }
   }
+  @media (max-width: 1650px) {
+    .tech-skill {
+      height: 2.85rem;
+  }
+  @media (max-width: 1450px) {
+    .tech-skill {
+      height: 2.6rem;
+  }
+  @media (max-width: 1250px) {
+    .tech-skill {
+      height: 2.8rem;
+  }
 `;
 
 class Skills extends React.Component {

@@ -84,6 +84,15 @@ const Container = styled.div`
   .ui.checkbox input.hidden + label {
     cursor: default !important;
   }
+  @media (max-height: 850px) {
+    font-size: 3.5rem;
+    .ui.checkbox input.hidden + label {
+      font-size: 12px;
+      padding-bottom: 15px;
+    }
+    .project-heading {
+      height: 2.5rem;
+  }
 `;
 
 class Projects extends React.Component {
