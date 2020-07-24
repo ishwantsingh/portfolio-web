@@ -184,6 +184,13 @@ const Container = styled.div`
       display: none;
     }
   }
+  @media only screen and (max-width: 950px) {
+    flex-direction: column;
+    #texts span:after {
+      width: 0;
+      height: 0;
+    }
+  }
 `;
 
 // DAF8FF f9f9f9
