@@ -185,10 +185,50 @@ const Container = styled.div`
     }
   }
   @media only screen and (max-width: 950px) {
-    flex-direction: column;
+    margin-top: -5rem;
+    flex-direction: column-reverse;
+    background-image: none;
+    // background-position: left bottom;
+    // background-size: cover;
     #texts span:after {
       width: 0;
       height: 0;
+    }
+    .imageDiv {
+      align-self: center;
+      height: 30vh;
+      width: 60vw;
+      margin: 0;
+    }
+    .image {
+      height: 30vh;
+      width: 60vw;
+    }
+    .text {
+      margin-top: 10rem;
+      width: 100vw;
+      height: 50vh;
+      margin-bottom: 0;
+    }
+    h1 {
+      width: 100vw;
+      text-align: left;
+    }
+    #texts {
+      height: 6vh;
+    }
+    .about-div {
+      margin-top: 2rem !important;
+      width: 90vw;
+      height: 19vh !important;
+      margin: 0 auto;
+      font-size: 1.5rem;
+    }
+    .name-div {
+      width: 90vw;
+      height: 10rem;
+      margin: 0 auto;
+      font-size: 2.3rem;
     }
   }
 `;

@@ -5,6 +5,7 @@ import { Icon } from "semantic-ui-react";
 const SubContainer = styled.div`
   width: 100%;
   height: 5rem;
+  z-index: 10;
   display: none;
   background-color: white;
   flex-direction: row;
