@@ -185,6 +185,7 @@ const Container = styled.div`
     }
   }
   @media only screen and (max-width: 950px) {
+    // height: calc(100% - 5rem);
     margin-top: -5rem;
     flex-direction: column-reverse;
     background-image: none;
@@ -213,22 +214,35 @@ const Container = styled.div`
     h1 {
       width: 100vw;
       text-align: left;
+      margin: 0;
     }
     #texts {
       height: 6vh;
     }
     .about-div {
       margin-top: 2rem !important;
-      width: 90vw;
+      width: 88vw;
       height: 19vh !important;
       margin: 0 auto;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
     .name-div {
-      width: 90vw;
+      width: 88vw;
       height: 10rem;
       margin: 0 auto;
-      font-size: 2.3rem;
+      font-size: 2.4rem;
+      justify-content: flex-end;
+    }
+    .scroll-down-but {
+      display: flex;
+      align-self: center;
+      justify-self: center;
+      justify-content: center;
+      width: 80vw;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1.35rem;
+      padding-top: 3.5px;
     }
   }
 `;

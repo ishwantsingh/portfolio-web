@@ -93,6 +93,9 @@ const Container = styled.div`
     .project-heading {
       height: 2.5rem;
   }
+  // @media (max-height: 950px) {
+  //   height: calc(100% - 5rem);
+  // }
 `;
 
 class Projects extends React.Component {

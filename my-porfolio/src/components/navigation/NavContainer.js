@@ -16,11 +16,18 @@ const Container = styled.div`
   border-left: 1.3px dashed #e1e0e0;
   z-index: 10 !important;
   background-color: white;
+  transition: width 1s ease 0s;
   @media (max-height: 875px) {
     padding: 1rem 0 1rem 0;
   }
   @media (max-width: 950px) {
-    display: none !important;
+    display: none;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    width: 0%;
+    height: calc(100% - 5rem);
+    transition: width 1s ease 0s;
   }
 `;
 
@@ -94,6 +101,11 @@ class NavContainer extends React.Component {
     this.timeline.play();
   }
 
+  closeMenu = () => {
+    document.getElementById("content").style.width = "0%";
+    document.getElementById("content").style.display = "none";
+  };
+
   render() {
     return (
       <Container id="content">
@@ -104,6 +116,7 @@ class NavContainer extends React.Component {
             to="/"
             activeClassName="selected-menu"
             className="floating-link"
+            onClick={this.closeMenu}
           >
             About
           </NavLink>
@@ -111,6 +124,7 @@ class NavContainer extends React.Component {
             to="/projects"
             activeClassName="selected-menu"
             className="floating-link"
+            onClick={this.closeMenu}
           >
             Projects
           </NavLink>
@@ -118,6 +132,7 @@ class NavContainer extends React.Component {
             to="/skills"
             activeClassName="selected-menu"
             className="floating-link"
+            onClick={this.closeMenu}
           >
             Skills
           </NavLink>
@@ -125,6 +140,7 @@ class NavContainer extends React.Component {
             to="/hobbies"
             activeClassName="selected-menu"
             className="floating-link"
+            onClick={this.closeMenu}
           >
             Hobbies
           </NavLink>

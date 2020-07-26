@@ -23,15 +23,49 @@ const SubContainer = styled.div`
     font-size: 2.5em;
     color: #303030;
   }
+  .burger-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      height: 40px;
+      width: 80px;
+      border: 1px solid red;
+  }
+  .burger-menu:hover {
+      background-color: cyan;
+      opacity: 0.8;
+  }
+  .bar {
+    height: 5px;
+    width: 35px;
+    background: linear-gradient(239.07deg, #454545 1.07%, #222222 100%);
+   }
   @media (max-width: 950px) {
     display: flex !important;
 `;
 
 const MobileNavContainer = () => {
+  const openMenu = (e) => {
+    e.preventDefault();
+    let navMenu = document.getElementById("content");
+    console.log(navMenu, "element");
+
+    navMenu.style.setProperty("display", "flex");
+    navMenu.style.setProperty("width", "100%");
+
+    let display = getComputedStyle(navMenu).display;
+    console.log(display);
+  };
   return (
     <SubContainer>
       <div className="name">Ishwant Singh</div>
-      <Icon name="bars" color="black" size="huge" className="icons" />
+      {/* <Icon name="bars" color="black" size="huge" className="icons" /> */}
+      <div className="burger-menu" onClick={(e) => openMenu(e)}>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </div>
     </SubContainer>
   );
 };

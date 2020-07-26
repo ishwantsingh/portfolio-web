@@ -250,6 +250,9 @@ const Container = styled.div`
     z-index: 3;
     transform: rotate(90deg);
   }
+  // @media (max-height: 950px) {
+  //   height: calc(100% - 5rem);
+  // }
 `;
 
 class Hobbies extends React.Component {
