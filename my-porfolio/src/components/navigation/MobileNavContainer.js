@@ -14,7 +14,7 @@ const SubContainer = styled.div`
   align-self: flex-start;
   border-bottom: 1px solid #F3F3F3;
   .name {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: "Prata", serif;
     margin-left: 10%;
   }
@@ -27,18 +27,15 @@ const SubContainer = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-self: center;
       justify-content: space-evenly;
       height: 40px;
       width: 80px;
-      border: 1px solid red;
-  }
-  .burger-menu:hover {
-      background-color: cyan;
-      opacity: 0.8;
   }
   .bar {
     height: 5px;
     width: 35px;
+    border-radius: 6px;
     background: linear-gradient(239.07deg, #454545 1.07%, #222222 100%);
    }
   @media (max-width: 950px) {
@@ -57,6 +54,22 @@ const MobileNavContainer = () => {
     let display = getComputedStyle(navMenu).display;
     console.log(display);
   };
+  // closeMenu = () => {
+  //   if (matchMedia) {
+  //     const mq = window.matchMedia("(min-width: 951px)");
+  //     mq.addListener(WidthChange);
+  //     WidthChange(mq);
+  //   }
+  //   function WidthChange(mq) {
+  //     if (mq.matches) {
+  //       document.getElementById("content").style.display = "flex";
+  //       document.getElementById("content").style.width = "15%";
+  //     } else {
+  //       document.getElementById("content").style.width = "0%";
+  //       document.getElementById("content").style.display = "none";
+  //     }
+  //   }
+  // };
   return (
     <SubContainer>
       <div className="name">Ishwant Singh</div>

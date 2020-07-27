@@ -102,8 +102,20 @@ class NavContainer extends React.Component {
   }
 
   closeMenu = () => {
-    document.getElementById("content").style.width = "0%";
-    document.getElementById("content").style.display = "none";
+    if (matchMedia) {
+      const mq = window.matchMedia("(min-width: 951px)");
+      mq.addListener(WidthChange);
+      WidthChange(mq);
+    }
+    function WidthChange(mq) {
+      if (mq.matches) {
+        document.getElementById("content").style.display = "flex";
+        document.getElementById("content").style.width = "15%";
+      } else {
+        document.getElementById("content").style.width = "0%";
+        document.getElementById("content").style.display = "none";
+      }
+    }
   };
 
   render() {

@@ -200,19 +200,21 @@ const Container = styled.div`
       height: 30vh;
       width: 60vw;
       margin: 0;
+      margin-bottom: 5rem;
     }
     .image {
       height: 30vh;
       width: 60vw;
     }
     .text {
-      margin-top: 10rem;
+      margin-top: 5rem;
       width: 100vw;
       height: 50vh;
       margin-bottom: 0;
     }
     h1 {
       width: 100vw;
+      align-items: center;
       text-align: left;
       margin: 0;
     }
@@ -238,11 +240,11 @@ const Container = styled.div`
       align-self: center;
       justify-self: center;
       justify-content: center;
-      width: 80vw;
+      width: 88vw;
       margin-top: 1rem;
       text-align: center;
       font-size: 1.35rem;
-      padding-top: 3.5px;
+      line-height: 40px;
     }
   }
 `;
