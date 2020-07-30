@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { TimelineMax, Quint, Power2, Power1 } from "gsap/all";
 
@@ -43,74 +43,121 @@ const SubContainer = styled.div`
 `;
 
 const MobileNavContainer = () => {
+  const [opened, menuState] = useState(false);
+
+  let menuTimeline = new TimelineMax({ paused: true });
   const openMenu = (e) => {
     e.preventDefault();
+
+    menuState(true);
+
     let navMenu = document.getElementById("content");
 
     navMenu.style.setProperty("display", "flex");
     navMenu.style.setProperty("width", "100%");
 
-    return new Promise((resolve, reject) => {
-      let menuTimeline = new TimelineMax({ onComplete: resolve });
-      menuTimeline
-        .to(".bar-one", 0.23, {
+    console.log("open");
+    // return new Promise((resolve, reject) => {
+    // let menuOpenTimeline = new TimelineMax({ onComplete: resolve });
+    menuTimeline
+      .to(".bar-one", 0.23, {
+        ease: Power1.easeIn,
+        y: "11px",
+      })
+      .to(
+        ".bar-three",
+        0.23,
+        {
           ease: Power1.easeIn,
-          y: "11px",
-        })
-        .to(
-          ".bar-three",
-          0.23,
-          {
-            ease: Power1.easeIn,
-            y: "-11px",
-          },
-          "<"
-        )
-        .to(
-          ".bar-two",
-          0.2,
-          {
-            ease: Power1.easeIn,
-            scaleX: 0,
-          },
-          "<"
-        )
-        .to(".bar-one", 0.3, {
+          y: "-11px",
+        },
+        "<"
+      )
+      .to(
+        ".bar-two",
+        0.2,
+        {
+          ease: Power1.easeIn,
+          scaleX: 0,
+        },
+        "<"
+      )
+      .to(".bar-one", 0.3, {
+        ease: Power2.easeOut,
+        rotate: "-45%",
+      })
+      .to(
+        ".bar-three",
+        0.3,
+        {
           ease: Power2.easeOut,
-          rotate: "-45%",
-        })
-        .to(
-          ".bar-three",
-          0.3,
-          {
-            ease: Power2.easeOut,
-            rotate: "45%",
-          },
-          "<"
-        );
-    });
+          rotate: "45%",
+        },
+        "<"
+      );
+    menuTimeline.play();
+    // });
   };
-  // closeMenu = () => {
-  //   if (matchMedia) {
-  //     const mq = window.matchMedia("(min-width: 951px)");
-  //     mq.addListener(WidthChange);
-  //     WidthChange(mq);
-  //   }
-  //   function WidthChange(mq) {
-  //     if (mq.matches) {
-  //       document.getElementById("content").style.display = "flex";
-  //       document.getElementById("content").style.width = "15%";
-  //     } else {
-  //       document.getElementById("content").style.width = "0%";
-  //       document.getElementById("content").style.display = "none";
-  //     }
-  //   }
-  // };
+  const closeMenu = (e) => {
+    e.preventDefault();
+
+    menuState(false);
+
+    let navMenu = document.getElementById("content");
+
+    navMenu.style.setProperty("display", "none");
+    navMenu.style.setProperty("width", "0%");
+    console.log("close");
+
+    // return new Promise((resolve, reject) => {
+    // let menuCloseTimeline = new TimelineMax({ onComplete: resolve });
+    menuTimeline
+      .to(".bar-one", 0.3, {
+        ease: Power2.easeOut,
+        rotate: "0%",
+      })
+      .to(
+        ".bar-three",
+        0.3,
+        {
+          ease: Power2.easeOut,
+          rotate: "0%",
+        },
+        "<"
+      )
+      .to(
+        ".bar-two",
+        0.2,
+        {
+          ease: Power1.easeIn,
+          scaleX: 1,
+        },
+        "<"
+      )
+      .to(".bar-one", 0.23, {
+        ease: Power1.easeIn,
+        y: "0px",
+      })
+      .to(
+        ".bar-three",
+        0.23,
+        {
+          ease: Power1.easeIn,
+          y: "0px",
+        },
+        "<"
+      );
+    menuTimeline.play();
+    // });
+  };
   return (
     <SubContainer>
       <div className="name">Ishwant Singh</div>
       {/* <Icon name="bars" color="black" size="huge" className="icons" /> */}
-      <div className="burger-menu" onClick={(e) => openMenu(e)}>
+      <div
+        className="burger-menu"
+        onClick={!opened ? (e) => openMenu(e) : (e) => closeMenu(e)}
+      >
         <div className="bar bar-one"></div>
         <div className="bar bar-two"></div>
         <div className="bar bar-three"></div>
