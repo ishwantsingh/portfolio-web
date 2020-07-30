@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon } from "semantic-ui-react";
+import { TimelineMax, Quint, Power2, Power1 } from "gsap/all";
 
 const SubContainer = styled.div`
   width: 100%;
@@ -46,13 +46,49 @@ const MobileNavContainer = () => {
   const openMenu = (e) => {
     e.preventDefault();
     let navMenu = document.getElementById("content");
-    console.log(navMenu, "element");
 
     navMenu.style.setProperty("display", "flex");
     navMenu.style.setProperty("width", "100%");
 
-    let display = getComputedStyle(navMenu).display;
-    console.log(display);
+    return new Promise((resolve, reject) => {
+      let menuTimeline = new TimelineMax({ onComplete: resolve });
+      menuTimeline
+        .to(".bar-one", 0.23, {
+          ease: Power1.easeIn,
+          y: "11px",
+        })
+        .to(
+          ".bar-three",
+          0.23,
+          {
+            ease: Power1.easeIn,
+            y: "-11px",
+          },
+          "<"
+        )
+        .to(
+          ".bar-two",
+          0.2,
+          {
+            ease: Power1.easeIn,
+            scaleX: 0,
+          },
+          "<"
+        )
+        .to(".bar-one", 0.3, {
+          ease: Power2.easeOut,
+          rotate: "-45%",
+        })
+        .to(
+          ".bar-three",
+          0.3,
+          {
+            ease: Power2.easeOut,
+            rotate: "45%",
+          },
+          "<"
+        );
+    });
   };
   // closeMenu = () => {
   //   if (matchMedia) {
@@ -75,9 +111,9 @@ const MobileNavContainer = () => {
       <div className="name">Ishwant Singh</div>
       {/* <Icon name="bars" color="black" size="huge" className="icons" /> */}
       <div className="burger-menu" onClick={(e) => openMenu(e)}>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
+        <div className="bar bar-one"></div>
+        <div className="bar bar-two"></div>
+        <div className="bar bar-three"></div>
       </div>
     </SubContainer>
   );

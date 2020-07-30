@@ -16,7 +16,7 @@ const Container = styled.div`
   border-left: 1.3px dashed #e1e0e0;
   z-index: 10 !important;
   background-color: white;
-  transition: width 1s ease 0s;
+  // transition: width 1s ease 0s;
   @media (max-height: 875px) {
     padding: 1rem 0 1rem 0;
   }
@@ -27,7 +27,7 @@ const Container = styled.div`
     left: 0;
     width: 0%;
     height: calc(100% - 5rem);
-    transition: width 1s ease 0s;
+    // transition: width 1s ease 0s;
   }
 `;
 
