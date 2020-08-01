@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import styled from "styled-components";
 import { TimelineMax, Quint, Power2, Power1 } from "gsap/all";
 
@@ -43,22 +43,32 @@ const SubContainer = styled.div`
 `;
 
 const MobileNavContainer = () => {
-  const [opened, menuState] = useState(false);
+  const [opened, menuState] = useState(localStorage.getItem("burgerMenu"));
+  let setLocalStorageAsync = async (isOpen) => {
+    let isOpened = await localStorage.setItem("burgerMenu", isOpen);
+    console.log("working set");
+  };
+
+  // setLocalStorageAsync(false);
+  // localStorage.setItem("burgerMenu", opened);
 
   let menuTimeline = new TimelineMax({ paused: true });
   const openMenu = (e) => {
     e.preventDefault();
+    console.log(opened, "opened 0");
+    // let t = true;
+    setLocalStorageAsync(true);
 
+    // localStorage.setItem("burgerMenu", t);
     menuState(true);
+
+    console.log(opened, "opened 1");
 
     let navMenu = document.getElementById("content");
 
     navMenu.style.setProperty("display", "flex");
     navMenu.style.setProperty("width", "100%");
 
-    console.log("open");
-    // return new Promise((resolve, reject) => {
-    // let menuOpenTimeline = new TimelineMax({ onComplete: resolve });
     menuTimeline
       .to(".bar-one", 0.23, {
         ease: Power1.easeIn,
@@ -82,13 +92,13 @@ const MobileNavContainer = () => {
         },
         "<"
       )
-      .to(".bar-one", 0.3, {
+      .to(".bar-one", 0.23, {
         ease: Power2.easeOut,
         rotate: "-45%",
       })
       .to(
         ".bar-three",
-        0.3,
+        0.23,
         {
           ease: Power2.easeOut,
           rotate: "45%",
@@ -96,67 +106,85 @@ const MobileNavContainer = () => {
         "<"
       );
     menuTimeline.play();
-    // });
   };
+  console.log(opened, "opened 2");
+
   const closeMenu = (e) => {
     e.preventDefault();
+    console.log(opened, "opened 3");
+    // let f = false;
+    // localStorage.setItem("burgerMenu", f);
+    setLocalStorageAsync(false);
 
     menuState(false);
+
+    console.log(opened, "opened 4");
 
     let navMenu = document.getElementById("content");
 
     navMenu.style.setProperty("display", "none");
     navMenu.style.setProperty("width", "0%");
-    console.log("close");
 
-    // return new Promise((resolve, reject) => {
-    // let menuCloseTimeline = new TimelineMax({ onComplete: resolve });
     menuTimeline
-      .to(".bar-one", 0.3, {
+      .to(".bar-one", 0.2, {
         ease: Power2.easeOut,
         rotate: "0%",
       })
       .to(
         ".bar-three",
-        0.3,
+        0.2,
         {
           ease: Power2.easeOut,
           rotate: "0%",
         },
         "<"
       )
-      .to(
-        ".bar-two",
-        0.2,
-        {
-          ease: Power1.easeIn,
-          scaleX: 1,
-        },
-        "<"
-      )
-      .to(".bar-one", 0.23, {
+      .to(".bar-one", 0.2, {
         ease: Power1.easeIn,
         y: "0px",
       })
       .to(
         ".bar-three",
-        0.23,
+        0.2,
         {
           ease: Power1.easeIn,
           y: "0px",
         },
         "<"
+      )
+      .to(
+        ".bar-two",
+        0.17,
+        {
+          ease: Power1.easeIn,
+          scaleX: 1,
+          delay: 0.03,
+        },
+        "<"
       );
     menuTimeline.play();
-    // });
   };
+
+  useLayoutEffect(() => {
+    // Update the document title using the browser API
+    // let isOpened = localStorage.getItem("burgerMenu");
+    // let getLocalStorageAsync = async () => {
+    //   let isOpened = await localStorage.getItem("burgerMenu");
+    //   menuState(isOpened);
+    //   console.log(isOpened, "local");
+    // };
+    // getLocalStorageAsync();
+    // menuState(false);
+    console.log(opened, "state");
+    // menuState(localStorage.getItem("burgerMenu"));
+  });
+
   return (
     <SubContainer>
       <div className="name">Ishwant Singh</div>
-      {/* <Icon name="bars" color="black" size="huge" className="icons" /> */}
       <div
         className="burger-menu"
-        onClick={!opened ? (e) => openMenu(e) : (e) => closeMenu(e)}
+        onClick={opened === false ? (e) => openMenu(e) : (e) => closeMenu(e)}
       >
         <div className="bar bar-one"></div>
         <div className="bar bar-two"></div>

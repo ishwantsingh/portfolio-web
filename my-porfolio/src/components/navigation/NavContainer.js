@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { TimelineMax, Power1 } from "gsap/all";
+import { TimelineMax, Power1, Power2 } from "gsap/all";
 
 import FloatingSocials from "../socials/FloatingSocials";
 import FloatingImp from "../socials/FloatingImp";
@@ -16,7 +16,6 @@ const Container = styled.div`
   border-left: 1.3px dashed #e1e0e0;
   z-index: 10 !important;
   background-color: white;
-  // transition: width 1s ease 0s;
   @media (max-height: 875px) {
     padding: 1rem 0 1rem 0;
   }
@@ -27,7 +26,6 @@ const Container = styled.div`
     left: 0;
     width: 0%;
     height: calc(100% - 5rem);
-    // transition: width 1s ease 0s;
   }
 `;
 
@@ -89,6 +87,9 @@ class NavContainer extends React.Component {
   constructor(props) {
     super(props);
     this.timeline = new TimelineMax({ paused: true });
+    this.state = {
+      opened: false,
+    };
   }
 
   componentDidMount() {
@@ -116,6 +117,48 @@ class NavContainer extends React.Component {
         document.getElementById("content").style.display = "none";
       }
     }
+
+    localStorage.setItem("burgerMenu", this.state.opened);
+
+    let menuTimeline = new TimelineMax({ paused: true });
+    menuTimeline
+      .to(".bar-one", 0.2, {
+        ease: Power2.easeOut,
+        rotate: "0%",
+      })
+      .to(
+        ".bar-three",
+        0.2,
+        {
+          ease: Power2.easeOut,
+          rotate: "0%",
+        },
+        "<"
+      )
+      .to(".bar-one", 0.2, {
+        ease: Power1.easeIn,
+        y: "0px",
+      })
+      .to(
+        ".bar-three",
+        0.2,
+        {
+          ease: Power1.easeIn,
+          y: "0px",
+        },
+        "<"
+      )
+      .to(
+        ".bar-two",
+        0.17,
+        {
+          ease: Power1.easeIn,
+          scaleX: 1,
+          delay: 0.03,
+        },
+        "<"
+      );
+    menuTimeline.play();
   };
 
   render() {
