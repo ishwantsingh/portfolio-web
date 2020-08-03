@@ -6,6 +6,7 @@ import history from "../../history";
 import bgImage from "../../assets/bgImage.svg";
 import stroke from "../../assets/stroke.svg";
 import SvgDevProd from "../animations/devProd.js";
+import devProd from "../../assets/devProd.svg";
 import bgImageMobile from "../../assets/line-art-left.svg";
 
 const Container = styled.div`
@@ -116,6 +117,9 @@ const Container = styled.div`
     margin-top: -25px;
     display: block;
     z-index: -1;
+  }
+  .mobile-image {
+    display: none;
   }
   @media (max-width: 1500px) {
     font-size: 5.5rem;
@@ -253,6 +257,12 @@ const Container = styled.div`
       border: 2px solid black;
       border-radius: 6px !important;
     }
+    .mobile-image {
+      display: block;
+    }
+    .animation {
+      display: none;
+    }
   }
   @media only screen and (max-height: 680px) and (max-width: 950px) {
     margin-top: -5.5rem;
@@ -294,7 +304,12 @@ class About extends React.Component {
         0.475,
         { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.5 },
         0.155
-      );
+      )
+      .from(".mobile-image", 1, {
+        autoAlpha: 0,
+        delay: 0,
+        ease: Power1.easeIn,
+      });
     this.timeline.play();
   }
 
@@ -311,7 +326,12 @@ class About extends React.Component {
     return (
       <Container id="content-1">
         <div className="imageDiv">
-          <SvgDevProd className="image" />
+          <SvgDevProd className="image animation" />
+          <img
+            src={devProd}
+            alt="productivity"
+            className="image mobile-image"
+          />
         </div>
         <div className="text">
           <h1>

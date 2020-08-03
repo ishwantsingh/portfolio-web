@@ -25,7 +25,10 @@ const Container = styled.div`
     top: 5rem;
     left: 0;
     width: 0%;
-    height: calc(100% - 5rem);
+    height: 100%;
+    .selected-menu {
+      line-height: 40px;
+    }
   }
 `;
 
@@ -63,6 +66,7 @@ const SubContainer = styled.div`
     height: 40px;
     font-size: 1.3rem; //becuase it is below floating-link class, this font size applies
     box-shadow: 0px 10px 24px #e1e0e0;
+    pointer-events: none;
   }
   .selected-menu:hover {
     font-size: 1.3rem;
