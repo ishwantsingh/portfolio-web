@@ -30,6 +30,9 @@ class App extends React.Component {
     this.projectsChild = React.createRef();
     this.skillsChild = React.createRef();
     this.hobbiesChild = React.createRef();
+    this.state = {
+      burgerMenuOpened: false,
+    };
   }
   componentDidMount() {
     window.addEventListener(
@@ -38,6 +41,21 @@ class App extends React.Component {
     );
   }
 
+  toggleBurgerMenu = () => {
+    this.setState((prevState) =>
+      !prevState.burgerMenuOpened
+        ? { burgerMenuOpened: true }
+        : { burgerMenuOpened: false }
+    );
+    console.log("toggling1", this.state.burgerMenuOpened);
+    // if (!this.state.burgerMenuOpened) {
+    //   this.setState({ burgermenuOpened: true });
+    //   console.log("toggling1", this.state.burgerMenuOpened);
+    // } else if (this.state.burgerMenuOpened) {
+    //   this.setState({ burgermenuOpened: false });
+    //   console.log("toggling2", this.state.burgerMenuOpened);
+    // }
+  };
   scrollChangePage = (e) => {
     const isScrollingDown = Math.sign(e.deltaY);
     if (isScrollingDown === -1 && history.location.pathname === "/projects") {
@@ -84,7 +102,10 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        <MobileNavContainer />
+        <MobileNavContainer
+          menuIsOpened={this.state.burgerMenuOpened}
+          toggleMenuState={this.toggleBurgerMenu}
+        />
         <Switch>
           <Route exact path="/">
             <About ref={this.aboutChild} />
@@ -99,7 +120,7 @@ class App extends React.Component {
             <Hobbies ref={this.hobbiesChild} />
           </Route>
         </Switch>
-        <NavContainer />
+        <NavContainer toggleMenuState={this.toggleBurgerMenu} />
       </Container>
     );
   }

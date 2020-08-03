@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { TimelineMax, Power1, Power2 } from "gsap/all";
@@ -87,9 +87,9 @@ class NavContainer extends React.Component {
   constructor(props) {
     super(props);
     this.timeline = new TimelineMax({ paused: true });
-    this.state = {
-      opened: false,
-    };
+    // this.state = {
+    //   opened: false,
+    // };
   }
 
   componentDidMount() {
@@ -102,7 +102,7 @@ class NavContainer extends React.Component {
     this.timeline.play();
   }
 
-  closeMenu = () => {
+  closeMenu = (props) => {
     if (matchMedia) {
       const mq = window.matchMedia("(min-width: 951px)");
       mq.addListener(WidthChange);
@@ -117,8 +117,11 @@ class NavContainer extends React.Component {
         document.getElementById("content").style.display = "none";
       }
     }
+    // let isOpened = useContext(openContext);
 
-    localStorage.setItem("burgerMenu", this.state.opened);
+    // localStorage.setItem("burgerMenu", this.state.opened);
+
+    this.props.toggleMenuState();
 
     let menuTimeline = new TimelineMax({ paused: true });
     menuTimeline

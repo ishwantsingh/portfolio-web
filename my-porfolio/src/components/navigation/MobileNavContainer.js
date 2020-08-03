@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, createContext, useLayoutEffect } from "react";
 import styled from "styled-components";
 import { TimelineMax, Quint, Power2, Power1 } from "gsap/all";
 
@@ -42,8 +42,14 @@ const SubContainer = styled.div`
     display: flex !important;
 `;
 
-const MobileNavContainer = () => {
-  const [opened, menuState] = useState(localStorage.getItem("burgerMenu"));
+const MobileNavContainer = (props) => {
+  // const openContext = createContext({opened: flase});
+
+  // const  opened  = createContext(flase);
+  // const isOpened = useContext(openContext);
+  // const [opened, menuState] = useState(false);
+
+  // const [opened, menuState] = useState(localStorage.getItem("burgerMenu"));
   let setLocalStorageAsync = async (isOpen) => {
     let isOpened = await localStorage.setItem("burgerMenu", isOpen);
     console.log("working set");
@@ -55,14 +61,14 @@ const MobileNavContainer = () => {
   let menuTimeline = new TimelineMax({ paused: true });
   const openMenu = (e) => {
     e.preventDefault();
-    console.log(opened, "opened 0");
+    console.log(props, "opened 0");
     // let t = true;
     setLocalStorageAsync(true);
 
     // localStorage.setItem("burgerMenu", t);
-    menuState(true);
-
-    console.log(opened, "opened 1");
+    // menuState(true);
+    props.toggleMenuState();
+    console.log(props.menuIsOpened, "opened 1");
 
     let navMenu = document.getElementById("content");
 
@@ -107,18 +113,19 @@ const MobileNavContainer = () => {
       );
     menuTimeline.play();
   };
-  console.log(opened, "opened 2");
+  console.log(props.menuIsOpened, "opened 2");
 
   const closeMenu = (e) => {
     e.preventDefault();
-    console.log(opened, "opened 3");
+    console.log(props.menuIsOpened, "opened 3");
     // let f = false;
     // localStorage.setItem("burgerMenu", f);
     setLocalStorageAsync(false);
 
-    menuState(false);
+    props.toggleMenuState();
+    // menuState(false);
 
-    console.log(opened, "opened 4");
+    console.log(props, "opened 4");
 
     let navMenu = document.getElementById("content");
 
@@ -175,22 +182,26 @@ const MobileNavContainer = () => {
     // };
     // getLocalStorageAsync();
     // menuState(false);
-    console.log(opened, "state");
+    // console.log(opened, "state");
     // menuState(localStorage.getItem("burgerMenu"));
   });
 
   return (
+    // <openContext.Provider value={{ opened }}>
     <SubContainer>
-      <div className="name">Ishwant Singh</div>
+      {/* <div className="name">Ishwant Singh</div> */}
+      <div className="name">{`${props.menuIsOpened}`}</div>
+
       <div
         className="burger-menu"
-        onClick={opened === false ? (e) => openMenu(e) : (e) => closeMenu(e)}
+        onClick={!props.menuIsOpened ? (e) => openMenu(e) : (e) => closeMenu(e)}
       >
         <div className="bar bar-one"></div>
         <div className="bar bar-two"></div>
         <div className="bar bar-three"></div>
       </div>
     </SubContainer>
+    // </openContext.Provider>
   );
 };
 
