@@ -245,7 +245,7 @@ const Container = styled.div`
     }
   }
   @media only screen and (max-height: 680px) and (max-width: 950px) {
-    margin-top: -6.5rem;
+    margin-top: -5.5rem;
     .about-div {
       font-size: 1.2rem;
     }
