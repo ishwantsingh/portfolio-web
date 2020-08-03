@@ -151,6 +151,11 @@ const Container = styled.div`
       text-shadow: 0px 8px 18px #d0d0d0;
     }
   }
+  @media only screen and (max-height: 680px) and (max-width: 950px) {
+    .project-heading {
+      margin-top: 2rem;
+    }
+  }
 `;
 
 class Projects extends React.Component {

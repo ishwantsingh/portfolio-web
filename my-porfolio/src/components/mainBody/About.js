@@ -6,6 +6,7 @@ import history from "../../history";
 import bgImage from "../../assets/bgImage.svg";
 import stroke from "../../assets/stroke.svg";
 import SvgDevProd from "../animations/devProd.js";
+import bgImageMobile from "../../assets/line-art-left.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -187,7 +188,10 @@ const Container = styled.div`
   @media only screen and (max-width: 950px) {
     margin-top: -5rem;
     flex-direction: column-reverse;
-    background-image: none;
+    background-image: url(${bgImageMobile});
+    background-repeat: no-repeat;
+    background-size: content;
+    // background-image: none;
     #texts span:after {
       width: 0;
       height: 0;
@@ -241,7 +245,13 @@ const Container = styled.div`
       margin-top: 1.5rem;
       text-align: center;
       font-size: 1.35rem;
+      color: black;
       line-height: 40px;
+      background: linear-gradient(239.07deg, #ffffff 1.07%, #ffffff 100%);
+      box-shadow: none;
+      background-color: white !important;
+      border: 2px solid black;
+      border-radius: 6px !important;
     }
   }
   @media only screen and (max-height: 680px) and (max-width: 950px) {
