@@ -47,14 +47,6 @@ class App extends React.Component {
         ? { burgerMenuOpened: true }
         : { burgerMenuOpened: false }
     );
-    console.log("toggling1", this.state.burgerMenuOpened);
-    // if (!this.state.burgerMenuOpened) {
-    //   this.setState({ burgermenuOpened: true });
-    //   console.log("toggling1", this.state.burgerMenuOpened);
-    // } else if (this.state.burgerMenuOpened) {
-    //   this.setState({ burgermenuOpened: false });
-    //   console.log("toggling2", this.state.burgerMenuOpened);
-    // }
   };
   scrollChangePage = (e) => {
     const isScrollingDown = Math.sign(e.deltaY);
