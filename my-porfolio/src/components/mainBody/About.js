@@ -185,12 +185,9 @@ const Container = styled.div`
     }
   }
   @media only screen and (max-width: 950px) {
-    // height: calc(100% - 5rem);
     margin-top: -5rem;
     flex-direction: column-reverse;
     background-image: none;
-    // background-position: left bottom;
-    // background-size: cover;
     #texts span:after {
       width: 0;
       height: 0;
@@ -245,6 +242,24 @@ const Container = styled.div`
       text-align: center;
       font-size: 1.35rem;
       line-height: 40px;
+    }
+  }
+  @media only screen and (max-height: 680px) and (max-width: 950px) {
+    margin-top: -6.5rem;
+    .about-div {
+      font-size: 1.2rem;
+    }
+    .name-div {
+      font-size: 2rem;
+    }
+    .scroll-down-but {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      line-height: 35px;
+    }
+    .imageDiv {
+      margin-bottom: 2rem;
     }
   }
 `;
