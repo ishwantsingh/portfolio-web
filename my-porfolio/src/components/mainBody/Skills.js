@@ -282,7 +282,7 @@ class Skills extends React.Component {
         delay: 2.1,
       })
       .play();
-    this.timeline.timeScale(2).reverse();
+    this.timeline.timeScale(1.8).reverse();
     const timelineDuration = this.timeline.duration() * 1000;
     setTimeout(() => {
       history.push(destination);

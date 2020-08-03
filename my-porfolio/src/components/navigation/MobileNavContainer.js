@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { TimelineMax, Power2, Power1 } from "gsap/all";
+import history from "../../history";
 
 const SubContainer = styled.div`
   width: 100%;
@@ -145,7 +146,9 @@ const MobileNavContainer = (props) => {
 
   return (
     <SubContainer>
-      <div className="name">Ishwant Singh</div>
+      <div className="name" onClick={() => history.push("/")}>
+        Ishwant Singh
+      </div>
       <div
         className="burger-menu"
         onClick={!props.menuIsOpened ? (e) => openMenu(e) : (e) => closeMenu(e)}
