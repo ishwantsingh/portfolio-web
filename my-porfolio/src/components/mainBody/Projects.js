@@ -84,6 +84,15 @@ const Container = styled.div`
   .ui.checkbox input.hidden + label {
     cursor: default !important;
   }
+  #right-arr {
+    display: inline-block !important;
+  }
+  .left-arr-mobile {
+    display: none;
+  }
+  #mobile-arrow-container {
+    width: 5%;
+  }
   @media (max-height: 850px) {
     font-size: 3.5rem;
     .ui.checkbox input.hidden + label {
@@ -93,9 +102,55 @@ const Container = styled.div`
     .project-heading {
       height: 2.5rem;
   }
-  // @media (max-height: 950px) {
-  //   height: calc(100% - 5rem);
-  // }
+  @media (max-width: 950px) {
+    font-size: 3rem;
+    justify-content: flex-start;
+    height: calc(100vh - 5rem);
+    #left-arr #mobile {
+      display: inline-block;
+      font-size: 3rem;
+      width: 3rem !important;
+    }
+    .icon {
+      width: 100%;
+    }
+    .project-heading {
+      margin-top: 5rem;
+    }
+    .project-content {
+      flex-direction: column;
+    }
+    .projectVidContainer {
+      height: 60vh;
+      width: 95vw;
+    }
+    .projectVid {
+      width: 95vw;
+    }
+    .meconProjectVid {
+      height: 52vh;
+    }
+    #left-arr {
+      display: none;
+    }
+    #mobile-arrow-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 30vw;
+    }
+    .left-arr-mobile {
+      display: inline-block;
+    }
+    i.icon.disabled:hover {
+      font-size: 3rem !important;
+      text-shadow: 0px 8px 18px #d0d0d0;
+    }
+    i.icon:hover {
+      font-size: 3rem;
+      text-shadow: 0px 8px 18px #d0d0d0;
+    }
+  }
 `;
 
 class Projects extends React.Component {
@@ -129,7 +184,7 @@ class Projects extends React.Component {
         { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.1 },
         0.185
       )
-      .from("#left-arr", 0.4, {
+      .from(".left-arrow", 0.4, {
         autoAlpha: 0,
         x: -50,
         ease: "power1.easeOut",
@@ -278,17 +333,30 @@ class Projects extends React.Component {
               </video>
             </a>
           </div>
-          <Icon
-            name="chevron circle right"
-            className="icon"
-            id="right-arr"
-            onClick={(e) => this.changeVideo(e, "next")}
-            disabled={
-              this.state.currentVideo === mecon
-                ? this.state.rightArrDisabled
-                : false
-            }
-          />
+          <div id="mobile-arrow-container">
+            <Icon
+              name="chevron circle left"
+              className="icon  left-arrow left-arr-mobile"
+              id="left-arr mobile"
+              onClick={(e) => this.changeVideo(e, "prev")}
+              disabled={
+                this.state.currentVideo === postit
+                  ? this.state.leftArrDisabled
+                  : false
+              }
+            />
+            <Icon
+              name="chevron circle right"
+              className="icon"
+              id="right-arr"
+              onClick={(e) => this.changeVideo(e, "next")}
+              disabled={
+                this.state.currentVideo === mecon
+                  ? this.state.rightArrDisabled
+                  : false
+              }
+            />
+          </div>
         </div>
         <Form className="radio-form" id="radio-buts">
           <Form.Field>

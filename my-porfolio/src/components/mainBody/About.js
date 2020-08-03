@@ -226,13 +226,13 @@ const Container = styled.div`
       width: 88vw;
       height: 19vh !important;
       margin: 0 auto;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
     }
     .name-div {
       width: 88vw;
       height: 10rem;
       margin: 0 auto;
-      font-size: 2.4rem;
+      font-size: 2.3rem;
       justify-content: flex-end;
     }
     .scroll-down-but {
@@ -241,7 +241,7 @@ const Container = styled.div`
       justify-self: center;
       justify-content: center;
       width: 88vw;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       text-align: center;
       font-size: 1.35rem;
       line-height: 40px;
