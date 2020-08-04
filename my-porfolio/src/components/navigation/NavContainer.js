@@ -28,6 +28,7 @@ const Container = styled.div`
     height: 100%;
     .selected-menu {
       line-height: 40px;
+      height: 40px !important;
     }
   }
 `;
@@ -113,6 +114,8 @@ class NavContainer extends React.Component {
       if (mq.matches) {
         document.getElementById("content").style.display = "flex";
         document.getElementById("content").style.width = "15%";
+        let scrollDownButton = document.querySelector(".scroll-down-but");
+        scrollDownButton.innerHTML = "Click here for more";
       } else {
         document.getElementById("content").style.width = "0%";
         document.getElementById("content").style.display = "none";

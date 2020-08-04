@@ -102,7 +102,7 @@ const Container = styled.div`
     .project-heading {
       height: 2.5rem;
   }
-  @media (max-width: 950px) {
+  @media only screen and (max-width: 950px) {
     font-size: 3rem;
     justify-content: flex-start;
     height: calc(100vh - 5rem);
@@ -115,7 +115,7 @@ const Container = styled.div`
       width: 100%;
     }
     .project-heading {
-      margin-top: 5rem;
+      margin-top: 3rem;
     }
     .project-content {
       flex-direction: column;

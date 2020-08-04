@@ -99,6 +99,9 @@ const Container = styled.div`
     border: 2px solid #daf8ff;
     outline: none;
   }
+  .mobile-button {
+    display: none;
+  }
   .scroll-down-but:hover {
     margin-top: 2.75rem;
     box-shadow: 3px 11px 24px #e5f4f5;
@@ -205,6 +208,7 @@ const Container = styled.div`
       height: 30vh;
       width: 60vw;
       margin: 0;
+      margin-top: 1.5rem;
       margin-bottom: 5rem;
     }
     .image {
@@ -241,6 +245,9 @@ const Container = styled.div`
       justify-content: flex-end;
     }
     .scroll-down-but {
+      display: none;
+    }
+    .scroll-down-but.mobile-button {
       display: flex;
       align-self: center;
       justify-self: center;
@@ -352,6 +359,13 @@ class About extends React.Component {
               onClick={(e) => this.changePage(e, "/projects")}
             >
               Scroll down for more
+            </button>
+            <button
+              className="scroll-down-but mobile-button"
+              id="texts"
+              onClick={(e) => this.changePage(e, "/projects")}
+            >
+              Click here for more
             </button>
           </h1>
         </div>
