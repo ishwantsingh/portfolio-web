@@ -346,7 +346,6 @@ class Skills extends React.Component {
 
     let lastSkillIndex = this.state[skill].length - 1;
     for (let i = 0; i <= lastSkillIndex; i++) {
-      console.log("i", i, skill);
       let techSkillNameSpan =
         e.target.parentNode.parentNode.parentNode.children[0].children[i]
           .children[0];

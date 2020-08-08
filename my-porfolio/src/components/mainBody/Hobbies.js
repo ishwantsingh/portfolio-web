@@ -350,7 +350,6 @@ class Hobbies extends React.Component {
       let page1 = document.querySelector(".page.left");
       let page2 = document.querySelector(".page.right");
 
-      let hobbyNameRight = document.querySelector(".hobby-name-right");
       let hobbyNameLeft = document.querySelector(".hobby-name-left");
       if (mq.matches) {
         page1.style.setProperty("justify-content", "space-evenly");
@@ -397,8 +396,6 @@ class Hobbies extends React.Component {
         pic4.style.width = "23vw";
         pic4.style.height = "17vw";
 
-        // hobbyNameRight.style.top = "-15.25%";
-        // hobbyNameRight.style.left = "48.3% !important";
         hobbyNameLeft.style.top = "-15.25%";
         hobbyNameLeft.style.left = "48.3% !important";
 

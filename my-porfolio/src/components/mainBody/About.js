@@ -291,8 +291,6 @@ const Container = styled.div`
   }
 `;
 
-// DAF8FF f9f9f9
-
 class About extends React.Component {
   constructor(props) {
     super(props);
