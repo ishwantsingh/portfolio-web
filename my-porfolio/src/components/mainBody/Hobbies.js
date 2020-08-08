@@ -458,6 +458,37 @@ class Hobbies extends React.Component {
         hobbyNameLeft.innerHTML = "";
 
         this.setState({ currentPage: 2 });
+        if (matchMedia) {
+          const mq = window.matchMedia("(max-width: 950px)");
+          mq.addListener(WidthChange);
+          WidthChange(mq);
+        }
+        function WidthChange(mq) {
+          let pic3 = document.querySelector(".pic3"); //w=13vw, h =16vw
+
+          let picName3 = document.querySelector(".pic-name-3");
+
+          let hobbyNameRight = document.querySelector(".hobby-name-right");
+          if (mq.matches) {
+            pic3.style.width = "47.5vw";
+            pic3.style.height = "18vh";
+            pic3.style.margin = "auto";
+
+            picName3.style.width = "47.5vw";
+
+            hobbyNameRight.style.top = "-5.25%";
+          } else {
+            pic3.style.width = "23vw";
+            pic3.style.height = "16vw";
+            pic3.style.margin = "1vw auto";
+            pic3.style.marginRight = "10%";
+
+            picName3.style.width = "23vw";
+
+            hobbyNameRight.style.top = "-15.25%";
+            hobbyNameRight.style.left = "48.3% !important";
+          }
+        }
       }, 1150);
     };
 
@@ -531,6 +562,31 @@ class Hobbies extends React.Component {
         hobbyNameLeft.innerHTML = "__photography";
 
         this.setState({ currentPage: 1 });
+
+        if (matchMedia) {
+          const mq = window.matchMedia("(max-width: 950px)");
+          mq.addListener(WidthChange);
+          WidthChange(mq);
+        }
+        function WidthChange(mq) {
+          let pic3 = document.querySelector(".pic3"); //w=13vw, h =16vw
+
+          let picName3 = document.querySelector(".pic-name-3");
+          if (mq.matches) {
+            pic3.style.width = "39vw";
+            pic3.style.height = "24vh";
+            pic3.style.margin = "auto";
+
+            picName3.style.width = "39vw";
+          } else {
+            pic3.style.width = "13vw";
+            pic3.style.height = "16vw";
+            pic3.style.margin = "1vw auto";
+            pic3.style.marginRight = "10%";
+
+            picName3.style.width = "13vw";
+          }
+        }
       }, 1150);
     };
     return new Promise((resolve, reject) => {
