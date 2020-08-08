@@ -369,7 +369,7 @@ class Hobbies extends React.Component {
         pic4.style.width = "45vw";
         pic4.style.height = "15vh";
 
-        hobbyNameLeft.style.top = "-1.5%";
+        hobbyNameLeft.style.top = "-3.5%";
         hobbyNameLeft.style.left = "44.3% !important";
 
         picName1.style.width = "43vw";
