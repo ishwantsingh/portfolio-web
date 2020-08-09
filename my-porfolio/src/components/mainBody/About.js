@@ -6,6 +6,8 @@ import history from "../../history";
 import bgImage from "../../assets/bgImage.svg";
 import stroke from "../../assets/stroke.svg";
 import SvgDevProd from "../animations/devProd.js";
+import devProd from "../../assets/devProd.svg";
+import bgImageMobile from "../../assets/line-art-left.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -76,7 +78,7 @@ const Container = styled.div`
     font-family: "Roboto", serif;
   }
   .scroll-down-but {
-    width: 27%;
+    width: 15rem;
     background: linear-gradient(259.07deg, #daf8ff 4.07%, #b2eaf8 100%);
     background-color: #daf8ff;
     border-radius: 8px;
@@ -97,6 +99,9 @@ const Container = styled.div`
     border: 2px solid #daf8ff;
     outline: none;
   }
+  .mobile-button {
+    display: none;
+  }
   .scroll-down-but:hover {
     margin-top: 2.75rem;
     box-shadow: 3px 11px 24px #e5f4f5;
@@ -116,25 +121,175 @@ const Container = styled.div`
     display: block;
     z-index: -1;
   }
-  @media (max-width: 1280px) {
-    // background-size: 100% 100%;
+  .mobile-image {
+    display: none;
   }
-  @media (max-height: 701px) {
-    // font-size: 4rem;
+  @media (max-width: 1500px) {
+    font-size: 5.5rem;
+    .text {
+      margin-bottom: 1.5rem;
+    }
     h1 {
-      // font-size: 2.5rem;
+      font-size: 3rem;
     }
     .about-div {
-      // font-size: 1.2rem;
+      font-size: 1.4rem;
     }
     .name-div {
-      // height: 8rem;
-      // font-size: 2.5rem;
+      height: 11rem;
+      font-size: 3rem;
+    }
+    #texts span:after {
+      width: 680px;
+    }
+    .image {
+      width: 22vw;
+      height: 32vh;
+    }
+    .scroll-down-but {
+      width: 12rem;
+      font-size: 12.5px;
+    }
+  }
+  @media (max-width: 1280px) and (max-height: 650px) {
+    .scroll-down-but {
+      display: none;
+    }
+    .name-div {
+      height: 8rem;
+    }
+  }
+  @media (max-width: 1330px) {
+    font-size: 5rem;
+    .text {
+      margin-bottom: 4.2rem;
+    }
+    h1 {
+      font-size: 2.6rem;
+    }
+    .name-div {
+      height: 10rem;
+      font-size: 2.6rem;
+    }
+    .about-div {
+      line-height: 1.3;
+    }
+    #texts span:after {
+      height: 14px;
+      width: 612px;
+    }
+    .scroll-down-but {
+      width: 12rem;
+      font-size: 12.5px;
+      margin-top: 2rem;
+    }
+    .scroll-down-but:hover {
+      margin-top: 1.75rem;
+    }
+  }
+  @media (max-width: 1110px) {
+    .scroll-down-but {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 950px) {
+    margin-top: -5rem;
+    flex-direction: column-reverse;
+    background-image: url(${bgImageMobile});
+    background-repeat: no-repeat;
+    background-size: content;
+    // background-image: none;
+    #texts span:after {
+      width: 0;
+      height: 0;
+    }
+    .imageDiv {
+      align-self: center;
+      height: 30vh;
+      width: 60vw;
+      margin: 0;
+      margin-top: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    .image {
+      height: 30vh;
+      width: 60vw;
+    }
+    .text {
+      margin-top: 5rem;
+      width: 100vw;
+      height: 50vh;
+      margin-bottom: 0;
+    }
+    h1 {
+      width: 100vw;
+      align-items: center;
+      text-align: left;
+      margin: 0;
+    }
+    #texts {
+      height: 6vh;
+    }
+    .about-div {
+      margin-top: 2rem !important;
+      width: 88vw;
+      height: 19vh !important;
+      margin: 0 auto;
+      font-size: 1.35rem;
+    }
+    .name-div {
+      width: 88vw;
+      height: 10rem;
+      margin: 0 auto;
+      font-size: 2.3rem;
+      justify-content: flex-end;
+    }
+    .scroll-down-but {
+      display: none;
+    }
+    .scroll-down-but.mobile-button {
+      display: flex;
+      align-self: center;
+      justify-self: center;
+      justify-content: center;
+      width: 88vw;
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 1.35rem;
+      color: black;
+      line-height: 40px;
+      background: linear-gradient(239.07deg, #ffffff 1.07%, #ffffff 100%);
+      box-shadow: none;
+      background-color: white !important;
+      border: 2px solid black;
+      border-radius: 6px !important;
+    }
+    .mobile-image {
+      display: block;
+    }
+    .animation {
+      display: none;
+    }
+  }
+  @media only screen and (max-height: 680px) and (max-width: 950px) {
+    margin-top: -5.5rem;
+    .about-div {
+      font-size: 1.2rem;
+    }
+    .name-div {
+      font-size: 2rem;
+    }
+    .scroll-down-but {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      line-height: 35px;
+    }
+    .imageDiv {
+      margin-bottom: 2rem;
     }
   }
 `;
-
-// DAF8FF f9f9f9
 
 class About extends React.Component {
   constructor(props) {
@@ -154,7 +309,12 @@ class About extends React.Component {
         0.475,
         { autoAlpha: 0, x: -25, ease: Power1.easeOut, delay: 0.5 },
         0.155
-      );
+      )
+      .from(".mobile-image", 1, {
+        autoAlpha: 0,
+        delay: 0,
+        ease: Power1.easeIn,
+      });
     this.timeline.play();
   }
 
@@ -171,7 +331,12 @@ class About extends React.Component {
     return (
       <Container id="content-1">
         <div className="imageDiv">
-          <SvgDevProd className="image" />
+          <SvgDevProd className="image animation" />
+          <img
+            src={devProd}
+            alt="productivity"
+            className="image mobile-image"
+          />
         </div>
         <div className="text">
           <h1>
@@ -192,6 +357,13 @@ class About extends React.Component {
               onClick={(e) => this.changePage(e, "/projects")}
             >
               Scroll down for more
+            </button>
+            <button
+              className="scroll-down-but mobile-button"
+              id="texts"
+              onClick={(e) => this.changePage(e, "/projects")}
+            >
+              Click here for more
             </button>
           </h1>
         </div>

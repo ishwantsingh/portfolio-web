@@ -31,6 +31,9 @@ const SubContainer = styled.div`
       font-size: 3.1em;
     }
   }
+  @media only screen and (max-width: 950px) {
+    margin-bottom: 5rem;
+  }
 `;
 
 const FloatingImp = () => {

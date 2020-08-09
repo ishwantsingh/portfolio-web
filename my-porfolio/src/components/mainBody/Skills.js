@@ -8,6 +8,7 @@ import web from "../../assets/web.svg";
 import ui from "../../assets/ui.svg";
 import mobile from "../../assets/mobile.svg";
 import SvgCoolBg from "../animations/cool-Bg.js";
+import bgImage from "../../assets/line-art-left.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -71,11 +72,11 @@ const Container = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    width: 52vw;
+    width: 58vw;
     height 78vh;
     position: absolute;
     top: 11vh;
-    right: 35vw;
+    right: 29vw;
     padding: 0 0 0 5%;
     font-family: "Roboto", serif;
     font-size: 1.4rem;
@@ -109,7 +110,88 @@ const Container = styled.div`
       display: flex;
       justify-self: flex-start !important;
       height: 100%;
-      background: linear-gradient(239.07deg, #444444 1.07%, #000000 100%);
+      background: linear-gradient(239.07deg, #454545 1.07%, #222222 100%);
+    }
+    .tech-skill-fill-container {
+      display: flex;
+      height: 100%;
+      width: 75%;
+      backgroundColor: white;
+      borderTopRightRadius: 4px;
+      borderBottomRightRadius: 4px;
+    }
+  }
+  @media (max-width: 1650px) {
+    .tech-skill {
+      height: 2.85rem;
+  }
+  @media (max-width: 1450px) {
+    .tech-skill {
+      height: 2.6rem;
+  }
+  @media (max-width: 1250px) {
+    .tech-skill {
+      height: 2.8rem;
+  }
+  @media only screen and (max-width: 950px) {
+    width: 100vw;
+    height: 90vh;
+    flex-direction: row;
+    background-image: url(${bgImage});
+    background-repeat: no-repeat;
+    background-size: content;
+    #content-3 {
+      width: 100vw;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .bgImage {
+      display: none;
+    }
+    .info-div {
+      width: 98vw;
+      height: 65vh;
+      margin-top: 5rem;
+      margin-right: -28vw;
+      border-left: 0;
+      border-radius: 0;
+      background-color: transparent;
+    }
+    #skills {
+      flex-direction: row;
+      width: 90vw;
+      height: 7vh;
+      justify-content: space-between !important;
+    }
+    .tech-skill {
+      width: 94%;
+      font-size: 1.2rem !important;
+    }
+    .tech-skill-name {
+      width: 37% !important;
+      font-size: 1.1rem !important;
+      text-align: center;
+      background-color: white;
+    }
+    .tech-skill-fill-container {
+      display: flex;
+      height: 100%;
+      width: 63% ;
+      backgroundColor: white;
+      borderTopRightRadius: 4px;
+      borderBottomRightRadius: 4px;
+    }
+    #skill-div {
+      width: fit-content !important;
+      flex-direction: row-reverse !important;
+      justify-content: flex-end !important;
+      font-size: 1.46rem !important;
+    }
+    .skill-img {
+      display: none;
     }
   }
 `;
@@ -122,7 +204,7 @@ class Skills extends React.Component {
         ["Figma", 85],
         ["Wireframing", 90],
         ["Svg Animation", 80],
-        ["Css Animation", 70],
+        ["Css Animation", 75],
         ["User Research", 70],
         ["Prototyping", 85],
       ],
@@ -140,15 +222,15 @@ class Skills extends React.Component {
         ["JavaScript", 85],
         ["React.js", 85],
         ["Redux", 80],
-        ["Styled-Comp", 90],
+        ["Next.js", 90],
       ],
       backend: [
-        ["Node.js", 65],
-        ["Express", 65],
-        ["SQL", 60],
-        ["NoSQL", 75],
-        ["REST", 60],
-        ["Firebase", 80],
+        ["Node.js", 75],
+        ["Express", 75],
+        ["SQL", 70],
+        ["NoSQL", 80],
+        ["REST", 70],
+        ["Firebase", 85],
       ],
     };
     this.timeline = new TimelineMax({ paused: true });
@@ -200,7 +282,7 @@ class Skills extends React.Component {
         delay: 2.1,
       })
       .play();
-    this.timeline.timeScale(1.5).reverse();
+    this.timeline.timeScale(1.8).reverse();
     const timelineDuration = this.timeline.duration() * 1000;
     setTimeout(() => {
       history.push(destination);
@@ -264,7 +346,6 @@ class Skills extends React.Component {
 
     let lastSkillIndex = this.state[skill].length - 1;
     for (let i = 0; i <= lastSkillIndex; i++) {
-      console.log("i", i, skill);
       let techSkillNameSpan =
         e.target.parentNode.parentNode.parentNode.children[0].children[i]
           .children[0];
@@ -284,16 +365,7 @@ class Skills extends React.Component {
           <div className="info-div">
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[0][0]}</span>
-              <span
-                style={{
-                  display: "flex",
-                  height: "100%",
-                  width: "75%",
-                  backgroundColor: "white",
-                  borderTopRightRadius: "4px",
-                  borderBottomRightRadius: "4px",
-                }}
-              >
+              <span className="tech-skill-fill-container">
                 <span
                   className="tech-skill-fill"
                   style={{ width: `${this.state.ui[0][1]}%` }}
@@ -302,16 +374,7 @@ class Skills extends React.Component {
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[1][0]}</span>
-              <span
-                style={{
-                  display: "flex",
-                  height: "100%",
-                  width: "75%",
-                  backgroundColor: "white",
-                  borderTopRightRadius: "4px",
-                  borderBottomRightRadius: "4px",
-                }}
-              >
+              <span className="tech-skill-fill-container">
                 <span
                   className="tech-skill-fill"
                   style={{ width: `${this.state.ui[1][1]}%` }}
@@ -320,16 +383,7 @@ class Skills extends React.Component {
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[2][0]}</span>
-              <span
-                style={{
-                  display: "flex",
-                  height: "100%",
-                  width: "75%",
-                  backgroundColor: "white",
-                  borderTopRightRadius: "4px",
-                  borderBottomRightRadius: "4px",
-                }}
-              >
+              <span className="tech-skill-fill-container">
                 <span
                   className="tech-skill-fill"
                   style={{ width: `${this.state.ui[2][1]}%` }}
@@ -338,16 +392,7 @@ class Skills extends React.Component {
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[3][0]}</span>
-              <span
-                style={{
-                  display: "flex",
-                  height: "100%",
-                  width: "75%",
-                  backgroundColor: "white",
-                  borderTopRightRadius: "4px",
-                  borderBottomRightRadius: "4px",
-                }}
-              >
+              <span className="tech-skill-fill-container">
                 <span
                   className="tech-skill-fill"
                   style={{ width: `${this.state.ui[3][1]}%` }}
@@ -356,16 +401,7 @@ class Skills extends React.Component {
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[4][0]}</span>
-              <span
-                style={{
-                  display: "flex",
-                  height: "100%",
-                  width: "75%",
-                  backgroundColor: "white",
-                  borderTopRightRadius: "4px",
-                  borderBottomRightRadius: "4px",
-                }}
-              >
+              <span className="tech-skill-fill-container">
                 <span
                   className="tech-skill-fill"
                   style={{ width: `${this.state.ui[4][1]}%` }}
@@ -374,16 +410,7 @@ class Skills extends React.Component {
             </div>
             <div className="tech-skill">
               <span className="tech-skill-name">{this.state.ui[5][0]}</span>
-              <span
-                style={{
-                  display: "flex",
-                  height: "100%",
-                  width: "75%",
-                  backgroundColor: "white",
-                  borderTopRightRadius: "4px",
-                  borderBottomRightRadius: "4px",
-                }}
-              >
+              <span className="tech-skill-fill-container">
                 <span
                   className="tech-skill-fill"
                   style={{ width: `${this.state.ui[5][1]}%` }}

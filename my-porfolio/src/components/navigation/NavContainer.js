@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { TimelineMax, Power1 } from "gsap/all";
+import { TimelineMax, Power1, Power2 } from "gsap/all";
 
 import FloatingSocials from "../socials/FloatingSocials";
 import FloatingImp from "../socials/FloatingImp";
@@ -18,6 +18,18 @@ const Container = styled.div`
   background-color: white;
   @media (max-height: 875px) {
     padding: 1rem 0 1rem 0;
+  }
+  @media (max-width: 950px) {
+    display: none;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    .selected-menu {
+      line-height: 40px;
+      height: 40px !important;
+    }
   }
 `;
 
@@ -55,6 +67,7 @@ const SubContainer = styled.div`
     height: 40px;
     font-size: 1.3rem; //becuase it is below floating-link class, this font size applies
     box-shadow: 0px 10px 24px #e1e0e0;
+    pointer-events: none;
   }
   .selected-menu:hover {
     font-size: 1.3rem;
@@ -91,6 +104,67 @@ class NavContainer extends React.Component {
     this.timeline.play();
   }
 
+  closeMenu = () => {
+    if (matchMedia) {
+      const mq = window.matchMedia("(min-width: 951px)");
+      mq.addListener(WidthChange);
+      WidthChange(mq);
+    }
+    function WidthChange(mq) {
+      if (mq.matches) {
+        document.getElementById("content").style.display = "flex";
+        document.getElementById("content").style.width = "15%";
+        let scrollDownButton = document.querySelector(".scroll-down-but");
+        scrollDownButton.innerHTML = "Click here for more";
+      } else {
+        document.getElementById("content").style.width = "0%";
+        document.getElementById("content").style.display = "none";
+      }
+    }
+
+    this.props.toggleMenuState();
+
+    let menuTimeline = new TimelineMax({ paused: true });
+    menuTimeline
+      .to(".bar-one", 0.2, {
+        ease: Power2.easeOut,
+        rotate: "0%",
+      })
+      .to(
+        ".bar-three",
+        0.2,
+        {
+          ease: Power2.easeOut,
+          rotate: "0%",
+        },
+        "<"
+      )
+      .to(".bar-one", 0.2, {
+        ease: Power1.easeIn,
+        y: "0px",
+      })
+      .to(
+        ".bar-three",
+        0.2,
+        {
+          ease: Power1.easeIn,
+          y: "0px",
+        },
+        "<"
+      )
+      .to(
+        ".bar-two",
+        0.17,
+        {
+          ease: Power1.easeIn,
+          scaleX: 1,
+          delay: 0.03,
+        },
+        "<"
+      );
+    menuTimeline.play();
+  };
+
   render() {
     return (
       <Container id="content">
@@ -101,6 +175,7 @@ class NavContainer extends React.Component {
             to="/"
             activeClassName="selected-menu"
             className="floating-link"
+            onClick={this.closeMenu}
           >
             About
           </NavLink>
@@ -108,6 +183,7 @@ class NavContainer extends React.Component {
             to="/projects"
             activeClassName="selected-menu"
             className="floating-link"
+            onClick={this.closeMenu}
           >
             Projects
           </NavLink>
@@ -115,6 +191,7 @@ class NavContainer extends React.Component {
             to="/skills"
             activeClassName="selected-menu"
             className="floating-link"
+            onClick={this.closeMenu}
           >
             Skills
           </NavLink>
@@ -122,6 +199,7 @@ class NavContainer extends React.Component {
             to="/hobbies"
             activeClassName="selected-menu"
             className="floating-link"
+            onClick={this.closeMenu}
           >
             Hobbies
           </NavLink>

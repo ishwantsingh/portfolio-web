@@ -8,6 +8,7 @@ import Projects from "./components/mainBody/Projects";
 import Skills from "./components/mainBody/Skills";
 import Hobbies from "./components/mainBody/Hobbies";
 import NavContainer from "./components/navigation/NavContainer";
+import MobileNavContainer from "./components/navigation/MobileNavContainer";
 
 import { CSSPlugin } from "gsap/all";
 const plugins = [CSSPlugin];
@@ -17,6 +18,9 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 950px) {
+    flex-direction: column;
+  }
 `;
 
 class App extends React.Component {
@@ -26,6 +30,9 @@ class App extends React.Component {
     this.projectsChild = React.createRef();
     this.skillsChild = React.createRef();
     this.hobbiesChild = React.createRef();
+    this.state = {
+      burgerMenuOpened: false,
+    };
   }
   componentDidMount() {
     window.addEventListener(
@@ -34,6 +41,13 @@ class App extends React.Component {
     );
   }
 
+  toggleBurgerMenu = () => {
+    this.setState((prevState) =>
+      !prevState.burgerMenuOpened
+        ? { burgerMenuOpened: true }
+        : { burgerMenuOpened: false }
+    );
+  };
   scrollChangePage = (e) => {
     const isScrollingDown = Math.sign(e.deltaY);
     if (isScrollingDown === -1 && history.location.pathname === "/projects") {
@@ -80,6 +94,10 @@ class App extends React.Component {
   render() {
     return (
       <Container>
+        <MobileNavContainer
+          menuIsOpened={this.state.burgerMenuOpened}
+          toggleMenuState={this.toggleBurgerMenu}
+        />
         <Switch>
           <Route exact path="/">
             <About ref={this.aboutChild} />
@@ -94,7 +112,7 @@ class App extends React.Component {
             <Hobbies ref={this.hobbiesChild} />
           </Route>
         </Switch>
-        <NavContainer />
+        <NavContainer toggleMenuState={this.toggleBurgerMenu} />
       </Container>
     );
   }

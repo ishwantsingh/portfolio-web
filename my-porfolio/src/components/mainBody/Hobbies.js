@@ -245,10 +245,24 @@ const Container = styled.div`
   }
   .hobby-name-right {
     position: relative;
-    top: -5.2%;
+    top: -15.25%;
     right: 48.5% !important;
     z-index: 3;
     transform: rotate(90deg);
+  }
+  @media only screen and (max-width: 950px) {
+    height: calc(100vh - 5rem);
+    width: 100vw;
+    .pic-name {
+      margin-top: 0 !important;
+      font-size: 0.85rem;
+    }
+    .hobby-name-left {
+      left: 45.3% !important;
+    }
+    .hobby-name-right {
+      right: 46.5% !important;
+    }
   }
 `;
 
@@ -317,6 +331,84 @@ class Hobbies extends React.Component {
       left: Array.from(this.pagesWrap.left.querySelectorAll(".cover-inner")),
       right: Array.from(this.pagesWrap.right.querySelectorAll(".cover-inner")),
     };
+    if (matchMedia) {
+      const mq = window.matchMedia("(max-width: 950px)");
+      mq.addListener(WidthChange);
+      WidthChange(mq);
+    }
+    function WidthChange(mq) {
+      let pic1 = document.querySelector(".pic1"); //w=28vw, h =20vw
+      let pic2 = document.querySelector(".pic2"); //w=12vw, h =15vw
+      let pic3 = document.querySelector(".pic3"); //w=13vw, h =16vw
+      let pic4 = document.querySelector(".pic4"); //w=23vw, h =17vw
+
+      let picName1 = document.querySelector(".pic-name-1");
+      let picName2 = document.querySelector(".pic-name-2");
+      let picName3 = document.querySelector(".pic-name-3");
+      let picName4 = document.querySelector(".pic-name-4");
+
+      let page1 = document.querySelector(".page.left");
+      let page2 = document.querySelector(".page.right");
+
+      let hobbyNameLeft = document.querySelector(".hobby-name-left");
+      if (mq.matches) {
+        page1.style.setProperty("justify-content", "space-evenly");
+        page2.style.setProperty("justify-content", "space-evenly");
+
+        pic1.style.width = "44vw";
+        pic1.style.height = "14vh";
+
+        pic2.style.width = "32vw";
+        pic2.style.height = "21vh";
+        pic2.style.marginLeft = "25%";
+
+        pic3.style.width = "39vw";
+        pic3.style.height = "24vh";
+
+        pic4.style.width = "45vw";
+        pic4.style.height = "15vh";
+
+        hobbyNameLeft.style.top = "-3.5%";
+        hobbyNameLeft.style.left = "44.3% !important";
+
+        picName1.style.width = "43vw";
+
+        picName2.style.width = "32vw";
+        picName2.style.marginLeft = "25%";
+
+        picName3.style.width = "39vw";
+
+        picName4.style.width = "45vw";
+      } else {
+        page1.style.setProperty("justify-content", "center");
+        page2.style.setProperty("justify-content", "center");
+
+        pic1.style.width = "28vw";
+        pic1.style.height = "20vw";
+
+        pic2.style.width = "12vw";
+        pic2.style.height = "15vw";
+        pic2.style.marginLeft = "50%";
+
+        pic3.style.width = "13vw";
+        pic3.style.height = "16vw";
+
+        pic4.style.width = "23vw";
+        pic4.style.height = "17vw";
+
+        hobbyNameLeft.style.top = "-15.25%";
+        hobbyNameLeft.style.left = "48.3% !important";
+
+        picName1.style.width = "28vw";
+
+        picName2.style.width = "12vw";
+        picName2.style.marginLeft = "50%";
+
+        picName3.style.width = "13vw";
+
+        picName4.style.width = "23vw";
+      }
+    }
   }
 
   changePage = (e, destination) => {
@@ -351,7 +443,7 @@ class Hobbies extends React.Component {
         pic3.style.width = "23vw";
         pic4.setAttribute("src", painting1);
 
-        hobbyNameRight.style.top = "-7%";
+        hobbyNameRight.style.top = "-15.25%";
 
         picName1.innerHTML = "- Blue over Green";
         picName2.innerHTML = "- Aging Leaves";
@@ -363,6 +455,37 @@ class Hobbies extends React.Component {
         hobbyNameLeft.innerHTML = "";
 
         this.setState({ currentPage: 2 });
+        if (matchMedia) {
+          const mq = window.matchMedia("(max-width: 950px)");
+          mq.addListener(WidthChange);
+          WidthChange(mq);
+        }
+        function WidthChange(mq) {
+          let pic3 = document.querySelector(".pic3"); //w=13vw, h =16vw
+
+          let picName3 = document.querySelector(".pic-name-3");
+
+          let hobbyNameRight = document.querySelector(".hobby-name-right");
+          if (mq.matches) {
+            pic3.style.width = "47.5vw";
+            pic3.style.height = "18vh";
+            pic3.style.margin = "auto";
+
+            picName3.style.width = "47.5vw";
+
+            hobbyNameRight.style.top = "-5.25%";
+          } else {
+            pic3.style.width = "23vw";
+            pic3.style.height = "16vw";
+            pic3.style.margin = "1vw auto";
+            pic3.style.marginRight = "10%";
+
+            picName3.style.width = "23vw";
+
+            hobbyNameRight.style.top = "-15.25%";
+            hobbyNameRight.style.left = "48.3% !important";
+          }
+        }
       }, 1150);
     };
 
@@ -424,7 +547,7 @@ class Hobbies extends React.Component {
         pic3.style.width = "13vw";
         pic4.setAttribute("src", road);
 
-        hobbyNameRight.style.top = "-5.2%";
+        hobbyNameRight.style.top = "-15.25%";
 
         picName1.innerHTML = "- River of Solitude";
         picName2.innerHTML = "- Plummeting Descent";
@@ -436,6 +559,31 @@ class Hobbies extends React.Component {
         hobbyNameLeft.innerHTML = "__photography";
 
         this.setState({ currentPage: 1 });
+
+        if (matchMedia) {
+          const mq = window.matchMedia("(max-width: 950px)");
+          mq.addListener(WidthChange);
+          WidthChange(mq);
+        }
+        function WidthChange(mq) {
+          let pic3 = document.querySelector(".pic3"); //w=13vw, h =16vw
+
+          let picName3 = document.querySelector(".pic-name-3");
+          if (mq.matches) {
+            pic3.style.width = "39vw";
+            pic3.style.height = "24vh";
+            pic3.style.margin = "auto";
+
+            picName3.style.width = "39vw";
+          } else {
+            pic3.style.width = "13vw";
+            pic3.style.height = "16vw";
+            pic3.style.margin = "1vw auto";
+            pic3.style.marginRight = "10%";
+
+            picName3.style.width = "13vw";
+          }
+        }
       }, 1150);
     };
     return new Promise((resolve, reject) => {
