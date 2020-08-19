@@ -92,6 +92,9 @@ class NavContainer extends React.Component {
   constructor(props) {
     super(props);
     this.timeline = new TimelineMax({ paused: true });
+    this.state = {
+      isMobile: false,
+    };
   }
 
   componentDidMount() {
@@ -114,8 +117,6 @@ class NavContainer extends React.Component {
       if (mq.matches) {
         document.getElementById("content").style.display = "flex";
         document.getElementById("content").style.width = "15%";
-        let scrollDownButton = document.querySelector(".scroll-down-but");
-        scrollDownButton.innerHTML = "Click here for more";
       } else {
         document.getElementById("content").style.width = "0%";
         document.getElementById("content").style.display = "none";

@@ -263,6 +263,12 @@ const Container = styled.div`
     .hobby-name-right {
       right: 46.5% !important;
     }
+    .page.left {
+      justify-content: space-evenly;
+    }
+    .page.right {
+      justify-content: space-evenly;
+    }
   }
 `;
 
@@ -331,6 +337,7 @@ class Hobbies extends React.Component {
       left: Array.from(this.pagesWrap.left.querySelectorAll(".cover-inner")),
       right: Array.from(this.pagesWrap.right.querySelectorAll(".cover-inner")),
     };
+
     if (matchMedia) {
       const mq = window.matchMedia("(max-width: 950px)");
       mq.addListener(WidthChange);
@@ -351,7 +358,8 @@ class Hobbies extends React.Component {
       let page2 = document.querySelector(".page.right");
 
       let hobbyNameLeft = document.querySelector(".hobby-name-left");
-      if (mq.matches) {
+      if (page1 !== null && page2 != null && mq.matches) {
+        console.log("pages1", page1, page2);
         page1.style.setProperty("justify-content", "space-evenly");
         page2.style.setProperty("justify-content", "space-evenly");
 
@@ -379,7 +387,7 @@ class Hobbies extends React.Component {
         picName3.style.width = "39vw";
 
         picName4.style.width = "45vw";
-      } else {
+      } else if (page1 !== null && page2 != null && !mq.matches) {
         page1.style.setProperty("justify-content", "center");
         page2.style.setProperty("justify-content", "center");
 
