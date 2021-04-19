@@ -1,10 +1,10 @@
 {
   "development": {
     "apiUrl": "https://ishwant.herokuapp.com",
-    "contentApiKey": "9cc5c67c358edfdd81455149d0"
+    "contentApiKey": "ca8cf79c78ad14f611009bb3e5"
   },
   "production": {
     "apiUrl": "https://ishwant.herokuapp.com",
-    "contentApiKey": "9cc5c67c358edfdd81455149d0"
+    "contentApiKey": "ca8cf79c78ad14f611009bb3e5"
   }
 }
